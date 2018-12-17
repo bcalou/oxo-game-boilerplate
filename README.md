@@ -1,5 +1,5 @@
 # Semaine Intensive Javascript | Équipe 16 - Pong
-__*:lollipop: :candy:  [BARRE](https://github.com/ArthurBarre) [DOUX](https://github.com/CDoux) [KICHENAMOURTY](https://github.com/Benjigo93) [MARGARY](https://github.com/hlnmargary) [LEFORT](https://github.com/jlefort)*__ __:computer: :video_game:__
+__:computer: :video_game:__ __*[BARRE](https://github.com/ArthurBarre) [DOUX](https://github.com/CDoux) [KICHENAMOURTY](https://github.com/Benjigo93) [MARGARY](https://github.com/hlnmargary) [LEFORT](https://github.com/jlefort)*__ __:computer: :video_game:__
 
 &nbsp;
 
