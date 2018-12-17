@@ -5,6 +5,8 @@ __:video_game: :computer:__ __*[BARRE](https://github.com/ArthurBarre) [DOUX](ht
 
 ## RUNHETIC ##
 
+&nbsp;
+
 Ce projet a été mené dans le cadre d'une semaine intensive à **HETIC**.
 
 Remerciement à **Bastien Calou** et **Raphaël Marquand** pour pour leur conseils avisés durant cette semaine intensive ! 
