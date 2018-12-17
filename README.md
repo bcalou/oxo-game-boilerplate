@@ -1,6 +1,8 @@
 # Semaine Intensive Javascript | Équipe 16 - Pong
 __:video_game: :computer:__ __*[BARRE](https://github.com/ArthurBarre) [DOUX](https://github.com/CDoux) [KICHENAMOURTY](https://github.com/Benjigo93) [MARGARY](https://github.com/hlnmargary) [LEFORT](https://github.com/jlefort)*__ __:computer: :video_game:__
 
+## RUNHETIC ##
+
 &nbsp;
 
 Ce projet a été mené dans le cadre d'une semaine intensive à **HETIC**.
