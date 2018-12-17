@@ -14,7 +14,7 @@ Remerciement à **Bastien Calou** et **Raphaël Marquand** pour pour leur consei
 
 ***
 <div align="center">
-<img margin-right="500" src="../assets/haribo-logo.png" width="200" height="50"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="../assets/hetic-logo.png" width="200">
+<img src="../assets/hetic-logo.png" width="200">
 </div>
 
 ***
