@@ -51,9 +51,12 @@ window.oxo = {
 
         if (
           !oxo.elements.obstacles.every(function(obstacle) {
-            return !oxo.elements.elementsAreColliding(
-              obstacle.getBoundingClientRect(),
-              elFuturePos
+            return (
+              obstacle == element ||
+              !oxo.elements.elementsAreColliding(
+                obstacle.getBoundingClientRect(),
+                elFuturePos
+              )
             );
           })
         ) {
@@ -592,6 +595,7 @@ window.oxo = {
             oxo.log('Load screen ' + name);
             oxo.player.refreshScore();
             oxo.animation.getMovableElement();
+            oxo.screens.currentScreen = name;
 
             if (action) {
               action.call();
