@@ -8,7 +8,9 @@ var santa;
 var fireplace;
 var santaInterval;
 var stageInterval;
+var giftInterval;
 var ground;
+var gift;
 
 oxo.inputs.listenKeyOnce("enter", function() {
   if (oxo.screens.getCurrentScreen !== "game") {
@@ -20,6 +22,9 @@ oxo.inputs.listenKeyOnce("enter", function() {
           transform: 'translate(0px, 610px)'
         },
       });
+      gift = oxo.elements.createElement({
+        class: 'gift',
+      });
       //Random function for fireplace
       setTimeout(fireplace, 3000);
       santa = oxo.elements.createElement({
@@ -29,14 +34,20 @@ oxo.inputs.listenKeyOnce("enter", function() {
         },
       });
       santaInterval = setInterval(playerFall, santaSpeed);
-
+      console.log("collision with ground")
       oxo.elements.onCollisionWithElement(santa, ground, function() {
-        console.log("collision with ground");
       });
     });
   }
 });
-
+oxo.inputs.listenKeyOnce('space', function() {
+  if (oxo.screens.getCurrentScreen !== "game") {
+  giftInterval = setInterval(drop, santaSpeed);
+  drop();
+  oxo.elements.onCollisionWithElement(gift, ground, function() {
+  }); 
+}
+});
 function fireplace() {
   var fireplaceEl = oxo.elements.createElement({
     class: 'stage__fireplace',
@@ -61,9 +72,6 @@ function fireplace() {
   }, true)
 
   setTimeout(fireplace, 1000 * oxo.utils.getRandomNumber(1, 2));
-
-
-
 }
 
 function jump() {
@@ -73,12 +81,15 @@ function jump() {
       gravity = -gravity;
     }, 1000);
   }
-}
+};
+
+function drop() {
+  oxo.animation.move(gift, directionDown,gravity,true);
+};
 
 function playerFall() {
   oxo.animation.move(santa, directionDown, gravity, true);
-}
-
+};
 
 oxo.inputs.listenKey("up", function() {
   jump();
