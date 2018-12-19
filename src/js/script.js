@@ -1,6 +1,5 @@
 var santaSpeed = 1;
 var stageSpeed = 10;
-var giftSpeed = 1;
 var direction = "left";
 var directionDown = "down";
 var gravity = 1;
@@ -9,11 +8,8 @@ var santa;
 var fireplace;
 var santaInterval;
 var stageInterval;
-var giftInterval;
 var ground;
 var test;
-
-
 
 oxo.inputs.listenKeyOnce("enter", function() {
   if (oxo.screens.getCurrentScreen !== "game") {
@@ -49,20 +45,6 @@ oxo.inputs.listenKeyOnce("enter", function() {
         console.log("collision with ground");
       });
     });
-          transform: 'translate(0px, 610px)'
-        },
-      });
-
-      //Random function for fireplace
-      setTimeout(fireplace, 3000);
-      santa = oxo.elements.createElement({
-        class: "character__santa", // optional,
-        styles: { // optional
-          transform: 'translate(50px, 290px)'
-        },
-      });
-      //Drop de cadeau 
-  })
   }
 });
 
@@ -88,41 +70,7 @@ function fireplace() {
 
   setTimeout(fireplace, 1000 * oxo.utils.getRandomNumber(1, 5));
 }
-    class: 'stage__fireplace',
-    obstacle: true,
-    styles: {
-      transform: 'translate(50px, 8px)'
-    }
-  });
 
-  oxo.elements.onCollisionWithElement(santa, fireplaceEl, function() {
-    console.log("you lost");
-  });
-
-  var interval = setInterval(function() {
-    oxo.animation.move(fireplaceEl, direction, size, true); 
-  }, 10);
-
-  oxo.elements.onLeaveScreenOnce(fireplaceEl, function()  {
-    fireplaceEl.remove();
-    clearInterval(interval);
-    console.log('left')
-  }, true)
-
-  setTimeout(fireplace, 1000 * oxo.utils.getRandomNumber(1, 2));
-}
-
-function jump() {
-  if (gravity > 0) {
-    gravity = -gravity;
-    setTimeout(function() {
-      gravity = -gravity;
-    }, 1000);
-  }
-};
-function drop() {
-  oxo.animation.move(gift, directionDown,gravity,true);
-};
 function jump() {
   gravity = -8;
 };
@@ -145,10 +93,10 @@ document.addEventListener("keyup", function(e){
   };
 });
 
-!oxo.inputs.listenKey("up", function() {
+oxo.inputs.listenKey("up", function() {
   if(!test){
     jump();
   } 
   test = true;
   console.log(test)
-};
+});
