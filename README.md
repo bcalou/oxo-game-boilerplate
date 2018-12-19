@@ -1,5 +1,5 @@
 Site Netlify :
-  lostinchatelet-by-nesgang.netlify.com
+  https://lostinchatelet-by-nesgang.netlify.com/
 
 # `OXO` game library
 
