@@ -1,5 +1,6 @@
 var santaSpeed = 1;
 var stageSpeed = 10;
+var giftSpeed = 1;
 var direction = "left";
 var directionDown = "down";
 var gravity = 1;
@@ -22,6 +23,7 @@ oxo.inputs.listenKeyOnce("enter", function() {
           transform: 'translate(0px, 610px)'
         },
       });
+
       //Random function for fireplace
       setTimeout(fireplace, 3000);
       santa = oxo.elements.createElement({
@@ -30,20 +32,7 @@ oxo.inputs.listenKeyOnce("enter", function() {
           transform: 'translate(50px, 290px)'
         },
       });
-      oxo.inputs.listenKey('space', function() {
-        santaInterval = setInterval(playerFall, santaSpeed);
-        gift = oxo.elements.createElement({
-          class: 'gift',
-        });
-        oxo.elements.onCollisionWithElement(santa, ground, function() {
-          console.log("collision with ground")
-        });
-        
-            giftInterval = setInterval(drop, santaSpeed);
-              drop(),
-              oxo.elements.onCollisionWithElement(gift, ground, function() {
-          });
-      });
+      //Drop de cadeau 
   })
   }
 });
@@ -83,9 +72,7 @@ function jump() {
   }
 };
 
-function drop() {
-  oxo.animation.move(gift, directionDown,gravity,true);
-};
+
 
 function playerFall() {
   oxo.animation.move(santa, directionDown, gravity, true);
@@ -93,4 +80,4 @@ function playerFall() {
 
 oxo.inputs.listenKey("up", function() {
   jump();
-});
+}); 
