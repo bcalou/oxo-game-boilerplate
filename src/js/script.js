@@ -1,74 +1,102 @@
-var santaSpeed = 10;
+var santaSpeed = 1;
 var stageSpeed = 10;
 var direction = "left";
 var directionDown = "down";
-var gravity = 4;
+var gravity = 1;
 var size = 4;
 var santa;
 var fireplace;
 var santaInterval;
 var stageInterval;
 var ground;
+var test;
 
 oxo.inputs.listenKeyOnce("enter", function() {
   if (oxo.screens.getCurrentScreen !== "game") {
     oxo.screens.loadScreen("game", function() {
-      fireplace = document.getElementById("fireplace");
       ground = oxo.elements.createElement({
         obstacle: true,
         class: "stage__ground", // optional,
+        styles: {
+          // optional
+          transform: "translate(0px, 700px)"
+        }
+      });
+      ground__santa = oxo.elements.createElement({
+        obstacle: false,
+        class: "greenjump", // optional,
         styles: { // optional
-          transform: 'translate(0px, 479px)'
+        transform: 'translate(0px, 700px)'
         },
       });
+      //Random function for fireplace
+      setTimeout(fireplace, 1000);
+
       santa = oxo.elements.createElement({
         class: "character__santa", // optional,
-        styles: { // optional
-          transform: 'translate(50px, 279px)'
-        },
+        styles: {
+          // optional
+          transform: "translate(50px, 500px)"
+        }
       });
       santaInterval = setInterval(playerFall, santaSpeed);
-      stageInterval = setInterval(stage, stageSpeed); // Call the turn function periodically
-      oxo.elements.onCollisionWithElement(santa, fireplace, function() {
-        console.log("you lost");
-      });
       oxo.elements.onCollisionWithElement(santa, ground, function() {
+        test = false;
         console.log("collision with ground");
       });
     });
   }
 });
 
-function jump() {
-  if (gravity > 0) {
-    gravity = -gravity;
-    setTimeout(function() {
-      gravity = -gravity;
-    }, 1000);
-  }
+function fireplace() {
+  var fireplaceEl = oxo.elements.createElement({
+    class: "stage__fireplace",
+    obstacle: true
+  });
+
+  var interval = setInterval(function() {
+    oxo.animation.move(fireplaceEl, direction, size, true);
+  }, 10);
+
+  oxo.elements.onLeaveScreenOnce(
+    fireplaceEl,
+    function() {
+      fireplaceEl.remove();
+      clearInterval(interval);
+      console.log("left");
+    },
+    true
+  );
+
+  setTimeout(fireplace, 1000 * oxo.utils.getRandomNumber(1, 5));
 }
+
+function jump() {
+  gravity = -8;
+};
+
+function fall(){
+setTimeout(function() {
+  gravity = -gravity;
+  }, 4);
+};
 
 function playerFall() {
   oxo.animation.move(santa, directionDown, gravity, true);
 }
-function stage() {
-  oxo.animation.move(fireplace, direction, size, true);
-}
 
-function addFireplace() {
-  // Add a bonus element to the screen at a random position
-  var randomFireplace = oxo.elements.createElement({
-    class: ".stage__fireplace",
-    styles: {
-      transform:
-        "translate(" + oxo.utils.getRandomNumber(0, firepl - 1) * size + "px, "
-    }
-  });
-  oxo.elements.onCollisionWithElementOnce(santa, randomFireplace, function() {
-    console.log("newFireplaceCollisioned");
-  });
-}
+var keycodeJump; 
+document.addEventListener("keyup", function(e){
+  keycodeJump = e.keyCode
+  if(keycodeJump === 38){
+  fall();
+  };
+});
 
-oxo.inputs.listenKey("up", function() {
-  jump();
+!oxo.inputs.listenKey("up", function() {
+  if(!test){
+    jump();
+  } 
+  test = true;
+  console.log(test)
 });
