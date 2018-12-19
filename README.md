@@ -1,5 +1,5 @@
-Lien du site :
-  https://shatice.github.io/hetic-w1p2021-14-NES/
+Site Netlify :
+  lostinchatelet-by-nesgang.netlify.com
 
 # `OXO` game library
 
