@@ -2,12 +2,10 @@
 @import 'global/layout';
 @import 'blocs/home.scss';
 @import 'blocs/game.scss';
-@import 'blocs/loose.scss';
-@import 'blocs/win.scss';
+@import 'blocs/looser.scss';
+@import 'blocs/winner.scss';
+@import 'blocs/all.scss';
 
-
-
-
-
-
-
+* {
+	box-sizing: border-box;
+}
