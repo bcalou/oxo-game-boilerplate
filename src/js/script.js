@@ -29,6 +29,22 @@ oxo.inputs.listenKeyOnce("enter", function() {
         transform: 'translate(0px, 700px)'
         },
       });
+      //jump max of the character
+      jump__max = oxo.elements.createElement({
+        obstacle: false,
+        class: "jump__max", // optional,
+        styles: { // optional
+        transform: 'translate(0x, 700px)'
+        },
+      });
+      //jump max of character obstacle
+      jump__max__obstacle = oxo.elements.createElement({
+        obstacle: true,
+        class: "jump__max_obstacle", // optional,
+        styles: { // optional
+        transform: 'translate(0x, 700px)'
+        },
+      });
       //Random function for fireplace
       setTimeout(fireplace, 1000);
 
@@ -42,6 +58,10 @@ oxo.inputs.listenKeyOnce("enter", function() {
       santaInterval = setInterval(playerFall, santaSpeed);
       oxo.elements.onCollisionWithElement(santa, ground, function() {
         test = false;
+        console.log("collision with ground");
+      });
+      oxo.elements.onCollisionWithElement(santa, jump__max, function() {
+        gravity = -gravity;
         console.log("collision with ground");
       });
     });
