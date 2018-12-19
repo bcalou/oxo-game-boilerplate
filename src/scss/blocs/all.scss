@@ -1,21 +1,11 @@
-.game__picture {
-    width: 1000px;
-    height: 800px;
-    display: block;
-    margin: 0 auto;
-
-}
-
-.game__screen {
-    width: 684px;
-    height: 464px;
-    background: #3c3c3c;
+.screen {
+    border: solid red;
+    width: 686px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
     margin: auto;
-    position: absolute;
-    top: 172px;
-    left: 312px;
-    display: inline-block;
-    justify-content: center;
+    margin-top: 210px;
+    justify-content: space-around;
     align-items: center;
-    border-radius: 10px;
 }
