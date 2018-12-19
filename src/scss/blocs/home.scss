@@ -1,0 +1,28 @@
+.screen__text--home {
+    height: 40%;
+    width: 60%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+  }
+
+  .screen__title {
+    border: solid red;
+    color: #35948E;
+    font-size: 50px;
+    transform: rotate(-10deg);
+  }
+
+  .screen__message--home {
+    font-size: 2em;
+    text-transform: uppercase;
+  }
+
+  .screen__button--home {
+    width: 100px;
+    height: 70px;
+    border: solid red;
+  }
+
