@@ -1,20 +1,20 @@
-<svg width="4160" height="381" viewBox="0 0 4160 381" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<rect x="1820" y="21" width="260" height="360" fill="url(#pattern0)"/>
-<rect x="260" y="21" width="260" height="360" fill="url(#pattern1)"/>
-<rect x="780" y="21" width="260" height="360" fill="url(#pattern2)"/>
-<rect x="3380" y="15" width="260" height="360" fill="url(#pattern3)"/>
-<rect x="2340" y="9" width="260" height="360" fill="url(#pattern4)"/>
-<rect x="1300" width="260" height="360" fill="url(#pattern5)"/>
-<rect x="2860" y="20" width="260" height="360" fill="url(#pattern6)"/>
-<rect x="3900" y="15" width="260" height="360" fill="url(#pattern7)"/>
-<path d="M1040 0H1300V360H1040V0Z" fill="url(#pattern8)"/>
-<path d="M0 0H260V360H0V0Z" fill="url(#pattern9)"/>
-<path d="M2080 0H2340V360H2080V0Z" fill="url(#pattern10)"/>
-<path d="M3640 0H3900V360H3640V0Z" fill="url(#pattern11)"/>
-<path d="M520 0H780V360H520V0Z" fill="url(#pattern12)"/>
-<path d="M1560 0H1820V360H1560V0Z" fill="url(#pattern13)"/>
-<path d="M2600 0H2860V360H2600V0Z" fill="url(#pattern14)"/>
-<path d="M3120 0H3380V360H3120V0Z" fill="url(#pattern15)"/>
+<svg width="2080" height="191" viewBox="0 0 2080 191" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect x="910" y="11" width="130" height="180" fill="url(#pattern0)"/>
+<rect x="130" y="10" width="130" height="180" fill="url(#pattern1)"/>
+<rect x="390" y="11" width="130" height="180" fill="url(#pattern2)"/>
+<rect x="1690" y="8" width="130" height="180" fill="url(#pattern3)"/>
+<rect x="1170" y="4" width="130" height="180" fill="url(#pattern4)"/>
+<rect x="650" width="130" height="180" fill="url(#pattern5)"/>
+<rect x="1430" y="10" width="130" height="180" fill="url(#pattern6)"/>
+<rect x="1950" y="8" width="130" height="180" fill="url(#pattern7)"/>
+<path d="M520 0H650V180H520V0Z" fill="url(#pattern8)"/>
+<path d="M0 0H130V180H0V0Z" fill="url(#pattern9)"/>
+<path d="M1040 0H1170V180H1040V0Z" fill="url(#pattern10)"/>
+<path d="M1820 0H1950V180H1820V0Z" fill="url(#pattern11)"/>
+<path d="M260 0H390V180H260V0Z" fill="url(#pattern12)"/>
+<path d="M780 0H910V180H780V0Z" fill="url(#pattern13)"/>
+<path d="M1300 0H1430V180H1300V0Z" fill="url(#pattern14)"/>
+<path d="M1560 0H1690V180H1560V0Z" fill="url(#pattern15)"/>
 <defs>
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0" transform="translate(0 0.0576751) scale(0.00200803 0.00145025)"/>

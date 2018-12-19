@@ -1,12 +1,12 @@
-<svg width="2080" height="360" viewBox="0 0 2080 360" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<path d="M520 0H780V360H520V0Z" fill="url(#pattern0)"/>
-<path d="M0 0H260V360H0V0Z" fill="url(#pattern1)"/>
-<path d="M1040 0H1300V360H1040V0Z" fill="url(#pattern2)"/>
-<path d="M1820 0H2080V360H1820V0Z" fill="url(#pattern3)"/>
-<path d="M260 0H520V360H260V0Z" fill="url(#pattern4)"/>
-<path d="M780 0H1040V360H780V0Z" fill="url(#pattern5)"/>
-<path d="M1300 0H1560V360H1300V0Z" fill="url(#pattern6)"/>
-<path d="M1560 0H1820V360H1560V0Z" fill="url(#pattern7)"/>
+<svg width="1040" height="180" viewBox="0 0 1040 180" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M260 0H390V180H260V0Z" fill="url(#pattern0)"/>
+<path d="M0 0H130V180H0V0Z" fill="url(#pattern1)"/>
+<path d="M520 0H650V180H520V0Z" fill="url(#pattern2)"/>
+<path d="M910 0H1040V180H910V0Z" fill="url(#pattern3)"/>
+<path d="M130 0H260V180H130V0Z" fill="url(#pattern4)"/>
+<path d="M390 0H520V180H390V0Z" fill="url(#pattern5)"/>
+<path d="M650 0H780V180H650V0Z" fill="url(#pattern6)"/>
+<path d="M780 0H910V180H780V0Z" fill="url(#pattern7)"/>
 <defs>
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0" transform="translate(-0.0365385) scale(0.00384615 0.00277778)"/>

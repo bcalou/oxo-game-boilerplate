@@ -1,88 +1,95 @@
-//navigate from home to game
-oxo.inputs.listenKeyOnce('enter', function() {
-  if (oxo.screens.getCurrentScreen !== 'game') {
-    oxo.screens.loadScreen('game', game);
-  }else{
-    oxo.screens.loadScreen('end', end);
-  
-  }
+/* Animation Choosing Characters 1 PLAYER or 2 PLAYERS*/
+
+var tID; //we will use this variable to clear the setInterval()
+
+setTimeout(function() {
+
+/* LOADING PAGE */
+
+  var names = document.querySelector('.mode__img');
+console.log(names);
+names.addEventListener('click', function(){
+  oxo.screens.loadScreen('oneplayer', function() {
+    // game.html is loaded, do something
+  });
 });
 
-var gravity = 70;  //Speed of falling
-var time;
-var flying = true;
+var names = document.querySelector('.mode__img__2Players');
+console.log(names);
+names.addEventListener('click', function(){
+  oxo.screens.loadScreen('twoplayers', function() {
+    // game.html is loaded, do something
+  });
+});
 
-
-function game() {
-
-
-  var platform = document.getElementById('platform');   //platform object
-  oxo.animation.setPosition(platform, {x: 0, y: 550});
-
-  var player = document.getElementById('player');     //player object
-  oxo.animation.setPosition(player, {x: 600, y: 0});
+/* END OF LOADING PAGE */
 
   
-
-  time = setInterval(down, gravity); 
-
-  function down() {
-
-    // collision test
-    oxo.elements.onCollisionWithElement(player, platform, function() {
-      flying = false;
-      console.log('collision');
-    });
-
-    if ( flying === true) {
-      oxo.animation.move(player, 'down', 10);
-    };
-
-    oxo.inputs.listenArrowKeys(function(key) {
-      if ( key === 'right' ) {
-        oxo.animation.move(player, 'right', 10);
-      } else if (key === 'left') {
-        oxo.animation.move(player, 'left', 10);
-      } else if (key === 'up') {
-        oxo.animation.move(player, 'up', 200);
-        setTimeout(() => {
-          flying = true;
-        }, 300);
-      }
-    });
-  };
-
-
-
-
-  // var ground = 0;
-
-  // while ( ground <= 0 ) {
-  //   oxo.animation.move(player, 'down', gravity);
-  //   ground = 0;
-  //   var ennemy = document.getElementById('ennemy');
-  //   oxo.elements.onCollisionWithElement(player, platform, function() {
-  //     ground = 1;
-  //   });
-  // }
+var images = document.querySelectorAll('.mode__img');
+  images.forEach(function(mode__img) {
+  mode__img.onmouseout = function stopAnimate() {
+    clearInterval(tID);
+  } //end of stopAnimate()
     
+    
+  mode__img.onmouseover = function animateScript() {
+    
+    var position = 130 //start position for the image slicer
+    const interval = 170; //170 ms of interval for the setInterval()
+    const diff = 130; //diff as a variable for position offset
+      
+    tID = setInterval(() => {
+      
+      mode__img.style.backgroundPosition =
+        `-${position}px 0px`;
+      //we use the ES6 template literal to insert the variable "position"
+        
+      if (position < 1040) {
+        position = position + diff;
+      }
+      //we increment the position by 260 each time
+      else {
+        position = 130;
+      }
+      //reset the position to 260px, once position exceeds 1536px
+        
+      }, interval); //end of setInterval
+    } //end of animateScript()
+  });
+});
 
-
+setTimeout(function() {
+  var images = document.querySelectorAll('.mode__img__2Players');
+    images.forEach(function(mode__img__2Players) {
+      mode__img__2Players.onmouseout = function stopAnimate() {
+      clearInterval(tID);
+    } //end of stopAnimate()
+    
+    
+    mode__img__2Players.onmouseover = function animateScript() {
+    
+      var position = 260 //start position for the image slicer
+      const interval = 170; //170 ms of interval for the setInterval()
+      const diff = 260; //diff as a variable for position offset
+      
+      tID = setInterval(() => {
+      
+        mode__img__2Players.style.backgroundPosition =
+          `-${position}px 0px`;
+        //we use the ES6 template literal to insert the variable "position"
+        
+        if (position < 2080) {
+          position = position + diff;
+        }
+        //we increment the position by 50 each time
+        else {
+          position = 260;
+        }
+        //reset the position to 520px, once position exceeds 1536px
+        
+      }, interval); //end of setInterval
+    } //end of animateScript()
+  });
   
-  
-  
-  // Not working prototype of moving and jumping
-
-  // oxo.inputs.listenArrowKeys(function(key) {
-  //   if ( key === 'right' ) {
-  //     oxo.animation.move(player, 'right', 3);
-  //   } else if (key === 'left') {
-  //     oxo.animation.move(player, 'left', 3);
-  //   } else if (key === 'up') {
-  //     oxo.animation.move(player, 'up', 200);
-  //     setTimeout( function() {
-  //       oxo.animation.move(player, 'down', 200);
-  //     }, 400);
-  //   }
-  // });
-};
+});
+/* END OF Animation Choosing Characters 1 PLAYER or 2 PLAYERS*/
