@@ -1,3 +1,13 @@
 @import 'vendors/reset';
 
 @import 'global/layout';
+
+@import 'font-face/font-face.scss';
+
+@import 'keyframes/keyframes.scss';
+
+@import 'blocs/home.scss';
+
+@import 'blocs/oneplayer.scss';
+
+@import 'blocs/twoplayers.scss';
