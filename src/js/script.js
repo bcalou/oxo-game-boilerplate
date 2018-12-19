@@ -2,6 +2,9 @@
 oxo.inputs.listenKeyOnce('enter', function() {
   if (oxo.screens.getCurrentScreen !== 'game') {
     oxo.screens.loadScreen('game', game);
+  }else{
+    oxo.screens.loadScreen('end', end);
+  
   }
 });
 
@@ -47,7 +50,6 @@ function game() {
         }, 300);
       }
     });
-
   };
 
 
