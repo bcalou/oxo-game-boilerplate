@@ -42,9 +42,9 @@
 }
 
 .items {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
 
   .items__description {
     width: 13%;

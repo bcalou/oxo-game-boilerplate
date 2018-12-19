@@ -1,0 +1,23 @@
+.mode__img__ulysse { 
+  height: 180px; 
+  width: 130px;
+  background: url("../../src/assets/img/animationPlayer2.svg") 0px 0px;
+}
+
+.mode__name--translate {
+  transform: translateY(2px);
+  transform: translateX(-15px);
+}
+
+.items--players {
+  position: fixed;
+  align-items: center;
+  transform: translateY(30px);
+}
+
+.commands {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 100px;
+}
