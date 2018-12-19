@@ -1,0 +1,43 @@
+@keyframes color {
+    from{
+        color: #35948E;
+    }
+
+    to {
+        color: red;
+    }
+}
+
+.screen__message--looser {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    animation: color 5s infinite alternate;
+}
+
+.screen__button--looser {
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    background-color: #35948E;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999999;
+    position: absolute;
+    top: 72%;
+    left: 46%;
+
+    &:hover {
+        background-color: #0DB4A4;
+    }
+
+    &:active{
+        background-color: #0DB4A4;
+        box-shadow: 0 5px #666666;
+        transform: translateY(4px);
+    }
+}
+
+

@@ -1,10 +1,66 @@
+/* ALL PAGES */
 body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-image: url(./img/bgOk.png);
+  margin: none;
+  z-index: 0;
+  font-family: 'Quicksand', sans-serif;
+
+}
+
+.screen {
+  margin: none;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./img/bg.png);
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
-  margin: none;
 }
+
+.screen__computer{
+  background-image: url(./img/borne.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 80%;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 1000px;
+  margin-top: 3%;
+
+}
+
+.top {
+  top: 6%;
+  left: 31%;
+
+  position: absolute;
+  font-size: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.top__title {
+  font-size: 80px;
+  color: rgba(255, 255, 255, 0.76);
+  text-shadow: 0 0 20px rgb(255, 0, 255);
+
+  &::before {
+    content: "";
+    background-color: rgb(128, 10, 98);
+    z-index: -2;
+    opacity: 0.5;
+    filter: blur(30px);
+  }
+}
+
+
