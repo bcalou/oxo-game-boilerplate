@@ -93,7 +93,7 @@ document.addEventListener("keyup", function(e){
   };
 });
 
-!oxo.inputs.listenKey("up", function() {
+oxo.inputs.listenKey("up", function() {
   if(!test){
     jump();
   } 
