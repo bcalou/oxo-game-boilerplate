@@ -1,0 +1,33 @@
+body {
+  background-image: url('../../assets/images/simpsons_background.png');
+  background-size: cover;
+}
+.home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'VT323', monospace;
+}
+.home__title {
+  display: flex;
+  font-size: 52px;
+  justify-content: center;
+  align-items: center;
+  
+}
+.home__subtitle {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 100px;
+}
+.home__button {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 200px;
+}
