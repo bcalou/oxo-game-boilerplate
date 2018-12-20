@@ -50,3 +50,15 @@
     width: 13%;
   }
 }
+
+.header__menu__button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 55px;
+  width: 115px;
+
+  &:hover {
+    animation: menu_button 60s infinite;
+  }
+}
