@@ -30,14 +30,35 @@ window.oxo = {
         distance
       );
 
-      if (!allowOutside) {
-        var elPos = element.getBoundingClientRect();
+      var elPos = element.getBoundingClientRect();
 
+      if (!allowOutside) {
         if (
           newPosition.x + elPos.width > oxo.width ||
           newPosition.x < 0 ||
           newPosition.y + elPos.height > oxo.height ||
           newPosition.y < 0
+        ) {
+          return;
+        }
+      }
+
+      if (oxo.elements.obstacles.length) {
+        var elFuturePos = Object.assign(elPos, {
+          x: newPosition.x,
+          y: newPosition.y,
+        });
+
+        if (
+          !oxo.elements.obstacles.every(function(obstacle) {
+            return (
+              obstacle == element ||
+              !oxo.elements.elementsAreColliding(
+                obstacle.getBoundingClientRect(),
+                elFuturePos
+              )
+            );
+          })
         ) {
           return;
         }
@@ -198,6 +219,7 @@ window.oxo = {
   },
 
   elements: {
+    obstacles: [],
     /**
      * Create an HTML element
      * @param {*} params - An object containing the element parameters
@@ -216,6 +238,10 @@ window.oxo = {
         for (style in params.styles) {
           element.style[style] = params.styles[style];
         }
+      }
+
+      if (params.obstacle) {
+        oxo.elements.obstacles.push(element);
       }
 
       oxo.elements.appendElement(element, params.appendTo);
@@ -245,10 +271,11 @@ window.oxo = {
      * Execute an action when the given element collides with the border
      * @param {HTMLElement} element - The element to observe
      * @param {Function} action - The action to execute
+     * @param {boolean} completly - If true, the whole element must be outside
      * @param {boolean} once - If true, the action will be executed only once
      * @return {IntersectionObserver} - The observer
      */
-    onLeaveScreen(element, action, once) {
+    onLeaveScreen(element, action, completly, once) {
       var observer = new IntersectionObserver(
         function(entries) {
           entries.forEach(function(entry) {
@@ -264,7 +291,7 @@ window.oxo = {
         {
           root: null,
           rootMargin: '0px',
-          threshold: 1.0,
+          threshold: completly ? 0 : 1,
         }
       );
       observer.observe(element);
@@ -276,10 +303,11 @@ window.oxo = {
      * Execute an action once the given element collides with the border
      * @param {HTMLElement} element - The element to observe
      * @param {Function} action - The action to execute
+     * @param {boolean} completly - If true, the whole element must be outside
      * @return {IntersectionObserver} - The observer
      */
-    onLeaveScreenOnce(element, action) {
-      return oxo.elements.onLeaveScreen(element, action, true);
+    onLeaveScreenOnce(element, action, completly) {
+      return oxo.elements.onLeaveScreen(element, action, completly, true);
     },
 
     /**
@@ -294,7 +322,12 @@ window.oxo = {
       var colliding = false;
 
       var interval = setInterval(function() {
-        if (oxo.elements.elementsAreColliding(element, target)) {
+        if (
+          oxo.elements.elementsAreColliding(
+            element.getBoundingClientRect(),
+            target.getBoundingClientRect()
+          )
+        ) {
           if (!colliding) {
             action();
             colliding = true;
@@ -324,13 +357,10 @@ window.oxo = {
 
     /**
      * Test if two elements are in collision
-     * @param {HTMLElement} element1 - The first element
-     * @param {HTMLElement} element2 - The second element
+     * @param {Object} element1Pos - The first element position
+     * @param {Object} element2Pos - The second element position
      */
-    elementsAreColliding(element1, element2) {
-      var element1Pos = element1.getBoundingClientRect();
-      var element2Pos = element2.getBoundingClientRect();
-
+    elementsAreColliding(element1Pos, element2Pos) {
       return (
         element1Pos.x < element2Pos.x + element2Pos.width &&
         element1Pos.x + element1Pos.width > element2Pos.x &&
@@ -565,6 +595,7 @@ window.oxo = {
             oxo.log('Load screen ' + name);
             oxo.player.refreshScore();
             oxo.animation.getMovableElement();
+            oxo.screens.currentScreen = name;
 
             if (action) {
               action.call();
