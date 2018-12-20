@@ -14,13 +14,13 @@ setTimeout(function() {
 //   });
 // });
 
-var names = document.querySelector('.mode__img');
-console.log(names);
-names.addEventListener('click', function(){
-  oxo.screens.loadScreen('oneplayer', function() {
-    // game.html is loaded, do something
-  });
-});
+// var names = document.querySelector('.mode__img');
+// console.log(names);
+// names.addEventListener('click', function(){
+//   oxo.screens.loadScreen('oneplayer', function() {
+//     // game.html is loaded, do something
+//   });
+// });
 
 var names = document.querySelector('.mode__img__2Players');
 console.log(names);
