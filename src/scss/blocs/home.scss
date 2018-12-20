@@ -1,5 +1,7 @@
 body {
-  background-image: url('../../assets/images/simpsons_background.png');
+  background-image: url('../../assets/images//Home\ screens.jpg');
+  color: white;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 .home {
@@ -10,24 +12,21 @@ body {
   align-items: center;
   font-family: 'VT323', monospace;
 }
-.home__title {
-  display: flex;
-  font-size: 52px;
-  justify-content: center;
-  align-items: center;
-  
-}
-.home__subtitle {
-  font-size: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 100px;
-}
 .home__button {
   font-size: 30px;
+}
+.home__contents {
+  background: rgba(255, 255, 255, 0.25);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  line-height: 200px;
+  width: 30%;
+}
+.home__spacebar {
+  width: 40%;
+  margin-top: 50px;
+}
+.home__topbutton {
+  width: 25%;
 }
