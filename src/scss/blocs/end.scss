@@ -4,53 +4,56 @@
   }
   
   to{
-    transform: translateX(600px);
+    transform: translateX(500px);
   }
 }
 
-.end{
+.end , .end2 {
   height: 100vh;
   width: 100%;
-  background: url('../../assets/img/backgrounds/background_endgame.png');
-  background-size: cover;
+  background:url('../assets/img/backgrounds/background_endgame.png') no-repeat ;
+  background-size:cover;
 
-  .end__heracles{
-    position: absolute ;
-    top :40%;
-    left: 5%;
-    animation: walk 5s forwards ;
+  .end__heracles, .end__ulysse{
+    width: 15%;
+    position: absolute;
+    bottom: 20%;
+    animation: walk 5s forwards;
   }
 
   .end__zeus{
     position: absolute;
-    right: 5%;
-    top: 23%;
-    height: 65%;
-
-  }
-
-  .end__dialog--heracles{
-    position: absolute;
-    top: 8%;
+    width: 30%;
+    bottom: 20%;
     right: 10%;
-    width: 80%;
-    
-
   }
 
-  .end__retry{
-    width: 10%;
+  .end__dialog , .end__dialog2{
     position: absolute;
-    bottom: 7%;
-    left: 5%;
+    width: 50%;
+    right:15%;
+    top: 20%;
+
   }
+
+  .end__footer{
+    position : absolute;
+    bottom:5%;
+    left:25%;
+
+    .end__footer__credits{
+      width: 20%
+    }
+    .end__footer__retry{
+      width: 30%
+    }
+    .end__footer__menu{
+      width: 17%;
+    }
+  }
+
   
-  .end__credits{
-    width: 10%;
-    position: absolute;
-    bottom: 5%;
-    left: 20%;
-  }
-
-
 }
+
+
+

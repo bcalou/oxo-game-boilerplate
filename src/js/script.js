@@ -1,4 +1,8 @@
-/* Animation Choosing Characters 1 PLAYER or 2 PLAYERS*/
+oxo.screens.loadScreen('end');
+return;
+
+
+/* Animation Choosing Characters 1 PLAYER or 2 PLAYERS */
 
 var tID; //we will use this variable to clear the setInterval()
 
@@ -13,6 +17,8 @@ names.addEventListener('click', function(){
     // game.html is loaded, do something
   });
 });
+
+
 
 var names = document.querySelector('.mode__img__2Players');
 console.log(names);
