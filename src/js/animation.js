@@ -5,7 +5,6 @@ var tID; //we will use this variable to clear the setInterval()
 oxo.screens.loadScreen('home', function() {
 
   var names = document.querySelector('.mode__img__2Players');
-  console.log(names);
   names.addEventListener('click', function(){
   oxo.screens.loadScreen('game', game);
   });
@@ -106,7 +105,11 @@ setTimeout(function() {
   
   
   
-  function game() {
+function game() {
+
+  
+
+  document.body.classList.add("backgroundLava")
 
     // var rebound = 300;         //height in pixels of players rebounds
   var ySpeed1 = 50;             //gravity strength in pixels per [gameSpeed]
@@ -116,6 +119,7 @@ setTimeout(function() {
   var platformSpawning = 750;   //speed of new platforms spawning
   var gravity = 10;
   var flying = true;
+  var rebound = 5
   
   function destroyObj(obj) {
   obj = null;
@@ -129,11 +133,11 @@ setTimeout(function() {
         return;
       }
   
-      ySpeed1 = -7;
+      ySpeed1 = -rebound;
   
       setTimeout(function() {
-        ySpeed1 = 5;
-      }, 300
+        ySpeed1 = rebound+2;
+      }, 500
       );
       
     }
@@ -144,10 +148,10 @@ setTimeout(function() {
         return;
       }
   
-      ySpeed2 = -7;
+      ySpeed2 = -rebound;
   
       setTimeout(function() {
-        ySpeed2 = 5;
+        ySpeed2 = rebound+2;
       }, 500);
       
     }
@@ -155,14 +159,13 @@ setTimeout(function() {
     var platforms;
   
     //platform spawning
-    setInterval(() => {
-      console.log('interv')
+    var platfromSpawn = setInterval(() => {
   
       var platform = oxo.elements.createElement({
         type: 'div', // optional
         class: 'game__platform game__platform--up', // optional,
         styles: { // optional
-          transform: 'translate(' + oxo.utils.getRandomNumber(100, 1080) + 'px, ' + oxo.utils.getRandomNumber(50, 450) + 'px)'
+          transform: 'translate(' + oxo.utils.getRandomNumber(100, 1080) + 'px, ' + oxo.utils.getRandomNumber(0, 450) + 'px)'
         },
         appendTo: 'body' // optional
       });
@@ -200,7 +203,20 @@ setTimeout(function() {
   
   
   
-  
+    function end() {
+
+      var tryAgain = document.getElementById('retry')
+      
+
+      tryAgain.addEventListener("click", function(){
+        document.location.reload()
+      });
+
+      // tryAgain.addEventListener('click', function () {
+      //   location.reload()
+      // })
+      
+    }
   
   
   
@@ -239,38 +255,58 @@ setTimeout(function() {
     var player2Y;
   
   
-    setInterval(function() {
+    var game = setInterval(function() {
   
   
       // console.log('game is running');
       // console.log(pressed);
   
       if (pressed.indexOf('q') !== -1) {
-        oxo.animation.move(player2, 'left', movementSpeed);
-      };
-      if (pressed.indexOf('d') !== -1) {
-        oxo.animation.move(player2, 'right', movementSpeed);
-      };
-      if (pressed.indexOf('ArrowLeft') !== -1) {
         oxo.animation.move(player1, 'left', movementSpeed);
       };
-      if (pressed.indexOf('ArrowRight') !== -1) {
+      if (pressed.indexOf('d') !== -1) {
         oxo.animation.move(player1, 'right', movementSpeed);
+      };
+      if (pressed.indexOf('ArrowLeft') !== -1) {
+        oxo.animation.move(player2, 'left', movementSpeed);
+      };
+      if (pressed.indexOf('ArrowRight') !== -1) {
+        oxo.animation.move(player2, 'right', movementSpeed);
       };
   
       player1Y = oxo.animation.getPosition(player1);
       player2Y = oxo.animation.getPosition(player2);
+
+      if (player2Y.y > 900) {
+        player1.remove()
+        clearInterval(game)
+        clearInterval(platfromSpawn)
+
+        oxo.screens.loadScreen('end', end)
+        console.log('load end')
+      }
+
+      if (player1Y.y > 900) {
+        player1.remove()
+        clearInterval(game)
+        clearInterval(platfromSpawn)
+
+        oxo.screens.loadScreen('end2', end)
+        console.log('load end')
+      }
+
+
   
   
       if (player1Y.y < player2Y.y) {
         if (player1Y.y <= 200) {
           for (let platform of platforms) {
-            oxo.animation.move(platform, 'down', (player1Y.y + 800) / 400, true)
+            oxo.animation.move(platform, 'down', (player1Y.y + 800) / 200, true)
           }
         }
       } else if (player2Y.y <= 200) {
         for (let platform of platforms) {
-          oxo.animation.move(platform, 'down', (player2Y.y + 800) / 400, true)
+          oxo.animation.move(platform, 'down', (player2Y.y + 800) / 300, true)
         }
       };
     }, gameSpeed);
