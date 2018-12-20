@@ -1,16 +1,64 @@
-.home {
+body {
+  background-image: url("../../src/assets/img/background_cloud.png");
+  background-size: cover;
+}
+
+.header {
+  text-align: center;
+
+  .header__logo {
+    width: 40%;
+  }
+
+  .header__logo--size {
+    width: 30%;
+  }
+}
+
+.select__modes {
+  font-family: "vt323";
+  font-size: 55px;
+  text-align: center;
+  margin-top: 10px;
+  animation: chooseModes 0.7s infinite;
+}
+
+.modes {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 5%;
+  
+  .mode__img { 
+    height: 180px; 
+    width: 130px;
+    background: url("../../src/assets/img/animationCharacters.svg") 0px 0px;
+  }
+
+  .mode__img__2Players { 
+    height: 180px; 
+    width: 260px;
+    background: url("../../src/assets/img/animation2Players.svg") 0px 0px;
+  }
+  
+  .mode__title {
+    font-family: "vt323";
+    font-size: 40px;
+    text-align: right;
+  }
+}
+
+.mode__title--transform {
+  transform: translateX(-65px);
+}
+
+.footer {
+  font-family: "vt323";
+  display: flex;
   justify-content: center;
-}
 
-.home__title{
-  color: red;
-  font-size: 32px;
-}
-
-.home__subtitle {
-  color: black;
-  font-size: 20px;
+  .footer__copyright{
+    font-size: 30px;
+    margin-top: 125px;
+  }
 }

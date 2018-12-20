@@ -1,0 +1,64 @@
+.mode__onePlayer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8%;
+  
+  .mode__img { 
+    height: 180px; 
+    width: 130px;
+    background: url("../../src/assets/img/animationCharacters.svg") 0px 0px;
+  }
+}
+
+.mode__name {
+  font-family: "vt323";
+  font-size: 80px;
+  text-align: right;
+}
+
+.mode__name--animation {
+  position: absolute;
+  transform: translateY(175px);
+  font-size: 50px;
+}
+
+.mode__name--animation:hover {
+  animation: select 60s infinite;
+}
+
+.player {
+  transform: translateY(-100px)
+}
+
+.command {
+  display: flex;
+  justify-content: center;
+
+  .command__button {
+    width: 13%;
+    height: 13%;
+  }
+}
+
+.items {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+
+  .items__description {
+    width: 13%;
+  }
+}
+
+.header__menu__button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 55px;
+  width: 115px;
+
+  &:hover {
+    animation: menu_button 60s infinite;
+  }
+}

@@ -1,0 +1,20 @@
+@keyframes chooseModes {
+  0% {opacity: 1;}
+  25% {opacity: 0.8;}
+  50% {opacity: 0.6;}
+  75% {opacity: 0.4;}
+  100% {opacity: 0;}
+}
+
+@keyframes select {
+  from {
+    color:yellow;
+    font-size: 95px;
+  }
+}
+
+@keyframes menu_button {
+  from {
+    transform: scale(1.1);
+  }
+}
