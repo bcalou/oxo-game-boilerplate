@@ -1,6 +1,8 @@
 @import 'vendors/reset';
-
+@import 'global/animation.scss';
+@import 'global/fonts';
 @import 'global/layout';
-@import 'games/_game1';
+@import 'games/_inGame';
 @import 'games/menu';
+@import 'games/displays';
 @import 'games/_player-state';

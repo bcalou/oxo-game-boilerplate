@@ -13,8 +13,70 @@
     <!-- Nothing to add here, screens are in src/screens -->
     <div class="game">
       <div class="game__container">
-        <div class="game__button--settings buttonPause"></div>
-        <div class="game__score"></div>
+        <div class="game__start">
+          <div class="screen__logo">
+            <img
+              class="screen__logo--img"
+              src="assets/images/logorunhetic.png"
+              alt="logo"
+            />
+          </div>
+          <nav class="menu">
+            <div class="popup"> 
+              <img
+              class="menu__list"
+              src="assets/images/setting__button.svg"
+              alt="settings"
+            /> 
+            </div>
+            <div class="popuptext" id="myPopup">
+              <span>Reglages</span>
+            </div>
+          </nav>
+          <div class="player__playerman">
+            <img
+              class="player__playerman--img"
+              src="assets/images/Playerman__Run.png"
+              alt="playerman"
+            />
+          </div>
+          <div class="button__play">
+            <img
+              class="button__play--img"
+              src="assets/images/play-button.svg"
+              alt="buttonplay"
+            />
+            <p class="button__play--text">Jouer</p>
+          </div>
+          <div class="button__carrousel">
+            <img
+              class="button__carrousel--img"
+              src="assets/images/button__carrousel.svg"
+              alt=""
+            />
+            <p class="button__carrousel--text">Berni</p>
+          </div>
+        </div>
+        <div class="game__inGame">
+          <div class="game__button--settings buttonPause"></div>
+          <div class="game__score"></div>
+          <div class="game__quizz">
+            <span class="game__quizz__question question"
+              >Laquelle de ces règles CSS permet de modifier l’apparence d’un
+              lien déjà visité ?</span
+            >
+            <div class="question__answer question__answer-false">
+              <span>a:focus</span>
+            </div>
+            <div class="question__answer question__answer-false">
+              <span>a:consulted</span>
+            </div>
+            <div class="question__answer question__answer-true">
+              <span>a:visited</span>
+            </div>
+          </div>
+        </div>
+        <div class="game__end"></div>
       </div>
     </div>
   </body>

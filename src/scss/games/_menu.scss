@@ -1,7 +1,101 @@
-.buttonPlay{
-  background: url('../assets/images/button-play.svg') top left;
-}
+.game__start {
+  background-image: url('../assets/images/screen__background--start.png');
+  position: relative;
+  .screen__logo {
+    position: absolute;
+    left:18px;
+    top: 18px;
+    .screen__logo--img {
+      width: 100px;
+      height: 50px;
+    }
+  }
+  .menu {
+    width: 50px;
+    position: absolute;
+    right: 20px;
+    margin: 30px;
+    cursor: pointer;
 
-.buttonPause{
-  background: url('../assets/images/button-pause.svg') top left;
+    /* Popup container */
+    .popup {
+      position: absolute;
+      display: inline-block;
+      cursor: pointer;
+      right: 30px;
+      width: 50px;
+      z-index: 10;
+    }
+    .popuptext {
+      visibility: hidden;
+      width: 740px;
+      height: 400px;
+      background-color: rgba(29, 29, 29, 0.63);
+      color: #fff;
+      text-align: center;
+      text-transform: uppercase;
+      font-family: 'pixeled',sans-serif;
+      border-radius: 20px;
+      padding: 8px 0;
+      position: absolute;
+      z-index: 1;
+      right: 50%;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+      }
+    }.show {
+      visibility: visible;
+      -webkit-animation: fadeIn 0.2s;
+      animation: fadeIn 0.2s
+    } 
+  }
+  .player__playerman {
+    position: absolute;
+    left: 88px;
+    top: 228px;
+    
+    .player__playerman--img {
+    height: 165px;
+    }
+  }
+  .button__play {
+    position: absolute;
+    left: 24px;
+    top: 480px;
+    cursor: pointer;
+
+    .button__play--text {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 30px;
+      text-transform: uppercase;
+      color: white;
+      position: absolute;
+      top: 10px;
+      left: 60px;
+      font-weight: bold;
+    }
+  }
+  .button__carrousel {
+    position: absolute;
+    left: 37px;
+    top: 410px;
+  
+    .button__carrousel--text {
+      font-family: "pixeled",sans-serif;
+      font-weight: bold;
+      font-size: 14px;
+      color: rgb(37, 112, 68);
+      position: absolute;
+      top: 8px;
+      left: 78px;
+      text-transform: uppercase;
+    }    
+  }
 }
