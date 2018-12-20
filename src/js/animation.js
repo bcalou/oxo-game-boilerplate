@@ -6,7 +6,12 @@ oxo.screens.loadScreen('home', function() {
 
   var names = document.querySelector('.mode__img__2Players');
   names.addEventListener('click', function(){
-  oxo.screens.loadScreen('game', game);
+    oxo.screens.loadScreen('twoplayers', function () {
+      oxo.inputs.listenKey('space', function() {
+        oxo.screens.loadScreen('game', game);
+      });
+    });
+  
   });
 
 });
@@ -120,6 +125,7 @@ function game() {
   var gravity = 10;
   var flying = true;
   var rebound = 5
+  var platformNumber = 0;
   
   function destroyObj(obj) {
   obj = null;
@@ -163,7 +169,7 @@ function game() {
   
       var platform = oxo.elements.createElement({
         type: 'div', // optional
-        class: 'game__platform game__platform--up', // optional,
+        class: 'game__platform platformWood', // optional,
         styles: { // optional
           transform: 'translate(' + oxo.utils.getRandomNumber(100, 1080) + 'px, ' + oxo.utils.getRandomNumber(0, 450) + 'px)'
         },
@@ -185,6 +191,7 @@ function game() {
       }, true);
   
       platforms = document.querySelectorAll('.game__platform');
+      platformNumber = platformNumber + 1
       
     }, platformSpawning);
   
@@ -295,18 +302,29 @@ function game() {
         console.log('load end')
       }
 
+      if (platformNumber > 50) {
+        document.body.classList.remove("backgroundLava")
+        document.body.classList.add("backgroundForest")
+      }
+      if (platformNumber > 100) {
+        document.body.classList.remove("backgroundForest")
+        document.body.classList.add("backgroundSky")
+      }
+
+      console.log(platformNumber)
+
 
   
   
       if (player1Y.y < player2Y.y) {
         if (player1Y.y <= 200) {
           for (let platform of platforms) {
-            oxo.animation.move(platform, 'down', (player1Y.y + 800) / 200, true)
+            oxo.animation.move(platform, 'down', (player1Y.y + 800) / 250, true)
           }
         }
       } else if (player2Y.y <= 200) {
         for (let platform of platforms) {
-          oxo.animation.move(platform, 'down', (player2Y.y + 800) / 300, true)
+          oxo.animation.move(platform, 'down', (player2Y.y + 800) / 250, true)
         }
       };
     }, gameSpeed);

@@ -16,11 +16,12 @@ body {
 }
 
 .select__modes {
+  color: beige;
   font-family: "vt323";
   font-size: 55px;
   text-align: center;
   margin-top: 10px;
-  animation: chooseModes 0.7s infinite;
+  animation: chooseModes 1s infinite;
 }
 
 .modes {
@@ -62,3 +63,25 @@ body {
     margin-top: 125px;
   }
 }
+
+.catchphrase {
+  display: flex;
+  color: rgb(196, 0, 0);
+  justify-content: center;
+  font-family: "vt323";
+  font-size: 95px;
+  transform: translateY(50px);
+}
+
+.footer {
+  font-family: "vt323";
+  display: flex;
+  justify-content: center;
+
+  .footer__copyright{
+    font-size: 30px;
+    position: absolute;
+    bottom: 10;
+  }
+}
+

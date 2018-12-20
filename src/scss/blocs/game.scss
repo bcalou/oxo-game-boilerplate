@@ -7,6 +7,19 @@
   background-size: cover;
 }
 
+.backgroundForest {
+  background: radial-gradient(464.50px at 50% 50%, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.2) 100%), url("../assets/img/backgrounds/background_earth.png");
+  background-size: cover;
+}
+
+.backgroundSky {
+  background: radial-gradient(464.50px at 50% 50%, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.2) 100%), url("../assets/img/backgrounds/background_sky.png");
+  background-size: cover;
+}
+
+
+
+
 
 .game__player {
   height: 100px;
@@ -16,13 +29,32 @@
 
 
 .game__platform--start {
-  width: 100%;
-  height: 20px;
+  width: 1280px;
+  height: 83px;
   position: absolute;
   background: rgb(255, 157, 77);
 }
 
-.game__platform--up {
+
+.platformStone {
+  width: 12%;
+  height: 10%;
+  position: absolute;
+  background-image: url("../assets/img/platforms/platform_rock.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.platformWood {
+  width: 12%;
+  height: 10%;
+  position: absolute;
+  background-image: url("../assets/img/platforms/platform_wood.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.platformCloud {
   width: 12%;
   height: 10%;
   position: absolute;
