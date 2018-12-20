@@ -12,3 +12,9 @@
     font-size: 95px;
   }
 }
+
+@keyframes menu_button {
+  from {
+    transform: scale(1.1);
+  }
+}
