@@ -2,7 +2,15 @@
 
 var tID; //we will use this variable to clear the setInterval()
 
-setTimeout(function() {
+oxo.screens.loadScreen('home', function() {
+
+  var names = document.querySelector('.mode__img__2Players');
+  console.log(names);
+  names.addEventListener('click', function(){
+  oxo.screens.loadScreen('game', game);
+  });
+
+});
 
 /* LOADING PAGE */
 
@@ -21,12 +29,6 @@ setTimeout(function() {
 //     // game.html is loaded, do something
 //   });
 // });
-
-var names = document.querySelector('.mode__img__2Players');
-console.log(names);
-names.addEventListener('click', function(){
-  oxo.screens.loadScreen('game', game);
-});
 
 /* END OF LOADING PAGE */
 
@@ -62,7 +64,6 @@ var images = document.querySelectorAll('.mode__img');
       }, interval); //end of setInterval
     } //end of animateScript()
   });
-});
 
 setTimeout(function() {
   var images = document.querySelectorAll('.mode__img__2Players');
