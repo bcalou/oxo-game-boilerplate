@@ -51,6 +51,43 @@ let malus = {
   wifi: { height: 70, width: 70, x: 860, y: 40 }
 };
 
+let malus2 = {
+  badFriend: { height: 195, width: 110, x: 1500, y: 40 },
+  badColleague: { height: 195, width: 110, x: 1500, y: 40 },
+  thief: { height: 195, width: 110, x: 1500, y: 40 },
+  train: { height: 150, width: 500, x: 1500, y: 40 },
+  virus: { height: 110, width: 140, x: 1500, y: 40 },
+  wifi: { height: 70, width: 70, x: 1500, y: 40 }
+};
+
+
+let malus3 = {
+  badFriend: { height: 195, width: 110, x: 2900, y: 40 },
+  badColleague: { height: 195, width: 110, x: 2900, y: 40 },
+  thief: { height: 195, width: 110, x: 2900, y: 40 },
+  train: { height: 150, width: 500, x: 2900, y: 40 },
+  virus: { height: 110, width: 140, x: 2900, y: 40 },
+  wifi: { height: 70, width: 70, x: 2900, y: 40 }
+};
+
+let malus4 = {
+  badFriend: { height: 195, width: 110, x: 3400, y: 40 },
+  badColleague: { height: 195, width: 110, x: 3400, y: 40 },
+  thief: { height: 195, width: 110, x: 3400, y: 40 },
+  train: { height: 150, width: 500, x: 3400, y: 40 },
+  virus: { height: 110, width: 140, x: 3400, y: 40 },
+  wifi: { height: 70, width: 70, x: 3400, y: 40 }
+};
+
+let malus5 = {
+  badFriend: { height: 195, width: 110, x: 3900, y: 40 },
+  badColleague: { height: 195, width: 110, x: 3900, y: 40 },
+  thief: { height: 195, width: 110, x: 3900, y: 40 },
+  train: { height: 150, width: 500, x: 3900, y: 40 },
+  virus: { height: 110, width: 140, x: 3900, y: 40 },
+  wifi: { height: 70, width: 70, x: 3900, y: 40 }
+};
+
 let platform = { height: 140, width: 70, x: 0, y: 0 };
 
 // CREATING SIMPLE VARIABLES
@@ -96,7 +133,7 @@ const generateMalus = (name) => {
   $malus = document.createElement("div");
   $malus.classList = "game__malus game__"+name;
   $malus.style.bottom = malus[name].y + "px";
-  $malus.style.left = ((malus[name].x + malus[name].width)+500) + "px";
+  $malus.style.left = (malus[name].x + malus[name].width) + "px";
   $malus.style.height = malus[name].height + "px";
   $malus.style.width = malus[name].width + "px";
   $gameContainer.appendChild($malus);
@@ -105,11 +142,41 @@ const generateMalus = (name) => {
 const generateMalus2 = (name) => {
   $malus2 = document.createElement("div");
   $malus2.classList = "game__malus game__"+name;
-  $malus2.style.bottom = malus[name].y + "px";
-  $malus2.style.left = "1800 px";
-  $malus2.style.height = malus[name].height + "px";
-  $malus2.style.width = malus[name].width + "px";
+  $malus2.style.bottom = malus2[name].y + "px";
+  $malus2.style.left = (malus2[name].x + malus2[name].width) + "px";
+  $malus2.style.height = malus2[name].height + "px";
+  $malus2.style.width = malus2[name].width + "px";
   $gameContainer.appendChild($malus2);
+};
+
+const generateMalus3 = (name) => {
+  $malus3 = document.createElement("div");
+  $malus3.classList = "game__malus game__"+name;
+  $malus3.style.bottom = malus3[name].y + "px";
+  $malus3.style.left = (malus3[name].x + malus3[name].width) + "px";
+  $malus3.style.height = malus3[name].height + "px";
+  $malus3.style.width = malus3[name].width + "px";
+  $gameContainer.appendChild($malus3);
+};
+
+const generateMalus4 = (name) => {
+  $malus4 = document.createElement("div");
+  $malus4.classList = "game__malus game__"+name;
+  $malus4.style.bottom = malus4[name].y + "px";
+  $malus4.style.left = (malus4[name].x + malus4[name].width) + "px";
+  $malus4.style.height = malus4[name].height + "px";
+  $malus4.style.width = malus4[name].width + "px";
+  $gameContainer.appendChild($malus4);
+};
+
+const generateMalus5 = (name) => {
+  $malus5 = document.createElement("div");
+  $malus5.classList = "game__malus game__"+name;
+  $malus5.style.bottom = malus5[name].y + "px";
+  $malus5.style.left = (malus5[name].x + malus5[name].width) + "px";
+  $malus5.style.height = malus5[name].height + "px";
+  $malus5.style.width = malus5[name].width + "px";
+  $gameContainer.appendChild($malus5);
 };
 
 const generateBonus = (name) => {
@@ -256,7 +323,13 @@ const draw = () => {
   $malus.style.left =
   parseInt((malus[mName].x -= game.speed), 10) + "px";
   $malus2.style.left =
-  parseInt((malus[mName].x -= game.speed), 10) + "px";
+  parseInt((malus2[mName].x -= game.speed), 10) + "px";
+  $malus3.style.left =
+  parseInt((malus3[mName].x -= game.speed), 10) + "px";
+  $malus4.style.left =
+  parseInt((malus4[mName].x -= game.speed), 10) + "px";
+  $malus5.style.left =
+  parseInt((malus5[mName].x -= game.speed), 10) + "px";
   // $bonus.style.left =
   // parseInt(((bonus[bName].x) -= game.speed), 10) + "px";
   $challenge.style.left =
@@ -298,8 +371,20 @@ const deployElements = () =>{
     removeOutElement(malus,$malus)
     mName = chooseName('malus')
     generateMalus2(mName);
-    checkCollision(character,malus[mName],'minus',$malus2,'remove')
+    checkCollision(character,malus2[mName],'minus',$malus2,'remove')
     removeOutElement(malus,$malus2)
+    mName = chooseName('malus')
+    generateMalus3(mName);
+    checkCollision(character,malus3[mName],'minus',$malus3,'remove')
+    removeOutElement(malus,$malus3)
+    mName = chooseName('malus')
+    generateMalus4(mName);
+    checkCollision(character,malus4[mName],'minus',$malus4,'remove')
+    removeOutElement(malus,$malus4)
+    mName = chooseName('malus')
+    generateMalus5(mName);
+    checkCollision(character,malus5[mName],'minus',$malus5,'remove')
+    removeOutElement(malus,$malus5)
     // generateBonus(bName)
     // checkCollision(character,bonus[bName],'plus',$bonus)
     // removeOutElement(bonus,$bonus)
