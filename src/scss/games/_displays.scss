@@ -54,9 +54,27 @@
       }
     }
   }
+  .game__end{
+    position: absolute;
+    width: 70%;
+    height: 20%;
+    margin: 5% 15%;
+    z-index: 10;
+    background-color: rgb(250, 156, 89);
+    border-radius: 50px;
+    text-align: center;
+    user-select: none;
+    justify-content: center;
+    align-items: center;
+    .finalScore{
+      font-size: 2vw;
+    }
+  }
 }
 
-
+.finalStage{
+  background: url('../assets/images/finalStage.png');
+}
 
 
 

@@ -33,6 +33,10 @@ let character = {
 
 let challenge = { height: 205, width: 370, x: 2050, y: 40 };
 
+let challenge2 = { height: 205, width: 370, x: 4300, y: 40 };
+
+let final = { height: 205, width: 310, x: 5800, y: 40 };
+
 // let bonusName = ['goodFriend','goodColleague']
 
 let malusName = ['badFriend','badColleague','thief','virus']//,'train',wifi']
@@ -199,6 +203,26 @@ const generateChallenge = () => {
   $gameContainer.appendChild($challenge);
 };
 
+const generateChallenge2 = () => {
+  $challenge2 = document.createElement("div");
+  $challenge2.classList = "game__challenge challenge2";
+  $challenge2.style.bottom = challenge2.y + "px";
+  $challenge2.style.left = (challenge2.x + challenge2.width) + "px";
+  $challenge2.style.height = challenge2.height + "px";
+  $challenge2.style.width = challenge2.width + "px";
+  $gameContainer.appendChild($challenge2);
+};
+
+const generateFinal = () => {
+  $final = document.createElement("div");
+  $final.classList = "game__challenge challenge5";
+  $final.style.bottom = final.y + "px";
+  $final.style.left = (final.x + final.width) + "px";
+  $final.style.height = final.height + "px";
+  $final.style.width = final.width + "px";
+  $gameContainer.appendChild($final);
+};
+
 const jump = () => {
   $player.style.bottom = character.jump + "px";
   $player.classList = "game__player " + character.sexe + "-j";
@@ -235,19 +259,25 @@ const updatePositions = (element,axis,domElement) => {
 const activeQuizz = (number) =>{
   $settingsButton.style.display = "none"
   let getAnswers = $body.querySelectorAll(".question__"+number)
+  let gameQuizzs = $body.querySelectorAll(".game__quizz")
   for (let i=0; i<getAnswers.length ;i++){
     getAnswers[i].addEventListener('click',()=>{
       if(getAnswers[i].classList.contains('question__answer-true')){
         game.score++
-        $body.querySelector(".game__quizz").style.display = "none"
-        $settingsButton.style.display == "block"
+        for(let j=0; j<gameQuizzs.length; j++){
+          gameQuizzs[j].style.display = "none"
+        }
+        $settingsButton.style.display = "block"
         start()
         $player.style.animation = "winPoint 0.3s ease"
       }else{
         game.score--
-        $body.querySelector(".game__quizz").style.display = "none"
-        $settingsButton.style.display == "block"
+        for(let j=0; j<gameQuizzs.length; j++){
+          gameQuizzs[j].style.display = "none"
+        }
+        $settingsButton.style.display = "block"
         start()
+        $player.style.animation = "losePoint 0.3s ease"
       }
     }) 
   }
@@ -276,10 +306,20 @@ const checkCollision  = (element1,element2,update,domElement,remove,challengeNum
       updateScore(update)
       if(remove == "remove"){
         domElement.remove()
-      }else if(element2 == challenge){
+      }else if(element2 == challenge || element2 == challenge2){
         stop()
         $body.querySelector(".game__quizz"+challengeNumber).style.display = "block"
         activeQuizz('answer'+challengeNumber)
+      }else if(element2 == final){
+        stop()
+        $settingsButton.style.display = "none"
+        $body.querySelector(".game__end").style.display = "flex"
+        $gameContainer.classList = "game__inGame finalStage"
+        if(game.score>=10){
+          $body.querySelector('.finalScore').innerHTML = "Vous avez votre diplome !"
+        }else{
+          $body.querySelector('.finalScore').innerHTML = "Vous n'avez pas votre diplome !"
+        }
       }
     }
   },10)
@@ -334,6 +374,10 @@ const draw = () => {
   // parseInt(((bonus[bName].x) -= game.speed), 10) + "px";
   $challenge.style.left =
   parseInt(((challenge.x) -= game.speed), 10) + "px";
+  $challenge2.style.left =
+  parseInt(((challenge2.x) -= game.speed), 10) + "px";
+  $final.style.left =
+  parseInt(((final.x) -= game.speed), 10) + "px";
   $gameContainer.style.backgroundPositionX =
     (backgroundPositionX -= game.speed) + "px";
 };
@@ -390,6 +434,10 @@ const deployElements = () =>{
     // removeOutElement(bonus,$bonus)
     generateChallenge()
     checkCollision(character,challenge,'nothing',$challenge,'nothing','1')
+    generateChallenge2()
+    checkCollision(character,challenge2,'nothing',$challenge2,'nothing','2')
+    generateFinal()
+    checkCollision(character,final,'nothing',$final,'nothing')
   }
 }
 

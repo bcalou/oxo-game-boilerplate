@@ -50,8 +50,10 @@
   background: url('../assets/images/calou.svg') center;
 }
 
-.challenge2{
-  background: url('../assets/images/chomel.svg') center;
+.game .game__container .challenge2{
+  background: url('../assets/images/brontis.svg') center;
+  background-size: 30%;
+  background-repeat: no-repeat;
 }
 
 .challenge3{
@@ -62,6 +64,9 @@
   background: url('../assets/images/peersman.svg') center;
 }
 
-.challenge5{
-  background: url('../assets/images/brontis.svg') center;
+.game .game__container .challenge5{
+  background: url('../assets/images/chomel.svg') center;
+  background-size: 24%;
+  background-repeat: no-repeat;
 }
+
