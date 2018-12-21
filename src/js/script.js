@@ -6,6 +6,12 @@ const $settingsButton = $body.querySelector(".game__button--settings");
 const $scoreBoard = $body.querySelector(".game__score");
 const $startDisplay = $body.querySelector(".game__start")
 const $endDisplay = $body.querySelector(".game__end")
+const $gameSound = $body.querySelector(".game-sound")
+const $jumpSound= $body.querySelector(".jump-sound")
+const $winSound= $body.querySelector(".winPoint-sound")
+const $loseSound= $body.querySelector(".losePoint-sound")
+const $winGameSound= $body.querySelector(".winGame-sound")
+const $loseGameSound= $body.querySelector(".loseGame-sound")
 let $game;
 let $player;
 const $popUp = $body.querySelector(".popup")
@@ -227,6 +233,7 @@ const jump = () => {
   $player.style.bottom = character.jump + "px";
   $player.classList = "game__player " + character.sexe + "-j";
   jumpFired = true;
+  $jumpSound.play()
   setTimeout(() => {
     $player.style.bottom = "40px";
     $player.classList = "game__player " + character.sexe + "-i";
@@ -237,9 +244,11 @@ const jump = () => {
 const updateScore = (update) => {
   if (update == "minus") {
     game.score -= 1
+    $loseSound.play()
     $player.style.animation = "losePoint 0.3s ease"
   } else if (update == "plus"){
     game.score += 1
+    $winSound.play()
     $player.style.animation = "winPoint 0.3s ease"
   } 
 };
@@ -270,6 +279,7 @@ const activeQuizz = (number) =>{
         $settingsButton.style.display = "block"
         start()
         $player.style.animation = "winPoint 0.3s ease"
+        $winSound.play()
       }else{
         game.score--
         for(let j=0; j<gameQuizzs.length; j++){
@@ -278,6 +288,7 @@ const activeQuizz = (number) =>{
         $settingsButton.style.display = "block"
         start()
         $player.style.animation = "losePoint 0.3s ease"
+        $loseSound.play()
       }
     }) 
   }
@@ -312,12 +323,15 @@ const checkCollision  = (element1,element2,update,domElement,remove,challengeNum
         activeQuizz('answer'+challengeNumber)
       }else if(element2 == final){
         stop()
+        $gameSound.pause()
         $settingsButton.style.display = "none"
         $body.querySelector(".game__end").style.display = "flex"
         $gameContainer.classList = "game__inGame finalStage"
         if(game.score>=10){
+          $winGameSound.play()
           $body.querySelector('.finalScore').innerHTML = "Vous avez votre diplome !"
         }else{
+          $loseGameSound.play()
           $body.querySelector('.finalScore').innerHTML = "Vous n'avez pas votre diplome !"
         }
       }
@@ -456,10 +470,17 @@ $changeSkin.addEventListener('click',()=>{
 })
 
 $soundButton.addEventListener('click',()=>{
+let allAudios = $body.querySelectorAll('audio')
   if(soundCheck){
+    for(let i = 0; i<allAudios.length; i++){
+      allAudios[i].volume = 0
+    }
     $soundButton.innerHTML = "SOUNDS : OFF"
     soundCheck = false
   } else {
+    for(let i = 0; i<allAudios.length; i++){
+      allAudios[i].volume = 1
+    }
     $soundButton.innerHTML = "SOUNDS : ON"
     soundCheck = true
   }
@@ -478,6 +499,8 @@ $creditButton.addEventListener('click', ()=>{
 $startButton.addEventListener('click',()=>{
   $startDisplay.style.display = "none"
   $gameContainer.style.display = "block"
+  $gameSound.currentTime = 0
+  $gameSound.play()
   setTimeout(()=>{
     generatePlayer();
     deployElements()

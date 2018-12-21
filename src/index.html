@@ -86,6 +86,24 @@
   </head>
   <body>
     <div class="game">
+      <audio class="game-sound" autoplay>
+        <source src="assets/sounds/theme.mp3" type="audio/mp3" />
+      </audio>
+      <audio class="jump-sound">
+          <source src="assets/sounds/jump.wav" type="audio/wav" />
+      </audio>
+      <audio class="winPoint-sound">
+          <source src="assets/sounds/jump.wav" type="audio/wav" />
+      </audio>
+      <audio class="losePoint-sound">
+          <source src="assets/sounds/lose-instant.wav" type="audio/wav" />
+      </audio>
+      <audio class="winGame-sound">
+          <source src="assets/sounds/win-game.wav" type="audio/wav" />
+      </audio>
+      <audio class="loseGame-sound">
+          <source src="assets/sounds/game-over.wav" type="audio/wav" />
+      </audio>
       <div class="game__container">
         <div class="game__start">
           <div class="screen__logo">
@@ -156,7 +174,8 @@
           </div>
           <div class="game__quizz game__quizz2">
             <span class="game__quizz__question question"
-              >Quel attribut dois-je utiliser si je veux fusionner deux cellules d’une même ligne dans un tableau ?</span
+              >Quel attribut dois-je utiliser si je veux fusionner deux cellules
+              d’une même ligne dans un tableau ?</span
             >
             <div
               class="question__answer question__answer2 question__answer-true"
@@ -174,9 +193,7 @@
               <span>groupline</span>
             </div>
           </div>
-          <div class="game__end">
-            <span class="finalScore"></span>
-          </div>
+          <div class="game__end"><span class="finalScore"></span></div>
         </div>
       </div>
     </div>
