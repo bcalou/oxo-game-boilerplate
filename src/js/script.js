@@ -1,17 +1,19 @@
 // CREATING VARIABLES BY CALLING HTML DOM
 
 const $body = document.querySelector("body");
-let $gameContainer = $body.querySelector(".game__inGame");
-let $settingsButton = $body.querySelector(".game__button--settings");
-let $scoreBoard = $body.querySelector(".game__score");
-let $startDisplay = $body.querySelector(".game__start")
-let $quizzDisplay = $body.querySelector(".game__quizz")
-let $endDisplay = $body.querySelector(".game__end")
+const $gameContainer = $body.querySelector(".game__inGame");
+const $settingsButton = $body.querySelector(".game__button--settings");
+const $scoreBoard = $body.querySelector(".game__score");
+const $startDisplay = $body.querySelector(".game__start")
+const $endDisplay = $body.querySelector(".game__end")
 let $game;
 let $player;
-let $popUp = $body.querySelector(".popup")
-let $startButton = $body.querySelector('.button__play')
-
+const $popUp = $body.querySelector(".popup")
+const $startButton = $body.querySelector('.button__play')
+const $changeSkin = $body.querySelector('.button__carrousel')
+const $soundButton = $body.querySelector('.popuptext__content--sound')
+const $creditButton = $body.querySelector('.popuptext__content--credits')
+const $credit = $body.querySelector('.popuptext__credits')
 
 // CREATING NEW OBJECTS
 
@@ -25,15 +27,15 @@ let character = {
   width: 120,
   x: 190,
   y: 40,
-  sexe: "f",
+  sexe: "m",
   jump: 360,
 };
 
 let challenge = { height: 205, width: 370, x: 2050, y: 40 };
 
-let bonusName = ['goodFriend','goodColleague']
+// let bonusName = ['goodFriend','goodColleague']
 
-let malusName = ['badFriend','badColleague','thief','train','virus','wifi']
+let malusName = ['badFriend','badColleague','thief','virus']//,'train',wifi']
 
 let bonus = {
   goodFriend: { height: 205, width: 120, x: 1000, y: 40 },
@@ -41,11 +43,11 @@ let bonus = {
 };
 
 let malus = {
-  badFriend: { height: 205, width: 120, x: 760, y: 40 },
-  badColleague: { height: 205, width: 120, x: 760, y: 40 },
-  thief: { height: 205, width: 120, x: 860, y: 40 },
-  train: { height: 150, width: 300, x: 860, y: 40 },
-  virus: { height: 70, width: 70, x: 860, y: 40 },
+  badFriend: { height: 195, width: 110, x: 860, y: 40 },
+  badColleague: { height: 195, width: 110, x: 860, y: 40 },
+  thief: { height: 195, width: 110, x: 860, y: 40 },
+  train: { height: 150, width: 500, x: 860, y: 40 },
+  virus: { height: 110, width: 140, x: 860, y: 40 },
   wifi: { height: 70, width: 70, x: 860, y: 40 }
 };
 
@@ -53,7 +55,8 @@ let platform = { height: 140, width: 70, x: 0, y: 0 };
 
 // CREATING SIMPLE VARIABLES
 
-let i = 0
+let soundCheck = true
+let creditCheck = false
 let bName
 let mName
 let backgroundPositionX = parseInt(
@@ -91,12 +94,22 @@ const generatePlayer = () => {
 
 const generateMalus = (name) => {
   $malus = document.createElement("div");
-  $malus.classList = "game__malus game_"+name;
+  $malus.classList = "game__malus game__"+name;
   $malus.style.bottom = malus[name].y + "px";
-  $malus.style.left = (malus[name].x + malus[name].width) + "px";
+  $malus.style.left = ((malus[name].x + malus[name].width)+500) + "px";
   $malus.style.height = malus[name].height + "px";
   $malus.style.width = malus[name].width + "px";
   $gameContainer.appendChild($malus);
+};
+
+const generateMalus2 = (name) => {
+  $malus2 = document.createElement("div");
+  $malus2.classList = "game__malus game__"+name;
+  $malus2.style.bottom = malus[name].y + "px";
+  $malus2.style.left = "1800 px";
+  $malus2.style.height = malus[name].height + "px";
+  $malus2.style.width = malus[name].width + "px";
+  $gameContainer.appendChild($malus2);
 };
 
 const generateBonus = (name) => {
@@ -111,7 +124,7 @@ const generateBonus = (name) => {
 
 const generateChallenge = () => {
   $challenge = document.createElement("div");
-  $challenge.classList = "game__challenge";
+  $challenge.classList = "game__challenge challenge1";
   $challenge.style.bottom = challenge.y + "px";
   $challenge.style.left = (challenge.x + challenge.width) + "px";
   $challenge.style.height = challenge.height + "px";
@@ -130,23 +143,13 @@ const jump = () => {
   }, 900);
 };
 
-const collision = (rect1, rect2) => {
-  if (
-    rect1.x < rect2.x + rect2.width &&
-    rect1.x + rect1.width > rect2.x &&
-    rect1.y < rect2.y + rect2.height &&
-    rect1.height + rect1.y > rect2.y
-  ) {
-    consoleLog("collision", "collisiooooooon", "blue");
-    return true;
-  }
-};
-
 const updateScore = (update) => {
   if (update == "minus") {
     game.score -= 1
+    $player.style.animation = "losePoint 0.3s ease"
   } else if (update == "plus"){
     game.score += 1
+    $player.style.animation = "winPoint 0.3s ease"
   } 
 };
 
@@ -162,24 +165,40 @@ const updatePositions = (element,axis,domElement) => {
   }
 }
 
-const activeQuizz = () =>{
-  let getAnswers = $quizzDisplay.querySelectorAll('.question__answer')
+const activeQuizz = (number) =>{
+  $settingsButton.style.display = "none"
+  let getAnswers = $body.querySelectorAll(".question__"+number)
   for (let i=0; i<getAnswers.length ;i++){
     getAnswers[i].addEventListener('click',()=>{
       if(getAnswers[i].classList.contains('question__answer-true')){
         game.score++
-        $quizzDisplay.style.display = "none"
+        $body.querySelector(".game__quizz").style.display = "none"
+        $settingsButton.style.display == "block"
         start()
+        $player.style.animation = "winPoint 0.3s ease"
       }else{
         game.score--
-        $quizzDisplay.style.display = "none"
+        $body.querySelector(".game__quizz").style.display = "none"
+        $settingsButton.style.display == "block"
         start()
       }
     }) 
   }
 } 
 
-const checkCollision  = (element1,element2,update,domElement,remove) => {
+const collision = (rect1, rect2) => {
+  if (
+    rect1.x < rect2.x + rect2.width &&
+    rect1.x + rect1.width > rect2.x &&
+    rect1.y < rect2.y + rect2.height &&
+    rect1.height + rect1.y > rect2.y
+  ) {
+    consoleLog("collision", "collisiooooooon", "blue");
+    return true;
+  }
+};
+
+const checkCollision  = (element1,element2,update,domElement,remove,challengeNumber) => {
   const loop = setInterval(()=>{
     updatePositions(element2,'x',domElement)
     updatePositions(element2,'y',domElement)
@@ -192,8 +211,8 @@ const checkCollision  = (element1,element2,update,domElement,remove) => {
         domElement.remove()
       }else if(element2 == challenge){
         stop()
-        $quizzDisplay.style.display = "block"
-        activeQuizz()
+        $body.querySelector(".game__quizz"+challengeNumber).style.display = "block"
+        activeQuizz('answer'+challengeNumber)
       }
     }
   },10)
@@ -211,10 +230,11 @@ const removeOutElement = (element,domElement) =>{
 
 
 const chooseName = (array) => {
-  if(array == 'bonus'){
-    return bonusName[Math.floor(Math.random() * Math.floor(2))]
-  }else if (array == 'malus'){
-    return malusName[Math.floor(Math.random() * Math.floor(6))]
+  // if(array == 'bonus'){
+  //   return bonusName[Math.floor(Math.random() * Math.floor(2))]
+  // }else 
+  if (array == 'malus'){
+    return malusName[Math.floor(Math.random() * Math.floor(4))]
   }else{
     return false
   }
@@ -235,8 +255,10 @@ const draw = () => {
   }
   $malus.style.left =
   parseInt((malus[mName].x -= game.speed), 10) + "px";
-  $bonus.style.left =
-  parseInt(((bonus[bName].x) -= game.speed), 10) + "px";
+  $malus2.style.left =
+  parseInt((malus[mName].x -= game.speed), 10) + "px";
+  // $bonus.style.left =
+  // parseInt(((bonus[bName].x) -= game.speed), 10) + "px";
   $challenge.style.left =
   parseInt(((challenge.x) -= game.speed), 10) + "px";
   $gameContainer.style.backgroundPositionX =
@@ -270,19 +292,55 @@ const stop = () => {
 const deployElements = () =>{
   if(!animationId){
     mName = chooseName('malus')
-    bName = chooseName('bonus')
+    // bName = chooseName('bonus')
     generateMalus(mName);
     checkCollision(character,malus[mName],'minus',$malus,'remove')
     removeOutElement(malus,$malus)
-    generateBonus(bName)
-    checkCollision(character,bonus[bName],'plus',$bonus)
-    removeOutElement(bonus,$bonus)
+    mName = chooseName('malus')
+    generateMalus2(mName);
+    checkCollision(character,malus[mName],'minus',$malus2,'remove')
+    removeOutElement(malus,$malus2)
+    // generateBonus(bName)
+    // checkCollision(character,bonus[bName],'plus',$bonus)
+    // removeOutElement(bonus,$bonus)
     generateChallenge()
-    checkCollision(character,challenge,'nothing',$challenge)
+    checkCollision(character,challenge,'nothing',$challenge,'nothing','1')
   }
 }
 
 // INTERACTION FUNCTIONS
+
+$changeSkin.addEventListener('click',()=>{
+  if(character.sexe == "m"){
+    $body.querySelector('.player__select').classList = "player__select player__select--girl"
+    $body.querySelector('.button__carrousel--text').innerHTML = "Monique"
+    character.sexe = "f"
+  }else{
+    $body.querySelector('.player__select').classList = "player__select player__select--man"
+    $body.querySelector('.button__carrousel--text').innerHTML = "Berni"
+    character.sexe = "m"
+  }
+})
+
+$soundButton.addEventListener('click',()=>{
+  if(soundCheck){
+    $soundButton.innerHTML = "SOUNDS : OFF"
+    soundCheck = false
+  } else {
+    $soundButton.innerHTML = "SOUNDS : ON"
+    soundCheck = true
+  }
+})
+
+$creditButton.addEventListener('click', ()=>{
+  if(!creditCheck){
+    $credit.style.display = "flex"
+    creditCheck = true
+  }else{
+    $credit.style.display = "none"
+    creditCheck = false
+  }
+})
 
 $startButton.addEventListener('click',()=>{
   $startDisplay.style.display = "none"
@@ -296,7 +354,6 @@ $startButton.addEventListener('click',()=>{
 
 $popUp.addEventListener('click',()=>{
   $body.querySelector('.popuptext').classList.toggle("show");
-  console.log('ok')
 })
 
 document.addEventListener("keyup", event => {

@@ -5,9 +5,10 @@
     position: absolute;
     left:18px;
     top: 18px;
+    user-select: none;
     .screen__logo--img {
       width: 100px;
-      height: 50px;
+      height: 98px;
     }
   }
   .menu {
@@ -15,26 +16,40 @@
     position: absolute;
     right: 20px;
     margin: 30px;
-    cursor: pointer;
+    user-select: none;
 
     /* Popup container */
     .popup {
       position: absolute;
       display: inline-block;
-      cursor: pointer;
-      right: 30px;
-      width: 50px;
+      width: 40px;
       z-index: 10;
+      padding: 3px;
+      border: 2px #ffffff66 solid;
+      border-radius: 15px;
+      background-color: #ffffffbd;
+      transition: background-color 0.3s ease;
+      &:hover{
+        background-color: #ffffff;
+      }
+      .menu__list{
+        cursor: pointer;
+      }
     }
     .popuptext {
       visibility: hidden;
       width: 740px;
       height: 400px;
       background-color: rgba(29, 29, 29, 0.63);
-      color: #fff;
+      background-image: url('../assets/images/terminal.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: #33ff33;
       text-align: center;
       text-transform: uppercase;
       font-family: 'pixeled',sans-serif;
+      font-size: 1vw;
       border-radius: 20px;
       padding: 8px 0;
       position: absolute;
@@ -50,26 +65,81 @@
         border-style: solid;
         border-color: #555 transparent transparent transparent;
       }
-    }.show {
+      span:first-of-type{
+        display: inline-block;
+        margin-top: 10px;
+      }
+      .popuptext__content{
+        width: 40%;
+        height: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 30%;
+        flex-direction: column;
+        font-size: 0.9vw;
+        font-weight: bold;
+        span{
+          margin: 5% 0; 
+          padding: 0.5vw 2vw; 
+          cursor: pointer;
+          animation: blink 1s infinite;
+          &:first-of-type{
+            animation: blink 1s infinite 0.5s;
+          }
+          &:hover{
+            border: #33ff33 2px solid
+          }
+        }
+      }
+      .popuptext__credits{
+        width: 44%;
+        height: 45%;
+        justify-content: center;
+        align-items: center;
+        margin: 3% 28%;
+        flex-direction: column;
+        color: #000000;
+        font-weight: bold;
+        display: none;
+        span:not(last-of-type){
+          margin: 0.2vw 0;
+        }
+        span:last-of-type{
+          margin-top: 2vw;
+          color : #52aa5e;
+          font-size: 0.9vw;
+        }
+      }
+    }
+    .show {
       visibility: visible;
       -webkit-animation: fadeIn 0.2s;
       animation: fadeIn 0.2s
     } 
   }
-  .player__playerman {
+  .player__select{
     position: absolute;
     left: 88px;
     top: 228px;
-    
-    .player__playerman--img {
     height: 165px;
-    }
+    width: 100px;
+    background-position: center;
+  }
+  .player__select--man {
+    background-size: cover;
+    background-image: url("../assets/images/Playerman__Run.png");
+  }
+  .player__select--girl{
+    background-size: 194%;
+    background-image: url("../assets/images/f-initial.svg");
   }
   .button__play {
     position: absolute;
     left: 24px;
     top: 480px;
     cursor: pointer;
+    user-select: none;
 
     .button__play--text {
       font-family: Arial, Helvetica, sans-serif;
@@ -86,16 +156,23 @@
     position: absolute;
     left: 37px;
     top: 410px;
+    width: 204px;
+    height: 35px;
+    cursor: pointer;
+    background-image: url('../assets/images/button__carrousel.svg');
   
     .button__carrousel--text {
+      width: 204px;
+      height: 15px;
+      text-align: center;
       font-family: "pixeled",sans-serif;
       font-weight: bold;
       font-size: 14px;
       color: rgb(37, 112, 68);
       position: absolute;
-      top: 8px;
-      left: 78px;
       text-transform: uppercase;
+      top: 10px;
+      user-select: none;
     }    
   }
 }

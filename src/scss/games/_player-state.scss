@@ -26,22 +26,42 @@
   background: url('../assets/images/m-initial.svg') center;
 }
 
-.badFriend{
+.game__badFriend{
   background: url('../assets/images/badFriend.svg') center;
 }
 
-.train{
+.game__badColleague{
+  background: url('../assets/images/badFriend.svg') center;
+}
+
+.game__train{
   background: url('../assets/images/train.svg') center;
 }
 
-.thieft{
+.game__thief{
   background: url('../assets/images/thief.svg') center;
 }
 
-.virus{
+.game__virus{
   background: url('../assets/images/virus.svg') center;
 }
 
-.game__challenge{
+.challenge1{
   background: url('../assets/images/calou.svg') center;
+}
+
+.challenge2{
+  background: url('../assets/images/chomel.svg') center;
+}
+
+.challenge3{
+  background: url('../assets/images/thibord.svg') center;
+}
+
+.challenge4{
+  background: url('../assets/images/peersman.svg') center;
+}
+
+.challenge5{
+  background: url('../assets/images/brontis.svg') center;
 }

@@ -47,9 +47,10 @@
       top: 20px;
       right: 20px;
       text-align: center;
-      font-size: 3vw;
+      font-size: 2vw;
       font-family: 'pixeled',sans-serif;
       font-weight: bold;
+      user-select: none;
     }
 
     .game__player{
@@ -60,12 +61,17 @@
       z-index: 100;
     }
 
-    .game__malus, .game__bonus, .game__challenge{
+    .game__malus, .game__bonus{
+      position: absolute;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .game__challenge{
       position: absolute;
       background-repeat: no-repeat;
-      background-size: 65%;
-      bottom: 40px;
-      z-index: 100;
+      background-size: 17%;
+      z-index: 90;
     }
   }
 }

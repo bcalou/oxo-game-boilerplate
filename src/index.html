@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Runhetic</title>
-    <!-- <script defer src="js/libs/oxo.js"></script> -->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="assets/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <!-- <link rel="manifest" href="assets/favicons/manifest.json"> -->
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <script defer src="js/script.js"></script>
     <link rel="stylesheet" href="scss/styles.scss" />
   </head>
   <body>
-    <!-- Nothing to add here, screens are in src/screens -->
     <div class="game">
       <div class="game__container">
         <div class="game__start">
@@ -31,14 +46,21 @@
             </div>
             <div class="popuptext" id="myPopup">
               <span>Reglages</span>
+              <div class="popuptext__content">
+                <span class="popuptext__content--sound">SOUNDS : ON</span>
+                <span class="popuptext__content--credits">CREDITS</span>
+              </div>
+              <div class="popuptext__credits">
+                <span>Arthur BARRE</span>
+                <span>Cassandra DOUX</span>
+                <span>Benjamin KICHENAMOURTY</span>
+                <span>Julien LEFORT</span>
+                <span>Héléne MARGARY</span>
+                <span>A project school for HETIC</span>
+              </div>
             </div>
           </nav>
-          <div class="player__playerman">
-            <img
-              class="player__playerman--img"
-              src="assets/images/Playerman__Run.png"
-              alt="playerman"
-            />
+          <div class="player__select player__select--man">
           </div>
           <div class="button__play">
             <img
@@ -49,29 +71,24 @@
             <p class="button__play--text">Jouer</p>
           </div>
           <div class="button__carrousel">
-            <img
-              class="button__carrousel--img"
-              src="assets/images/button__carrousel.svg"
-              alt=""
-            />
             <p class="button__carrousel--text">Berni</p>
           </div>
         </div>
         <div class="game__inGame">
           <div class="game__button--settings buttonPause"></div>
           <div class="game__score"></div>
-          <div class="game__quizz">
+          <div class="game__quizz game__quizz1">
             <span class="game__quizz__question question"
               >Laquelle de ces règles CSS permet de modifier l’apparence d’un
               lien déjà visité ?</span
             >
-            <div class="question__answer question__answer-false">
+            <div class="question__answer question__answer1 question__answer-false">
               <span>a:focus</span>
             </div>
-            <div class="question__answer question__answer-false">
+            <div class="question__answer question__answer1 question__answer-false">
               <span>a:consulted</span>
             </div>
-            <div class="question__answer question__answer-true">
+            <div class="question__answer question__answer1 question__answer-true">
               <span>a:visited</span>
             </div>
           </div>

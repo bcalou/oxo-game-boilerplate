@@ -5,3 +5,9 @@ body {
   background-color: #ffffff;
   font-family: 'pixeled',sans-serif;
 }
+
+.show {
+  visibility: visible;
+  -webkit-animation: fadeIn 0.2s;
+  animation: fadeIn 0.2s
+} 
