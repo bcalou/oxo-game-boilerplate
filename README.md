@@ -1,15 +1,15 @@
 # Semaine intensive Hetic
 
-## Du 6 au 10 janvier 2019
+Du 6 au 10 janvier 2019
 
 # Les membres de l'équipe
 
-### Louis Fleury
+- Louis Fleury
 
-### Yoan Benshimon
+- Yoan Bensimhon
 
-### Gabriel Oros
+- Gabriel Oros
 
-### Sebastion Valentin
+- Sebastien Valentin
 
-### Hugo Cordillot
+- Hugo Cordillot
