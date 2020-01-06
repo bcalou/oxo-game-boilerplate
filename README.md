@@ -13,3 +13,7 @@ Du 6 au 10 janvier 2019
 - Sebastien Valentin
 
 - Hugo Cordillot
+
+https://beersofwar.netlify.com
+
+https://github.com/Hgo0123/beers_of_war
