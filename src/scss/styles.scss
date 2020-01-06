@@ -1,3 +1,11 @@
 @import 'vendors/reset';
 
 @import 'global/layout';
+
+.character {
+  background-color: red;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
