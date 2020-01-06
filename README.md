@@ -1,5 +1,5 @@
-# hetic-w1p2022-01
-Semaine Intensive JavaScript
+# Hétic Run
+https://hetic-run.netlify.com/
 
 - Imène Ben Rachid
 - Melina Chamayou
