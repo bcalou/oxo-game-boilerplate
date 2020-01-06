@@ -5,7 +5,7 @@ LEROY	Jason
 COUSIN	Charles
 RAK-LECLER	Guillaume
 
-adresse du site : aftertheafter.netlify.com
+adresse du site : https://after-the-after.netlify.com/
 
 This is a boilerplate repository using `OXO`, a minimalist game library to handle common actions in games. This is not optimized for production and uses purposefully simplified patterns for an educational purpose.
 
