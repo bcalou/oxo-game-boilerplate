@@ -1,4 +1,7 @@
+Noms participants: MONMOUSSEAU Thomas, BEZOMBES Sebastien, TRAN Annie, CHEBOUB Hakim, MAUDUIT Oum-el-khaïre
+
 # `OXO` game library
+
 
 This is a boilerplate repository using `OXO`, a minimalist game library to handle common actions in games. This is not optimized for production and uses purposefully simplified patterns for an educational purpose.
 
