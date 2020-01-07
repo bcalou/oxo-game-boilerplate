@@ -1,3 +1,37 @@
+//1 => tree
+//0 ==> nothing
+//2 ==> rock
+
+gridLvl1Av = [
+  [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+  [0, 0, 1, 1, 0, 1, 0, 1, 0, 0],
+  [0, 1, 1, 1, 1, 1, 2, 2, 0, 0],
+  [0, 1, 0, 0, 1, 0, 0, 0, 1, 0],
+  [0, 1, 0, 1, 0, 1, 1, 0, 1, 1],
+  [1, 1, 0, 1, 1, 1, 0, 0, 0, 0],
+  [1, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+  [1, 1, 2, 0, 1, 0, 1, 0, 1, 0],
+  [1, 0, 0, 2, 1, 0, 1, 1, 1, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 1, 0]
+];
+
+loadGrid(grid){
+  for (var i = 5; i >= 0; i--) {
+    if (grid[i][column]) continue;
+
+    color = color === "yellow" ? "red" : "yellow";
+    grid[i][column] = color;
+
+    checkVictory();
+
+    forEachCell(function(td, row, column) {
+      if (grid[row][column]) td.className = grid[row][column];
+    });
+
+    break;
+  }
+}
+
 function spaceSwitchScreens() {
   oxo.inputs.listenKey("space", function() {
     let avant = document.getElementById("avant");
