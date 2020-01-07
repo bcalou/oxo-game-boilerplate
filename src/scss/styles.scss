@@ -1,51 +1,60 @@
-@import 'vendors/reset';
+@import "vendors/reset";
 
-@import 'global/layout';
+@import "global/layout";
 
 body {
-  background-image: url(../screens/img/bg.png);
+  background-image: url(../../src/assets/platform.png);
   background-position: center;
   background-size: 100%;
 }
 
 .character {
-  background-color: blue;
+  background-image: url(../../src/assets/charMoveLeft.gif);
   border-radius: 50%;
   height: 50px;
   width: 50px;
 }
 
-.my-element {
-  background-color: red;
-  height: 50px;
-  width: 50px;
+.wall__left1 {
+  position: absolute;
+  height: 210px;
+  width: 20px;
+  left: 10vw;
+  top: 5vh;
+}
+
+.wall__left2 {
+  position: absolute;
+  height: 250px;
+  width: 20px;
+  left: 10vw;
+  bottom: 5vh;
 }
 
 .characterup {
-  background-color: red;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  background-image: url(../../src/assets/charMoveLeft.gif);
+  width: 30px;
+  height: 80px;
+  background-repeat: no-repeat;
 }
 
 .characterdown {
-  background-color: orange;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  background-image: url(../../src/assets/charMoveDown.png);
+  width: 30px;
+  height: 80px;
+  background-repeat: no-repeat;
 }
 
 .characterright {
-  background-color: green;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  background-image: url(../../src/assets/charMoveRight.gif);
+  width: 30px;
+  height: 80px;
+  background-repeat: no-repeat;
 }
 
 .characterleft {
-  background-color: greenyellow;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  background-image: url(../../src/assets/charMoveLeft.gif);
+  width: 30px;
+  height: 80px;
+  background-repeat: no-repeat;
 }
-

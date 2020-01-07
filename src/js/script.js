@@ -1,53 +1,52 @@
-
-oxo.screens.loadScreen('game', function() { 
-  oncollision();
+oxo.screens.loadScreen("game", function() {
+  initWalls();
 });
 
-
-function oncollision(){
-  let character = document.getElementById('character');
-
-  let element = oxo.elements.createElement({
-    type: 'div', // optional
-    class: 'my-element', // optional,
+function initWalls() {
+  let wall__left1 = oxo.elements.createElement({
+    type: "div", // optional
+    class: "wall__left1", // optional,
     obstacle: true, // optional,
-    styles: {//optional
+    styles: {
+      //optional
     },
-    appendTo: 'body' // optional
+    appendTo: "body" // optional
   });
-
-  console.log(character);
-  oxo.elements.onCollisionWithElementOnce(character, element, function() {
-    // Character is touched by ennemy
-    console.log('touch')
+  let wall__left2 = oxo.elements.createElement({
+    type: "div", // optional
+    class: "wall__left2", // optional,
+    obstacle: true, // optional,
+    styles: {
+      //optional
+    },
+    appendTo: "body" // optional
   });
 }
 
 //direction character
-window.addEventListener('keydown', function(){
-  oxo.inputs.listenKey('up', function() {
-    var div = document.querySelector('div');
-    div.className='characterup';
+window.addEventListener("keydown", function() {
+  oxo.inputs.listenKey("up", function() {
+    var div = document.querySelector("div");
+    div.className = "characterup";
   });
 
-  oxo.inputs.listenKey('down', function() {
-    var div = document.querySelector('div');
-    div.className='characterdown';
+  oxo.inputs.listenKey("down", function() {
+    var div = document.querySelector("div");
+    div.className = "characterdown";
   });
 
-  oxo.inputs.listenKey('right', function() {
-    var div = document.querySelector('div');
-    div.className='characterright';
+  oxo.inputs.listenKey("right", function() {
+    var div = document.querySelector("div");
+    div.className = "characterright";
   });
 
-  oxo.inputs.listenKey('left', function() {
-    var div = document.querySelector('div');
-    div.className='characterleft';
+  oxo.inputs.listenKey("left", function() {
+    var div = document.querySelector("div");
+    div.className = "characterleft";
   });
 
-  oxo.inputs.listenKey('space', function() {
-    var div = document.querySelector('div');
-    div.className='character';
+  oxo.inputs.listenKey("space", function() {
+    var div = document.querySelector("div");
+    div.className = "character";
   });
 });
-
