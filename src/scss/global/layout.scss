@@ -7,7 +7,7 @@ body {
 .avant {
   width: 700px;
   height: 700px;
-  background-color: green;
+  background-color: rgb(78, 233, 78);
 }
 
 .apres {
@@ -33,11 +33,7 @@ body {
 }
 
 .kangoo {
-  background-repeat: no-repeat;
-  height: 70px;
-  width: 70px;
-  position: absolute;
-  z-index: 50;
+  background-color: yellow;
 }
 
 .tree {
