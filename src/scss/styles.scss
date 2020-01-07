@@ -1,3 +1,22 @@
-@import 'vendors/reset';
+@import "vendors/reset";
 
-@import 'global/layout';
+@import "global/layout";
+
+.beer {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  bottom: 50px;
+  left: 500px;
+  background: yellow;
+  transition: 0.3s ease-in;
+}
+
+.table {
+  height: 50px;
+  width: 50px;
+  background: red;
+  position: absolute;
+  top: 50px;
+  left: 500px;
+}
