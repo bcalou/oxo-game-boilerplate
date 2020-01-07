@@ -3,13 +3,13 @@
 @import "global/layout";
 
 body {
-  background-image: url(../../src/assets/platform.png);
+  background-image: url(../../src/assets/img/platform.png);
   background-position: center;
   background-size: 100%;
 }
 
 .character {
-  background-image: url(../../src/assets/charMoveLeft.gif);
+  background-image: url(../../src/assets/img/charMoveLeft.gif);
   border-radius: 50%;
   height: 50px;
   width: 50px;
@@ -32,28 +32,28 @@ body {
 }
 
 .characterup {
-  background-image: url(../../src/assets/charMoveLeft.gif);
+  background-image: url(../../src/assets/img/charMoveLeft.gif);
   width: 30px;
   height: 80px;
   background-repeat: no-repeat;
 }
 
 .characterdown {
-  background-image: url(../../src/assets/charMoveDown.png);
+  background-image: url(../../src/assets/img/charMoveDown.gif);
   width: 30px;
   height: 80px;
   background-repeat: no-repeat;
 }
 
 .characterright {
-  background-image: url(../../src/assets/charMoveRight.gif);
+  background-image: url(../../src/assets/img/charMoveRight.gif);
   width: 30px;
   height: 80px;
   background-repeat: no-repeat;
 }
 
 .characterleft {
-  background-image: url(../../src/assets/charMoveLeft.gif);
+  background-image: url(../../src/assets/img/charMoveLeft.gif);
   width: 30px;
   height: 80px;
   background-repeat: no-repeat;
