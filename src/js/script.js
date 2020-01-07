@@ -192,18 +192,10 @@ function initLevel(grid, element, func) {
   createKangoo(element, pos.x, pos.y);
 }
 
-function initControlls(element) {
-  let kangoo = element.getElementsByClassName("kangoo")[0];
-  console.log(kangoo.style.top + "top");
+function initControls(element) {
   oxo.inputs.listenKeys(["up", "down", "left", "right"], function(key) {
-    console.log(key);
-    const step = 70;
-    const { style } = kangoo;
-    console.log(style.top);
     if (key === "down") {
-      style.top = `${parseInt(style.top) + step}px`;
     } else if (key === "up") {
-      // style.top = `${parseInt(style.top) - step}px`;
     } else if (key === "left") {
     } else if (key === "right") {
     }
@@ -215,6 +207,6 @@ oxo.screens.loadScreen("game", function() {
   let apres = document.getElementById("apres");
   initGame();
   initLevel(gridLvl1Av, avant);
-  // initControlls(avant);
+  // initControls(avant);
   spaceSwitchScreens();
 });

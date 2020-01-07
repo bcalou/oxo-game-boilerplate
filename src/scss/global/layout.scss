@@ -12,11 +12,11 @@ section {
 }
 
 .avant {
-  background-color: rgb(78, 233, 78);
+  background-image: url("../assets/img/bg-avant.png");
 }
 
 .apres {
-  background-color: orange;
+  background-image: url("../assets/img/bg-apres.png");
 }
 
 .grid {
@@ -43,7 +43,8 @@ section {
 }
 
 .tree {
-  background-color: rgb(57, 160, 57);
+  background-image: url("../assets/img/tree.png");
+  background-size: cover;
 }
 
 .rock {
@@ -51,11 +52,14 @@ section {
 }
 
 .tree-on-fire {
-  background-color: black;
+  background-image: url("../assets/img/treeonfire.png");
+  background-size: cover;
 }
 
 .ashes {
-  background-color: rgb(58, 42, 42);
+  background-image: url("../assets/img/ashes.png");
+  background-position: bottom;
+  background-repeat: no-repeat;
 }
 
 .fire {
