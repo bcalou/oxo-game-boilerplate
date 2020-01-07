@@ -4,7 +4,7 @@
 
 gridLvl1Av = [
   [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-  [0, 0, 1, 1, 0, 1, 0, 1, 0, 0],
+  [0, 0, 1, 0, 1, 1, 0, 1, 0, 0],
   [0, 1, 1, 1, 1, 1, 2, 2, 0, 0],
   [0, 1, 0, 0, 1, 0, 0, 0, 1, 0],
   [0, 1, 0, 1, 0, 1, 1, 0, 1, 1],
@@ -15,27 +15,42 @@ gridLvl1Av = [
   [0, 0, 0, 0, 0, 0, 0, 0, 1, 0]
 ];
 
-loadGrid(grid){
-  for (var i = 5; i >= 0; i--) {
-    if (grid[i][column]) continue;
-
-    color = color === "yellow" ? "red" : "yellow";
-    grid[i][column] = color;
-
-    checkVictory();
-
-    forEachCell(function(td, row, column) {
-      if (grid[row][column]) td.className = grid[row][column];
-    });
-
-    break;
+function loadGrid(grid, element) {
+  let cells = element.getElementsByClassName("cell");
+  let rows = 10;
+  let columns = 10;
+  for (let row = 0; row < rows; row++) {
+    for (let column = 0; column < columns; column++) {
+      element = cells[row * 10 + column];
+      color = getColor(grid[row][column]);
+      element.style.backgroundColor = color;
+    }
   }
+}
+
+function getColor(x) {
+  let res;
+
+  switch (x) {
+    case 0:
+      break;
+
+    case 1:
+      res = "red";
+      break;
+
+    case 2:
+      res = "grey";
+      break;
+
+    default:
+      break;
+  }
+  return res;
 }
 
 function spaceSwitchScreens() {
   oxo.inputs.listenKey("space", function() {
-    let avant = document.getElementById("avant");
-    let apres = document.getElementById("apres");
     avant.classList.toggle("hidden-display");
     apres.classList.toggle("hidden-display");
     console.log(getCurrentScreen());
@@ -52,7 +67,6 @@ function createGrid(x, element) {
     let div = document.createElement("div");
     div.classList.add("cell");
     element.appendChild(div);
-    console.log(div);
   }
 }
 
@@ -64,14 +78,5 @@ oxo.screens.loadScreen("game", function() {
 
   spaceSwitchScreens();
   let screen = getCurrentScreen();
-  var kangoo = oxo.elements.createElement({
-    type: "div", // optional
-    class: "kangoo", // optional,
-    obstacle: true, // optional,
-    styles: {
-      // optional
-      // transform: "translate(50px, 50px)"
-    },
-    appendTo: "body" // optional
-  });
+  loadGrid(gridLvl1Av, avant);
 });
