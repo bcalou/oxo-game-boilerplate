@@ -1,3 +1,61 @@
-@import 'vendors/reset';
+@import "vendors/reset";
 
-@import 'global/layout';
+@import "global/layout";
+
+.container {
+  height: 30px;
+  width: 150px;
+  background-color: wheat;
+  left: 30px;
+}
+
+.health {
+  height: 30px;
+  width: 150px;
+  background-color: red;
+  position: absolute;
+}
+
+.dgt {
+  animation: dgt 0.4s;
+}
+
+.character {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background-color: red;
+}
+
+.jump {
+  animation: jump 1.5s;
+}
+
+.ennemy {
+  position: absolute;
+  background-color: green;
+  width: 80px;
+  height: 80px;
+}
+
+@keyframes jump {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: -300px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+
+@keyframes dgt {
+  to {
+    width: 150px;
+  }
+
+  from {
+    width: 100px;
+  }
+}
