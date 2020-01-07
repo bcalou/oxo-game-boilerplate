@@ -25,8 +25,8 @@ function createGrid(x, element) {
 oxo.screens.loadScreen("game", function() {
   let avant = document.getElementById("avant");
   let apres = document.getElementById("apres");
-  createGrid(avant, 100);
-  createGrid(apres, 100);
+  createGrid(100, avant);
+  createGrid(100, apres);
 
   spaceSwitchScreens();
   let screen = getCurrentScreen();
