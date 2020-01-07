@@ -21,13 +21,69 @@ function fetchInGrid(x) {
   return pos;
 }
 
-function moveKangoo(currentPos, modifier) {
-  // check if index + modifier --> tombe 1,3,5 ou 2 ------> fetchInGrid()
-  // 5 --> degats
-  // 1 ou 3 quitte la fonction
-  // 2 lvl WIN
-  // PUIS
-  //current index --> grid replace 0
-  //PUIS
-  // index + modifier --> grid replace 6
+function getNewPos(direction, pos) {
+  let row = pos[O];
+  let column = pos[1];
+  let newRow = row;
+  let newColumn = col;
+  if (direction === "down") {
+    newRow++;
+  } else if (direction === "up") {
+    newRow--;
+  } else if (direction === "left") {
+    newColumn--;
+  } else if (direction === "right") {
+    newColumn++;
+  }
+
+  if (row > 0 && row < 10 && col > 0 && col < 10) {
+    return [newRow, newColumn];
+  } else {
+    return [row, column];
+  }
+}
+
+function checkNewValueInGrid(row, column, grid) {
+  let value = grid[row][column];
+  if (value == 1) {
+    // TREE
+    return false;
+  } else if (value == 2) {
+    // END
+  } else if (value == 3) {
+    // TREEONFIRE
+    return false;
+  } else if (value == 5) {
+    // FIRE
+  } else {
+    return true;
+  }
+}
+
+function fetchInGrid(grid, x) {
+  let rows = 10;
+  let columns = 10;
+  let pos = [];
+  for (let row = 0; row < rows; row++) {
+    for (let column = 0; column < columns; column++) {
+      if (grid[row][column] === x) {
+        pos = [row, column];
+        return pos;
+      }
+    }
+  }
+}
+
+function moveKangoo(direction, grid, element) {
+  let pos = fetchInGrid(grid, 2);
+  let newPos = getNewPos(direction, pos);
+  if (checkNewValueInGrid(newPos[0], newPos[1], grid)) {
+    let newRow = newPos[0];
+    let newColumn = newPos[1];
+    let row = pos[0];
+    let column = pos[1];
+    grid[newRow][newColumn] = 2;
+    grid[row][column] = 1;
+    loadGrid(grid, element);
+  }
 }

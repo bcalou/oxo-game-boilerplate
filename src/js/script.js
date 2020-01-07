@@ -42,41 +42,19 @@ let lvl3Comp = false;
 
 /////////////////////////////////////
 
-function getPosition(el) {
-  var xPos = 0;
-  var yPos = 0;
-
-  while (el) {
-    if (el.tagName == "BODY") {
-      // deal with browser quirks with body/window/document and page scroll
-      var xScroll = el.scrollLeft || document.documentElement.scrollLeft;
-      var yScroll = el.scrollTop || document.documentElement.scrollTop;
-
-      xPos += el.offsetLeft - xScroll + el.clientLeft;
-      yPos += el.offsetTop - yScroll + el.clientTop;
-    } else {
-      // for all other non-BODY elements
-      xPos += el.offsetLeft - el.scrollLeft + el.clientLeft;
-      yPos += el.offsetTop - el.scrollTop + el.clientTop;
-    }
-
-    el = el.offsetParent;
-  }
-  return {
-    x: xPos,
-    y: yPos
-  };
-}
-
 function loadGrid(grid, element) {
-  let cells = element.getElementsByClassName("cell");
+  let cells = element.getElementsByTagName("div");
   let rows = 10;
   let columns = 10;
   for (let row = 0; row < rows; row++) {
     for (let column = 0; column < columns; column++) {
       element = cells[row * 10 + column];
       let classEl = getClass(grid[row][column]);
+      if (element.classList.contains("kangoo")) {
+        element.classList.remove("kangoo");
+      }
       if (classEl) element.classList.add(classEl);
+      element.classList.add("cell");
     }
   }
 }
@@ -109,7 +87,7 @@ function getClass(x) {
       break;
 
     case 6:
-      res = "start";
+      res = "kangoo";
       break;
 
     case 7:
@@ -147,38 +125,80 @@ function getCurrentScreen() {
 function createGrid(x, element) {
   for (let i = 0; i < x; i++) {
     let div = document.createElement("div");
-    div.classList.add("cell");
     element.appendChild(div);
   }
 }
 
-function createKangoo(element, x, y) {
-  // let kangoo = oxo.elements.createElement({
-  //   type: "div",
-  //   class: "kangoo"
-  // });
-  // element.appendChild(kangoo);
-  // if (x && y) {
-  //   kangoo.style.pos.left = x;
-  //   kangoo.style.pos.top = y;
-  // }
-}
+// FUNCTION USED TO MOVE KANGOUROU
 
-function getStartPos(grid, element) {
-  let cells = element.getElementsByClassName("cell");
+function fetchInGrid(grid, x) {
   let rows = 10;
   let columns = 10;
+  let pos = [];
   for (let row = 0; row < rows; row++) {
     for (let column = 0; column < columns; column++) {
-      if (grid[row][column] === 6) {
-        let startCell = cells[row * 10 + column];
-        console.log(startCell);
-        var position = getPosition(startCell);
-        return position;
+      if (grid[row][column] === x) {
+        pos = [row, column];
+        return pos;
       }
     }
   }
 }
+
+function getNewPos(direction, pos) {
+  let row = pos[0];
+  let column = pos[1];
+  let newRow = row;
+  let newColumn = column;
+  if (direction === "down") {
+    newRow++;
+  } else if (direction === "up") {
+    newRow--;
+  } else if (direction === "left") {
+    newColumn--;
+  } else if (direction === "right") {
+    newColumn++;
+  }
+  if (newRow >= 0 && newRow < 10 && newColumn >= 0 && newColumn < 10) {
+    return [newRow, newColumn];
+  } else {
+    return [row, column];
+  }
+}
+
+function checkNewValueInGrid(row, column, grid) {
+  let value = grid[row][column];
+  if (value == 1) {
+    // TREE
+    return false;
+  } else if (value == 2) {
+    // END
+  } else if (value == 3) {
+    // TREEONFIRE
+    return false;
+  } else if (value == 5) {
+    // FIRE
+  } else {
+    return true;
+  }
+}
+
+function moveKangoo(direction, grid, element) {
+  let pos = fetchInGrid(grid, 6);
+  let newPos = getNewPos(direction, pos);
+  console.log(newPos);
+  if (checkNewValueInGrid(newPos[0], newPos[1], grid)) {
+    let newRow = newPos[0];
+    let newColumn = newPos[1];
+    let row = pos[0];
+    let column = pos[1];
+    grid[newRow][newColumn] = 6;
+    grid[row][column] = 0;
+    loadGrid(grid, element);
+  }
+}
+
+///////
 
 function initGame() {
   createGrid(100, avant);
@@ -186,19 +206,9 @@ function initGame() {
   loadGrid(gridLvl1Av, avant);
 }
 
-function initLevel(grid, element, func) {
-  let pos = getStartPos(grid, element);
-  console.log("Start position is " + pos.x + " , " + pos.y);
-  createKangoo(element, pos.x, pos.y);
-}
-
-function initControls(element) {
+function initControls(grid, element) {
   oxo.inputs.listenKeys(["up", "down", "left", "right"], function(key) {
-    if (key === "down") {
-    } else if (key === "up") {
-    } else if (key === "left") {
-    } else if (key === "right") {
-    }
+    moveKangoo(key, grid, element);
   });
 }
 
@@ -206,7 +216,6 @@ oxo.screens.loadScreen("game", function() {
   let avant = document.getElementById("avant");
   let apres = document.getElementById("apres");
   initGame();
-  initLevel(gridLvl1Av, avant);
-  // initControls(avant);
+  initControls(gridLvl1Av, avant);
   spaceSwitchScreens();
 });
