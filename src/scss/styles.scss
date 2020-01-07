@@ -10,6 +10,7 @@
   left: 500px;
   background: yellow;
   transition: 0.3s ease-in;
+  z-index: 1;
 }
 
 .table {
@@ -19,4 +20,23 @@
   position: absolute;
   top: 50px;
   left: 500px;
+}
+
+.arrow {
+  height: 50px;
+  width: 4px;
+  background: black;
+  position: absolute;
+  bottom: 100px;
+  left: 510px;
+  animation: glisse 2.5s infinite alternate;
+}
+
+@keyframes glisse {
+  0% {
+    transform: translateX(-400px);
+  }
+  100% {
+    transform: translateX(400px);
+  }
 }
