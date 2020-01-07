@@ -23,3 +23,31 @@ function oncollision(){
   });
 }
 
+//direction character
+window.addEventListener('keydown', function(){
+  oxo.inputs.listenKey('up', function() {
+    var div = document.querySelector('div');
+    div.className='characterup';
+  });
+
+  oxo.inputs.listenKey('down', function() {
+    var div = document.querySelector('div');
+    div.className='characterdown';
+  });
+
+  oxo.inputs.listenKey('right', function() {
+    var div = document.querySelector('div');
+    div.className='characterright';
+  });
+
+  oxo.inputs.listenKey('left', function() {
+    var div = document.querySelector('div');
+    div.className='characterleft';
+  });
+
+  oxo.inputs.listenKey('space', function() {
+    var div = document.querySelector('div');
+    div.className='character';
+  });
+});
+
