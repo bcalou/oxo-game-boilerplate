@@ -10,15 +10,16 @@ function move() {
   });
   beer.addEventListener("mouseup", function() {
     const mouseupTime = new Date().getTime(),
-      timeDifference = (mouseupTime - mousedownTime) / 3; // transforme le temps d'appui en pixels
+      timeDifference = (mouseupTime - mousedownTime) / 2; // transforme le temps d'appui en pixels
     oxo.animation.move(beer, "up", timeDifference, true);
+    console.log(timeDifference);
   });
+  
   collision();
 }
-function addScorePoint() {
-  oxo.player.addToScore(5);
-}
 
+
+// detect when beer touch table
 function collision() {
   var beer = document.querySelector(".beer");
   var table = document.querySelector(".table");
@@ -35,6 +36,11 @@ function collision() {
 
   //   oxo.animation.setPosition(beer, { x: 60, y: 0 });
   // }
+}
+
+// add 5 point score when beer touch table
+function addScorePoint() {
+  oxo.player.addToScore(5);
 }
 
 
