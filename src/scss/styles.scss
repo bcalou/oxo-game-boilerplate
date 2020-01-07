@@ -3,9 +3,25 @@
 @import 'global/layout';
 
 .character {
-  background-color: red;
+  background-color: blue;
   border-radius: 50%;
+  height: 10px;
+  width: 10px;
+
+}
+
+.my-element {
+  background-color: red;
   height: 50px;
   width: 50px;
 }
+
+
+
+.bg {
+ width: 100vw;
+ height: 100vh;
+}
+
+
 
