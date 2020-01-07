@@ -14,10 +14,9 @@ function move() {
     oxo.animation.move(beer, "up", timeDifference, true);
     console.log(timeDifference);
   });
-  
+
   collision();
 }
-
 
 // detect when beer touch table
 function collision() {
@@ -43,10 +42,16 @@ function addScorePoint() {
   oxo.player.addToScore(5);
 }
 
-
+function arrowPosition() {
+  var arrow = document.querySelector(".arrow");
+  var position = oxo.animation.getPosition(arrow);
+  console.log(position.x); // 10
+  console.log(position.y); // 0
+}
 
 function game() {
   move();
+  arrowPosition();
 }
 
 oxo.inputs.listenKeyOnce("enter", function() {

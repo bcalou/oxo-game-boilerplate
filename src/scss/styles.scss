@@ -43,7 +43,7 @@ div.frame {
 }
 
 .anim {
-  animation: glisse 2.5s infinite alternate;
+  animation: glisse 2.5s infinite alternate linear;
 }
 
 @keyframes glisse {
@@ -56,7 +56,8 @@ div.frame {
 }
 
 .score {
-  margin-left: 20px;
+  margin: 30px;
+  font-size: 26px;
 }
 
 // HOME.html
