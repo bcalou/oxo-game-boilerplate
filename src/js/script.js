@@ -1,35 +1,34 @@
 //0 ==> nothing
 //1 => tree
 //2 ==> rock
-//3 ==> tree / ashes
+//3 ==> tree-on-fire
 //4 ==> ashes
 //5 ==> fire
-let kangoo;
 
 gridLvl1Av = [
   [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-  [0, 0, 1, 0, 1, 1, 0, 1, 0, 0],
+  [0, 0, 1, 1, 0, 1, 0, 1, 0, 0],
   [0, 1, 1, 1, 1, 1, 2, 2, 0, 0],
   [0, 1, 0, 0, 1, 0, 0, 0, 1, 0],
   [0, 1, 0, 1, 0, 1, 1, 0, 1, 1],
   [1, 1, 0, 1, 1, 1, 0, 0, 0, 0],
   [1, 0, 0, 0, 0, 0, 1, 1, 1, 1],
-  [1, 1, 2, 0, 1, 0, 1, 0, 1, 0],
-  [1, 0, 0, 2, 1, 0, 1, 1, 1, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 1, 0]
+  [1, 1, 1, 0, 1, 0, 1, 0, 1, 0],
+  [1, 0, 0, 2, 2, 0, 1, 1, 1, 0],
+  [0, 0, 0, 0, 0, 2, 0, 0, 1, 0]
 ];
 
 gridLvl1Ap = [
-  [0, 0, 0, 3, 0, 0, 0, 0, 0, 0],
-  [0, 0, 1, 0, 1, 1, 0, 1, 0, 0],
-  [0, 1, 1, 1, 1, 1, 2, 2, 0, 0],
-  [0, 1, 0, 0, 1, 0, 0, 0, 1, 0],
-  [0, 1, 0, 1, 0, 1, 1, 0, 1, 1],
-  [1, 1, 0, 1, 1, 1, 0, 0, 0, 0],
-  [1, 0, 0, 0, 0, 0, 1, 1, 1, 1],
-  [1, 1, 2, 0, 1, 0, 1, 0, 1, 0],
-  [1, 0, 0, 2, 1, 0, 1, 1, 1, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 1, 0]
+  [0, 0, 0, 4, 0, 0, 0, 0, 0, 0],
+  [0, 0, 3, 3, 0, 3, 0, 3, 0, 0],
+  [0, 3, 3, 3, 3, 3, 5, 5, 0, 0],
+  [0, 3, 0, 0, 4, 0, 0, 0, 3, 0],
+  [0, 3, 0, 3, 0, 3, 3, 0, 3, 3],
+  [3, 3, 0, 3, 3, 3, 0, 0, 0, 0],
+  [3, 0, 0, 0, 0, 0, 3, 3, 3, 3],
+  [3, 3, 3, 0, 3, 0, 3, 0, 3, 0],
+  [3, 0, 0, 5, 5, 0, 3, 3, 3, 0],
+  [0, 0, 0, 0, 0, 5, 0, 0, 3, 0]
 ];
 
 function loadGrid(grid, element) {
@@ -44,6 +43,13 @@ function loadGrid(grid, element) {
     }
   }
 }
+
+//0 ==> nothing
+//1 => tree
+//2 ==> rock
+//3 ==> tree-on-fire
+//4 ==> ashes
+//5 ==> fire
 
 function getClass(x) {
   let res;
@@ -60,8 +66,16 @@ function getClass(x) {
       res = "rock";
       break;
 
-    case 6:
-      res = "kangoo";
+    case 3:
+      res = "tree-on-fire";
+      break;
+
+    case 4:
+      res = "ashes";
+      break;
+
+    case 5:
+      res = "fire";
       break;
 
     default:
@@ -74,7 +88,17 @@ function spaceSwitchScreens() {
   oxo.inputs.listenKey("space", function() {
     avant.classList.toggle("hidden-display");
     apres.classList.toggle("hidden-display");
-    console.log(getCurrentScreen());
+    let currentGrid, element;
+    console.log("pute");
+    let screen = getCurrentScreen();
+    if (screen === "avant") {
+      currentGrid = gridLvl1Av;
+      element = avant;
+    } else {
+      currentGrid = gridLvl1Ap;
+      element = apres;
+    }
+    loadGrid(currentGrid, element);
   });
 }
 
@@ -96,8 +120,6 @@ oxo.screens.loadScreen("game", function() {
   let apres = document.getElementById("apres");
   createGrid(100, avant);
   createGrid(100, apres);
-
-  spaceSwitchScreens();
-  let screen = getCurrentScreen();
   loadGrid(gridLvl1Av, avant);
+  spaceSwitchScreens();
 });
