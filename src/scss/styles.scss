@@ -2,6 +2,12 @@
 
 @import 'global/layout';
 
+body {
+  background-image: url(../screens/img/bg.png);
+  background-position: center;
+  background-size: 100%;
+}
+
 .character {
   background-color: blue;
   border-radius: 50%;
@@ -13,11 +19,6 @@
   background-color: red;
   height: 50px;
   width: 50px;
-}
-
-.bg {
- width: 100vw;
- height: 100vh;
 }
 
 .characterup {
