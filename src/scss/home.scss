@@ -57,6 +57,15 @@
     box-shadow: 0 0 15px 5px $purple;
     transform: scale(1.05);
   }
+
+  a {
+    font-family: "Poppins", arial, serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+  }
 }
 
 .homePage__buttonPlay {
@@ -80,7 +89,7 @@
   }
 }
 
-.soundControl {
+.soundControlIcon {
   width: 70px;
   height: 70px;
   position: absolute;
