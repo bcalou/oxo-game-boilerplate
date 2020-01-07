@@ -4,15 +4,18 @@ body {
   overflow: hidden;
 }
 
-.avant {
+section {
   width: 700px;
   height: 700px;
+  margin: auto;
+  position: relative;
+}
+
+.avant {
   background-color: rgb(78, 233, 78);
 }
 
 .apres {
-  width: 700px;
-  height: 700px;
   background-color: orange;
 }
 
@@ -33,7 +36,10 @@ body {
 }
 
 .kangoo {
-  background-color: yellow;
+  background-color: orangered;
+  border: solid 1px black;
+  width: 70px;
+  height: 70px;
 }
 
 .tree {
@@ -54,4 +60,16 @@ body {
 
 .fire {
   background-color: red;
+}
+
+.end {
+  background-color: rgb(255, 0, 212);
+}
+
+.start {
+  background-color: yellow;
+}
+
+.baby {
+  background-color: pink;
 }
