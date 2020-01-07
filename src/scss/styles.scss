@@ -9,30 +9,46 @@ body {
 }
 
 .character {
-  background-image: url(../../src/assets/img/charMoveLeft.gif);
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  background-image: url(../../src/assets/img/charStand.gif);
+  width: 30px;
+  height: 80px;
+  background-repeat: no-repeat;
 }
 
 .wall__left1 {
   position: absolute;
-  height: 210px;
+  height: 85vh;
   width: 20px;
-  left: 10vw;
+  left: 153px;
   top: 5vh;
 }
 
-.wall__left2 {
+.wall__bot1 {
   position: absolute;
-  height: 250px;
-  width: 20px;
+  height: 22px;
+  width: 79vw;
   left: 10vw;
-  bottom: 5vh;
+  bottom: 0;
+}
+
+.wall__top1 {
+  position: absolute;
+  height: 30px;
+  width: 79vw;
+  left: 10vw;
+  top: 2vh;
+}
+
+.wall__right1 {
+  position: absolute;
+  height: 85vh;
+  width: 20px;
+  right: 11.5vw;
+  top: 7vh;
 }
 
 .characterup {
-  background-image: url(../../src/assets/img/charMoveLeft.gif);
+  background-image: url(../../src/assets/img/charMoveUp.gif);
   width: 30px;
   height: 80px;
   background-repeat: no-repeat;

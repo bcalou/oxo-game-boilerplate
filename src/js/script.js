@@ -3,6 +3,8 @@ oxo.screens.loadScreen("game", function() {
 });
 
 function initWalls() {
+  var character = document.getElementById("character");
+  oxo.animation.setPosition(character, { x: 175, y: 330 });
   let wall__left1 = oxo.elements.createElement({
     type: "div", // optional
     class: "wall__left1", // optional,
@@ -12,9 +14,27 @@ function initWalls() {
     },
     appendTo: "body" // optional
   });
-  let wall__left2 = oxo.elements.createElement({
+  let wall__bot1 = oxo.elements.createElement({
     type: "div", // optional
-    class: "wall__left2", // optional,
+    class: "wall__bot1", // optional,
+    obstacle: true, // optional,
+    styles: {
+      //optional
+    },
+    appendTo: "body" // optional
+  });
+  let wall__top1 = oxo.elements.createElement({
+    type: "div", // optional
+    class: "wall__top1", // optional,
+    obstacle: true, // optional,
+    styles: {
+      //optional
+    },
+    appendTo: "body" // optional
+  });
+  let wall__right1 = oxo.elements.createElement({
+    type: "div", // optional
+    class: "wall__right1", // optional,
     obstacle: true, // optional,
     styles: {
       //optional
