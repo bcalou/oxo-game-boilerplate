@@ -7,4 +7,14 @@
 // if true
 //
 
-function swapKangooTo(currentGrid, grid) {}
+function swapKangooTo(currentGrid, grid) {
+  let currentPos = fetchInGrid(currentGrid, 6);
+  let currentRow = currentPos[0];
+  let currentColumn = currentPos[1];
+  eraseKangooInGrid(currentRow, currentColumnn, grid);
+  grid[currentRow][currentColumnn] = 6;
+}
+
+function eraseKangooInGrid(row, column, grid) {
+  grid[row][column] = 0;
+}

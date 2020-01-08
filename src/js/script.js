@@ -133,19 +133,44 @@ function getClass(x) {
   return res;
 }
 
+// FUNCTION TO SWAP SCREENS
+
+function swapKangooTo(oldGrid, grid) {
+  let oldPos = fetchInGrid(oldGrid, 6);
+  console.log("OUTPUT: swapKangooTo -> pos", oldPos);
+  let posKangoo = fetchInGrid(grid, 6);
+  console.log(posKangoo);
+  let oldRow = oldPos[0];
+  let oldColumn = oldPos[1];
+  let kangooRow = posKangoo[0];
+  let kangooColumn = posKangoo[1];
+  eraseKangooInGrid(kangooRow, kangooColumn, grid);
+  grid[oldRow][oldColumn] = 6;
+}
+
+function eraseKangooInGrid(row, column, grid) {
+  grid[row][column] = 0;
+}
+
 function spaceSwitchScreens() {
   oxo.inputs.listenKey("space", function() {
     avant.classList.toggle("hidden-display");
     apres.classList.toggle("hidden-display");
-    let currentGrid, element;
+    let currentGrid, element, oldGrid;
     let screen = getCurrentScreen();
     if (screen === "avant") {
+      oldGrid = gridLvl1Ap;
       currentGrid = gridLvl1Av;
       element = avant;
+      console.log("current map is " + screen);
+      swapKangooTo(oldGrid, currentGrid);
       initControls(currentGrid, element);
     } else {
+      oldGrid = gridLvl1Av;
       currentGrid = gridLvl1Ap;
       element = apres;
+      console.log("current map is " + screen);
+      swapKangooTo(oldGrid, currentGrid);
       initControls(currentGrid, element);
     }
     loadGrid(currentGrid, element);
@@ -232,7 +257,6 @@ function checkNewValueInGrid(row, column, grid, direction) {
 function moveKangoo(direction, grid, element) {
   let pos = fetchInGrid(grid, 6);
   let newPos = getNewPos(direction, pos);
-  console.log(pos);
   console.log(newPos);
   if (pos[0] == newPos[0] && pos[1] == newPos[1]) {
     return; // OUT OF RANGE
@@ -264,7 +288,7 @@ function isEmpty(pos, grid) {
 }
 
 function moveRock(pos, direction, grid, element) {
-  console.log("move rock");
+  console.log("Moving rock");
   let currPosRock = pos;
   let newPos = getNewPos(direction, currPosRock);
   if (isEmpty(newPos, grid)) {
