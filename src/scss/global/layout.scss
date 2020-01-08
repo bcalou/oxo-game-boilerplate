@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "PixelEd";
+  src: url("../assets/font/pixeled.ttf") format("truetype");
+}
+
 body {
   width: 100vw;
   height: 100vh;
@@ -48,7 +53,9 @@ section {
 
 .rock {
   background-image: url("../assets/img/rock.png");
-  background-size: cover;
+  background-size: center;
+  background-repeat: no-repeat;
+  background-size: 80%;
 }
 
 .tree-on-fire {
@@ -88,7 +95,7 @@ section {
   display: inline-block;
   padding-left: 20px;
   padding-right: 20px;
-  font-family: pixelEd;
+  font-family: "pixelEd";
   font-size: 30px;
   color: #695f4a;
   position: absolute;
@@ -107,4 +114,14 @@ section {
   100% {
     transform: translateY(-500px);
   }
+}
+
+.score {
+  position: absolute;
+  background-color: black;
+  left: 1090px;
+  bottom: 100px;
+  width: 5 * 50px;
+  height: 50px;
+  position: absolute;
 }

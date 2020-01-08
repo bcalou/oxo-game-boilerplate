@@ -5,9 +5,12 @@
 //4 ==> ashes
 //5 ==> fire
 //6 ==> kangoo
-//7 ==> baby
+//7 ==> end
+//8 ==> baby
 
-gridLvl1Av = [
+let gridAv = [];
+
+let gridLvl1Av = [
   [7, 0, 0, 1, 0, 0, 0, 0, 0, 0],
   [0, 0, 1, 1, 0, 1, 0, 1, 0, 0],
   [0, 1, 1, 1, 1, 1, 2, 2, 0, 0],
@@ -15,25 +18,14 @@ gridLvl1Av = [
   [0, 1, 0, 1, 0, 1, 1, 0, 1, 1],
   [1, 1, 0, 1, 1, 1, 0, 0, 0, 0],
   [1, 0, 0, 0, 0, 0, 1, 1, 1, 1],
-  [1, 1, 1, 0, 1, 0, 1, 7, 1, 0],
+  [1, 1, 1, 0, 1, 0, 1, 8, 1, 0],
   [1, 0, 0, 2, 2, 0, 1, 1, 1, 0],
   [6, 0, 0, 0, 0, 2, 0, 0, 1, 0]
 ];
 
-gridLvl1AvReset = [
-  [7, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-  [0, 0, 1, 1, 0, 1, 0, 1, 0, 0],
-  [0, 1, 1, 1, 1, 1, 2, 2, 0, 0],
-  [0, 1, 0, 0, 1, 0, 0, 0, 1, 0],
-  [0, 1, 0, 1, 0, 1, 1, 0, 1, 1],
-  [1, 1, 0, 1, 1, 1, 0, 0, 0, 0],
-  [1, 0, 0, 0, 0, 0, 1, 1, 1, 1],
-  [1, 1, 1, 0, 1, 0, 1, 7, 1, 0],
-  [1, 0, 0, 2, 2, 0, 1, 1, 1, 0],
-  [6, 0, 0, 0, 0, 2, 0, 0, 1, 0]
-];
+let gridAp = [];
 
-gridLvl1Ap = [
+let gridLvl1Ap = [
   [7, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 3, 3, 0, 3, 0, 3, 0, 0],
   [0, 3, 3, 3, 3, 3, 5, 5, 0, 0],
@@ -41,20 +33,7 @@ gridLvl1Ap = [
   [0, 3, 0, 3, 0, 3, 3, 0, 3, 3],
   [3, 3, 0, 3, 3, 3, 0, 0, 0, 0],
   [3, 0, 0, 0, 0, 0, 3, 0, 3, 3],
-  [3, 3, 3, 0, 3, 0, 3, 7, 3, 0],
-  [3, 0, 0, 5, 5, 0, 3, 3, 3, 0],
-  [6, 0, 0, 0, 0, 5, 0, 0, 3, 0]
-];
-
-gridLvl1ApReset = [
-  [7, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 3, 3, 0, 3, 0, 3, 0, 0],
-  [0, 3, 3, 3, 3, 3, 5, 5, 0, 0],
-  [0, 3, 0, 0, 0, 0, 0, 0, 3, 0],
-  [0, 3, 0, 3, 0, 3, 3, 0, 3, 3],
-  [3, 3, 0, 3, 3, 3, 0, 0, 0, 0],
-  [3, 0, 0, 0, 0, 0, 3, 0, 3, 3],
-  [3, 3, 3, 0, 3, 0, 3, 7, 3, 0],
+  [3, 3, 3, 0, 3, 0, 3, 8, 3, 0],
   [3, 0, 0, 5, 5, 0, 3, 3, 3, 0],
   [6, 0, 0, 0, 0, 5, 0, 0, 3, 0]
 ];
@@ -81,6 +60,8 @@ function loadGrid(grid, element) {
         element.classList.remove("kangoo");
       } else if (element.classList.contains("rock")) {
         element.classList.remove("rock");
+      } else if (element.classList.contains("baby")) {
+        element.classList.remove("baby");
       }
       if (classEl) element.classList.add(classEl);
       element.classList.add("cell");
@@ -151,8 +132,8 @@ function checkSwapeIsPossible() {
   let apres = document.getElementById("apres");
   if (apres.classList.contains("hidden-display")) {
     // CURRENT SCREEN IS AVANT
-    let grid = gridLvl1Av;
-    let newGrid = gridLvl1Ap;
+    let grid = gridAv;
+    let newGrid = gridAp;
     let posKangoo = fetchInGrid(grid, 6);
     let row = posKangoo[0];
     let column = posKangoo[1];
@@ -164,8 +145,8 @@ function checkSwapeIsPossible() {
     return true;
   } else {
     // CURRENT SCREEN IS APRES
-    let grid = gridLvl1Ap;
-    let newGrid = gridLvl1Av;
+    let grid = gridAp;
+    let newGrid = gridAv;
     let posKangoo = fetchInGrid(grid, 6);
     let row = posKangoo[0];
     let column = posKangoo[1];
@@ -193,15 +174,15 @@ function spaceSwitchScreens() {
     let currentGrid, element, oldGrid;
     let screen = getCurrentScreen();
     if (screen === "avant") {
-      oldGrid = gridLvl1Ap;
-      currentGrid = gridLvl1Av;
+      oldGrid = gridAp;
+      currentGrid = gridAv;
       element = avant;
       console.log("current map is " + screen);
       swapKangooTo(oldGrid, currentGrid);
       initControls(currentGrid, element);
     } else {
-      oldGrid = gridLvl1Av;
-      currentGrid = gridLvl1Ap;
+      oldGrid = gridAv;
+      currentGrid = gridAp;
       element = apres;
       console.log("current map is " + screen);
       swapKangooTo(oldGrid, currentGrid);
@@ -270,6 +251,11 @@ function checkNewValueInGrid(row, column, grid, direction) {
     return false;
   } else if (value == 7) {
     // END
+  } else if (value == 8) {
+    // BABY
+    deleteBaby(row, column);
+    wonBaby();
+    return true;
   } else if (value == 3) {
     // TREEONFIRE
     return false;
@@ -340,11 +326,13 @@ function moveRock(pos, direction, grid, element) {
 function initGame() {
   createGrid(100, avant);
   createGrid(100, apres);
-  loadGrid(gridLvl1Av, avant);
+  loadGrid(gridAv, avant);
 }
 
 function initControls(grid, element) {
   oxo.inputs.listenKeys(["up", "down", "left", "right"], function(key) {
+    console.log(gridAv);
+    console.log(gridAp);
     if (!gameIsOver) moveKangoo(key, grid, element);
   });
 }
@@ -352,13 +340,11 @@ function initControls(grid, element) {
 oxo.screens.loadScreen("game", function() {
   let avant = document.getElementById("avant");
   let apres = document.getElementById("apres");
+  loadLvl1();
   initGame();
-  initControls(gridLvl1Av, avant);
+
+  initControls(gridAv, avant);
   spaceSwitchScreens();
-  displayLvlText(1);
-  setTimeout(() => {
-    displayLvlText(2);
-  }, 5000);
 });
 
 function gameOver() {
@@ -376,4 +362,28 @@ function displayLvlText(string) {
   document.body.appendChild(p);
   p.classList.add("level");
   p.innerHTML = "LEVEL " + string;
+}
+
+// LEVELS
+
+function loadLvl1() {
+  displayLvlText(1);
+  gridAv = gridLvl1Av;
+  gridAp = gridLvl1Ap;
+}
+
+// BABY
+
+function deleteBaby(row, column) {
+  gridAv[row][column] = 0;
+  gridAp[row][column] = 0;
+}
+
+function wonBaby() {
+  let div = document.getElementById("score");
+  let baby = document.createElement("div");
+  baby.classList.add("baby");
+  baby.style.width = "50px";
+  baby.style.height = "50px";
+  div.appendChild(baby);
 }
