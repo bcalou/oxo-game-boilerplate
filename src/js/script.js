@@ -62,7 +62,7 @@ gridLvl1ApReset = [
 /////////////////////////////////////
 // VAR
 
-let gameOver = false;
+let gameIsOver = false;
 let lvl1Comp = false;
 let lvl2Comp = false;
 let lvl3Comp = false;
@@ -137,7 +137,6 @@ function getClass(x) {
 
 function swapKangooTo(oldGrid, grid) {
   let oldPos = fetchInGrid(oldGrid, 6);
-  console.log("OUTPUT: swapKangooTo -> pos", oldPos);
   let posKangoo = fetchInGrid(grid, 6);
   console.log(posKangoo);
   let oldRow = oldPos[0];
@@ -152,6 +151,15 @@ function checkSwapeIsPossible() {
   let apres = document.getElementById("apres");
   if (apres.classList.contains("hidden-display")) {
     // CURRENT SCREEN IS AVANT
+    let grid = gridLvl1Av;
+    let newGrid = gridLvl1Ap;
+    let posKangoo = fetchInGrid(grid, 6);
+    let row = posKangoo[0];
+    let column = posKangoo[1];
+
+    if (newGrid[row][column] === 5) {
+      setTimeout(gameOver, 1000);
+    }
 
     return true;
   } else {
@@ -166,7 +174,6 @@ function checkSwapeIsPossible() {
       // ROCK or TREE ==> CANT SWAP
       console.log("Rock or Tree on the way can't swap");
       let value = newGrid[row][column];
-
       return false;
     }
     return true;
@@ -348,3 +355,9 @@ oxo.screens.loadScreen("game", function() {
   initControls(gridLvl1Av, avant);
   spaceSwitchScreens();
 });
+
+function gameOver() {
+  oxo.screens.loadScreen("gameover", function() {
+    console.log("Perdu");
+  });
+}
