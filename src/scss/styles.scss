@@ -2,6 +2,11 @@
 
 @import "global/layout";
 
+.header {
+  display: flex;
+  flex-direction: row;
+}
+
 .container {
   height: 30px;
   width: 150px;
@@ -36,6 +41,32 @@
   background-color: green;
   width: 80px;
   height: 80px;
+}
+
+.item {
+  width: 20px;
+  height: 20px;
+  background-color: blue;
+}
+
+.obj {
+  width: 20px;
+  height: 20px;
+  background-color: yellow;
+}
+
+.score {
+  margin-left: 200px;
+}
+
+.score_txt {
+  font-size: 30px;
+}
+
+.obj_gauge {
+  width: 10px;
+  height: 30px;
+  background-color: yellow;
 }
 
 @keyframes jump {
