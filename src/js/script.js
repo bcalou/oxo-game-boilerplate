@@ -1,11 +1,11 @@
-//oxo.screens.loadScreen("home", function() {
-//oxo.inputs.listenKey("enter", function() {
+oxo.screens.loadScreen("home", function() {
+oxo.inputs.listenKey("enter", function() {
 oxo.screens.loadScreen("game", function() {
   initWalls();
   interaction();
 });
-//});
-//});
+});
+});
 
 function initWalls() {
   var character = document.getElementById("character");
@@ -98,8 +98,7 @@ function interaction() {
       if (character) console.log("cangrab");
       oxo.inputs.listenKey("e", function test() {
         oxo.inputs.cancelKeyListener("e");
-        console.log("test"); // do something
+        console.log("test"); // WIP need to interact only in the collision div
       });
-    }
-  );
+    });
 }
