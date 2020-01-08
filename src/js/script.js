@@ -1,10 +1,12 @@
 oxo.screens.loadScreen("game", function() {
   initWalls();
+  interaction();
 });
 
+
 function initWalls() {
-  var character = document.getElementById("character");
-  oxo.animation.setPosition(character, { x: 175, y: 330 });
+  var antoinefromnowhere = document.getElementById("antoinefromnowhere");
+  oxo.animation.setPosition(antoinefromnowhere, { x: 175, y: 330 });
   let wall__left1 = oxo.elements.createElement({
     type: "div", // optional
     class: "wall__left1", // optional,
@@ -67,6 +69,38 @@ window.addEventListener("keydown", function() {
 
   oxo.inputs.listenKey("space", function() {
     var div = document.querySelector("div");
-    div.className = "character";
+    div.className = "antoinefromnowhere";
   });
+
+
 });
+
+
+function interaction() {
+  var antoinefromnowhere = document.getElementById('antoinefromnowhere');
+  let displaygrab = oxo.elements.createElement({
+    type: "div", // optional
+    class: "displaygrab", // optional,
+    obstacle: false, // optional,
+    styles: {
+      //optional
+    },
+    appendTo: "body" // optional
+  });
+
+   
+  oxo.elements.onCollisionWithElement(antoinefromnowhere , displaygrab, function detect() {
+    if (antoinefromnowhere )
+    console.log('cangrab'); oxo.inputs.listenKey('e', function test() {
+      oxo.inputs.cancelKeyListener('e');
+      console.log('test');// do something
+      
+    });
+  });
+
+   
+
+}
+
+
+

@@ -5,14 +5,17 @@
 body {
   background-image: url(../../src/assets/img/platform.png);
   background-position: center;
-  background-size: 100%;
+  background-size: 1230px;
+  background-repeat: no-repeat;
+  background-color: black;
 }
 
-.character {
+.antoinefromnowhere{
   background-image: url(../../src/assets/img/charStand.gif);
   width: 30px;
   height: 80px;
   background-repeat: no-repeat;
+  z-index: 1;
 }
 
 .wall__left1 {
@@ -52,6 +55,7 @@ body {
   width: 30px;
   height: 80px;
   background-repeat: no-repeat;
+  z-index: 1;
 }
 
 .characterdown {
@@ -59,6 +63,7 @@ body {
   width: 30px;
   height: 80px;
   background-repeat: no-repeat;
+  z-index: 1;
 }
 
 .characterright {
@@ -66,6 +71,7 @@ body {
   width: 30px;
   height: 80px;
   background-repeat: no-repeat;
+  z-index: 1;
 }
 
 .characterleft {
@@ -73,4 +79,28 @@ body {
   width: 30px;
   height: 80px;
   background-repeat: no-repeat;
+  z-index: 1;
 }
+
+.displaygrab {
+  width: 100px;
+  height: 120px;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 395px;
+  top: 7px;
+ 
+  opacity: 50%;
+}
+
+.fridge {
+ position: absolute;
+ right: 430px;
+ top: 27px;
+ height: 65px;
+ width: 35px;
+ z-index: -1; 
+}
+
+
+
