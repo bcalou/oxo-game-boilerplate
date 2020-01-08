@@ -7,14 +7,24 @@
 // if true
 //
 
-function swapKangooTo(currentGrid, grid) {
-  let currentPos = fetchInGrid(currentGrid, 6);
-  let currentRow = currentPos[0];
-  let currentColumn = currentPos[1];
-  eraseKangooInGrid(currentRow, currentColumnn, grid);
-  grid[currentRow][currentColumnn] = 6;
-}
-
-function eraseKangooInGrid(row, column, grid) {
-  grid[row][column] = 0;
+function checkSwapeIsPossible() {
+  let avant = document.getElementById("avant");
+  let apres = document.getElementById("apres");
+  if (avant.classList.contains("hidden-display")) {
+    // CURRENT SCREEN IS AVANT
+    return true;
+  } else {
+    console.log("in the function");
+    // CURRENT SCREEN IS APRES
+    let grid = gridLvl1Ap;
+    let newGrid = gridLvl1Av;
+    let posKangoo = fetchInGrid(grid, 6);
+    let row = posKangoo[0];
+    let column = posKangoo[1];
+    if (newGrid[row][column] === 2) {
+      // ROCK ==> CANT SWAP
+      return false;
+    }
+    return true;
+  }
 }

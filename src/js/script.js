@@ -147,6 +147,31 @@ function swapKangooTo(oldGrid, grid) {
   eraseKangooInGrid(kangooRow, kangooColumn, grid);
   grid[oldRow][oldColumn] = 6;
 }
+function checkSwapeIsPossible() {
+  let avant = document.getElementById("avant");
+  let apres = document.getElementById("apres");
+  if (apres.classList.contains("hidden-display")) {
+    // CURRENT SCREEN IS AVANT
+
+    return true;
+  } else {
+    // CURRENT SCREEN IS APRES
+    let grid = gridLvl1Ap;
+    let newGrid = gridLvl1Av;
+    let posKangoo = fetchInGrid(grid, 6);
+    let row = posKangoo[0];
+    let column = posKangoo[1];
+
+    if (newGrid[row][column] === 2 || newGrid[row][column] === 1) {
+      // ROCK or TREE ==> CANT SWAP
+      console.log("Rock or Tree on the way can't swap");
+      let value = newGrid[row][column];
+
+      return false;
+    }
+    return true;
+  }
+}
 
 function eraseKangooInGrid(row, column, grid) {
   grid[row][column] = 0;
@@ -154,6 +179,7 @@ function eraseKangooInGrid(row, column, grid) {
 
 function spaceSwitchScreens() {
   oxo.inputs.listenKey("space", function() {
+    if (!checkSwapeIsPossible()) return;
     avant.classList.toggle("hidden-display");
     apres.classList.toggle("hidden-display");
     let currentGrid, element, oldGrid;
