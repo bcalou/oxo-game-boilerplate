@@ -1,4 +1,26 @@
 .backgroundEnd {
+  position: absolute;
   width: 100vw;
   height: 100vh;
+}
+
+.maintext {
+  height: 80vh;
+  width: 40%;
+  position: absolute;
+  margin :auto;
+  top:0;
+  right:0;
+  left:0;
+  bottom:25;
+}
+
+.returnmenu {
+  height: 10vh;
+  position: absolute;
+  margin :auto;
+  top:550px;
+  right:0;
+  left:0;
+  bottom:0;
 }
