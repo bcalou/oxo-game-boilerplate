@@ -1,12 +1,15 @@
-oxo.screens.loadScreen("game", function() {
-  initWalls();
-  interaction();
+oxo.screens.loadScreen("home", function() {
+  oxo.inputs.listenKey("enter", function() {
+    oxo.screens.loadScreen("game", function() {
+      initWalls();
+      interaction();
+    });
+  });
 });
 
-
 function initWalls() {
-  var antoinefromnowhere = document.getElementById("antoinefromnowhere");
-  oxo.animation.setPosition(antoinefromnowhere, { x: 175, y: 330 });
+  var character = document.getElementById("character");
+  oxo.animation.setPosition(character, { x: 175, y: 330 });
   let wall__left1 = oxo.elements.createElement({
     type: "div", // optional
     class: "wall__left1", // optional,
@@ -48,36 +51,28 @@ function initWalls() {
 //direction character
 window.addEventListener("keydown", function() {
   oxo.inputs.listenKey("up", function() {
-    var div = document.querySelector("div");
-    div.className = "characterup";
+    var div = document.querySelector("div.antoine");
+    div.className = "antoine characterup";
   });
 
   oxo.inputs.listenKey("down", function() {
-    var div = document.querySelector("div");
-    div.className = "characterdown";
+    var div = document.querySelector("div.antoine");
+    div.className = "antoine characterdown";
   });
 
   oxo.inputs.listenKey("right", function() {
-    var div = document.querySelector("div");
-    div.className = "characterright";
+    var div = document.querySelector("div.antoine");
+    div.className = "antoine characterright";
   });
 
   oxo.inputs.listenKey("left", function() {
-    var div = document.querySelector("div");
-    div.className = "characterleft";
+    var div = document.querySelector("div.antoine");
+    div.className = "antoine characterleft";
   });
-
-  oxo.inputs.listenKey("space", function() {
-    var div = document.querySelector("div");
-    div.className = "antoinefromnowhere";
-  });
-
-
 });
 
-
 function interaction() {
-  var antoinefromnowhere = document.getElementById('antoinefromnowhere');
+  var character = document.getElementById("character");
   let displaygrab = oxo.elements.createElement({
     type: "div", // optional
     class: "displaygrab", // optional,
@@ -88,19 +83,15 @@ function interaction() {
     appendTo: "body" // optional
   });
 
-   
-  oxo.elements.onCollisionWithElement(antoinefromnowhere , displaygrab, function detect() {
-    if (antoinefromnowhere )
-    console.log('cangrab'); oxo.inputs.listenKey('e', function test() {
-      oxo.inputs.cancelKeyListener('e');
-      console.log('test');// do something
-      
-    });
-  });
-
-   
-
+  oxo.elements.onCollisionWithElement(
+    character,
+    displaygrab,
+    function detect() {
+      if (character) console.log("cangrab");
+      oxo.inputs.listenKey("e", function test() {
+        oxo.inputs.cancelKeyListener("e");
+        console.log("test"); // do something
+      });
+    }
+  );
 }
-
-
-
