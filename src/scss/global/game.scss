@@ -8,7 +8,9 @@
   background-size: 1230px;
   background-color: black;
   z-index: -2;
+  position: absolute;
 }
+ 
 
 .antoine {
   background-image: url(../../src/assets/img/charStand.gif);
@@ -16,38 +18,6 @@
   height: 80px;
   background-repeat: no-repeat;
   z-index: 1;
-}
-
-.wall__left1 {
-  position: absolute;
-  height: 85vh;
-  width: 20px;
-  left: 153px;
-  top: 5vh;
-}
-
-.wall__bot1 {
-  position: absolute;
-  height: 22px;
-  width: 79vw;
-  left: 10vw;
-  bottom: 0;
-}
-
-.wall__top1 {
-  position: absolute;
-  height: 30px;
-  width: 79vw;
-  left: 10vw;
-  top: 2vh;
-}
-
-.wall__right1 {
-  position: absolute;
-  height: 85vh;
-  width: 20px;
-  right: 11.5vw;
-  top: 7vh;
 }
 
 .characterup {
