@@ -27,27 +27,18 @@ div.frame {
   }
 
   .table {
-    width: 100px;
-    height: 72px;
+    width: 150px;
+    height: 110px;
     position: absolute;
-    top: 80px;
-    left: 425px;
+    top: 100px;
+    left: 530px;
     background-image: url("/images/BrownTable-ConvertImage.png");
   }
-
-  .arrow {
-    height: 50px;
-    width: 4px;
-    background: black;
-    position: absolute;
-    bottom: 70px;
-    left: 470px;
-  }
 }
 
-.anim {
-  // animation: glisse 2.5s infinite alternate linear;
-}
+// .anim {
+//   animation: glisse 2.5s infinite alternate linear;
+// }
 
 // @keyframes glisse {
 //   0% {
