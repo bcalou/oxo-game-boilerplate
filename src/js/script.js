@@ -1,10 +1,35 @@
+let orientation = 'right';
+let position;
+let stop = false;
+
 oxo.screens.loadScreen("home", function() {
-oxo.inputs.listenKey("enter", function() {
-oxo.screens.loadScreen("game", function() {
-  initWalls();
-  interaction();
-});
-});
+  oxo.inputs.listenKey("enter", function() {
+    oxo.screens.loadScreen("game", function() {
+      initWalls();
+      interaction();
+      var lastdirection = 0;
+      oxo.inputs.listenKeys(['up', 'down', 'right', 'left'], function(key) {
+        direction(key);
+        orientation = key;
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.keyCode === 32) {
+          stop = true;
+          let div = document.getElementById("character");
+          div.className = "antoine";
+        }
+      })
+      document.addEventListener('keyup', function(e) {
+        if (e.keyCode === 32) {
+          stop = false;
+          let div = document.getElementById("character");
+          div.className = "character" + orientation;
+        } 
+      })
+      setInterval(automove, 12);
+      position = oxo.animation.getPosition(character);
+    });
+  });
 });
 
 function initWalls() {
@@ -56,28 +81,17 @@ function initWalls() {
   });
 }
 
-//direction character
-window.addEventListener("keydown", function() {
-  oxo.inputs.listenKey("up", function() {
-    var div = document.querySelector("div.antoine");
-    div.className = "antoine characterup";
-  });
+function direction(key) {
+  let div = document.getElementById("character");
+  div.className = "character" + key;
+}
 
-  oxo.inputs.listenKey("down", function() {
-    var div = document.querySelector("div.antoine");
-    div.className = "antoine characterdown";
-  });
-
-  oxo.inputs.listenKey("right", function() {
-    var div = document.querySelector("div.antoine");
-    div.className = "antoine characterright";
-  });
-
-  oxo.inputs.listenKey("left", function() {
-    var div = document.querySelector("div.antoine");
-    div.className = "antoine characterleft";
-  });
-});
+function automove() {
+  if (stop) {
+    return;
+  }
+  oxo.animation.move(character, orientation, 1);
+};
 
 function interaction() {
   var character = document.getElementById("character");
@@ -92,18 +106,17 @@ function interaction() {
   });
 
   oxo.elements.onCollisionWithElement(
-    character,
-    displaygrab,
-    function detect() {
-      if (character) console.log("cangrab");
-      oxo.inputs.listenKey("e", function test() {
-        oxo.inputs.cancelKeyListener("e");
-        console.log("test"); // WIP need to interact only in the collision div
-      });
+  character,
+  displaygrab,
+  function detect() {
+    console.log("cangrab");
+    oxo.inputs.listenKey("e", function test() {
+      oxo.inputs.cancelKeyListener("e");
+      console.log("test");
     });
-}
-
-
+ });
+};
+  
 //return to menu flash button wip
 var flash = function () {
   var returnmenu = document.getElementById('returnmenu');
@@ -117,4 +130,6 @@ var flash1 = function () {
   setInterval(flash1, 1000);
   //wip
 
+  
 
+    
