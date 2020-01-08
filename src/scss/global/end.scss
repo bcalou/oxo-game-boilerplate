@@ -4,23 +4,20 @@
   height: 100vh;
 }
 
-.maintext {
-  height: 80vh;
-  width: 40%;
+.blocktextend {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
   position: absolute;
-  margin :auto;
-  top:0;
-  right:0;
-  left:0;
-  bottom:25;
-}
+  justify-content: center;
+  align-items: center;
 
-.returnmenu {
-  height: 10vh;
-  position: absolute;
-  margin :auto;
-  top:550px;
-  right:0;
-  left:0;
-  bottom:0;
+  .block__credits {
+    height: 80vh;
+  }
+  .block__buttonreturn {
+    cursor: pointer;
+    height: 10vh;
+  }
 }
