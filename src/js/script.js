@@ -1,26 +1,53 @@
 //0 ==> nothing
 //1 => tree
-//2 ==> end
+//2 ==> rock
 //3 ==> tree-on-fire
 //4 ==> ashes
 //5 ==> fire
-//6 ==> start
+//6 ==> kangoo
+//7 ==> baby
 
 gridLvl1Av = [
-  [2, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+  [7, 0, 0, 1, 0, 0, 0, 0, 0, 0],
   [0, 0, 1, 1, 0, 1, 0, 1, 0, 0],
-  [0, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+  [0, 1, 1, 1, 1, 1, 2, 2, 0, 0],
   [0, 1, 0, 0, 1, 0, 0, 0, 1, 0],
   [0, 1, 0, 1, 0, 1, 1, 0, 1, 1],
   [1, 1, 0, 1, 1, 1, 0, 0, 0, 0],
   [1, 0, 0, 0, 0, 0, 1, 1, 1, 1],
   [1, 1, 1, 0, 1, 0, 1, 7, 1, 0],
-  [1, 0, 0, 0, 0, 0, 1, 1, 1, 0],
-  [6, 0, 0, 0, 0, 0, 0, 0, 1, 0]
+  [1, 0, 0, 2, 2, 0, 1, 1, 1, 0],
+  [6, 0, 0, 0, 0, 2, 0, 0, 1, 0]
+];
+
+gridLvl1AvReset = [
+  [7, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+  [0, 0, 1, 1, 0, 1, 0, 1, 0, 0],
+  [0, 1, 1, 1, 1, 1, 2, 2, 0, 0],
+  [0, 1, 0, 0, 1, 0, 0, 0, 1, 0],
+  [0, 1, 0, 1, 0, 1, 1, 0, 1, 1],
+  [1, 1, 0, 1, 1, 1, 0, 0, 0, 0],
+  [1, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+  [1, 1, 1, 0, 1, 0, 1, 7, 1, 0],
+  [1, 0, 0, 2, 2, 0, 1, 1, 1, 0],
+  [6, 0, 0, 0, 0, 2, 0, 0, 1, 0]
 ];
 
 gridLvl1Ap = [
-  [2, 0, 0, 4, 0, 0, 0, 0, 0, 0],
+  [7, 0, 0, 4, 0, 0, 0, 0, 0, 0],
+  [0, 0, 3, 3, 0, 3, 0, 3, 0, 0],
+  [0, 3, 3, 3, 3, 3, 5, 5, 0, 0],
+  [0, 3, 0, 0, 4, 0, 0, 0, 3, 0],
+  [0, 3, 0, 3, 0, 3, 3, 0, 3, 3],
+  [3, 3, 0, 3, 3, 3, 0, 0, 0, 0],
+  [3, 0, 0, 0, 0, 0, 3, 4, 3, 3],
+  [3, 3, 3, 0, 3, 0, 3, 7, 3, 0],
+  [3, 0, 0, 5, 5, 0, 3, 3, 3, 0],
+  [6, 0, 0, 0, 0, 5, 0, 0, 3, 0]
+];
+
+gridLvl1ApReset = [
+  [7, 0, 0, 4, 0, 0, 0, 0, 0, 0],
   [0, 0, 3, 3, 0, 3, 0, 3, 0, 0],
   [0, 3, 3, 3, 3, 3, 5, 5, 0, 0],
   [0, 3, 0, 0, 4, 0, 0, 0, 3, 0],
@@ -52,6 +79,8 @@ function loadGrid(grid, element) {
       let classEl = getClass(grid[row][column]);
       if (element.classList.contains("kangoo")) {
         element.classList.remove("kangoo");
+      } else if (element.classList.contains("rock")) {
+        element.classList.remove("rock");
       }
       if (classEl) element.classList.add(classEl);
       element.classList.add("cell");
@@ -71,7 +100,7 @@ function getClass(x) {
       break;
 
     case 2:
-      res = "end";
+      res = "rock";
       break;
 
     case 3:
@@ -91,6 +120,10 @@ function getClass(x) {
       break;
 
     case 7:
+      res = "end";
+      break;
+
+    case 8:
       res = "baby";
       break;
 
@@ -109,9 +142,11 @@ function spaceSwitchScreens() {
     if (screen === "avant") {
       currentGrid = gridLvl1Av;
       element = avant;
+      initControls(currentGrid, element);
     } else {
       currentGrid = gridLvl1Ap;
       element = apres;
+      initControls(currentGrid, element);
     }
     loadGrid(currentGrid, element);
   });
@@ -159,25 +194,36 @@ function getNewPos(direction, pos) {
   } else if (direction === "right") {
     newColumn++;
   }
+
   if (newRow >= 0 && newRow < 10 && newColumn >= 0 && newColumn < 10) {
+    console.log("in range ");
     return [newRow, newColumn];
   } else {
+    console.log("out of range");
     return [row, column];
   }
 }
 
-function checkNewValueInGrid(row, column, grid) {
+function checkNewValueInGrid(row, column, grid, direction) {
   let value = grid[row][column];
   if (value == 1) {
     // TREE
     return false;
-  } else if (value == 2) {
+  } else if (value == 7) {
     // END
   } else if (value == 3) {
     // TREEONFIRE
     return false;
   } else if (value == 5) {
     // FIRE
+  } else if (value == 2) {
+    if (direction) {
+      let pos = [row, column];
+      let element = avant;
+      moveRock(pos, direction, grid, element);
+      return false;
+    }
+    // ROCK
   } else {
     return true;
   }
@@ -186,8 +232,12 @@ function checkNewValueInGrid(row, column, grid) {
 function moveKangoo(direction, grid, element) {
   let pos = fetchInGrid(grid, 6);
   let newPos = getNewPos(direction, pos);
+  console.log(pos);
   console.log(newPos);
-  if (checkNewValueInGrid(newPos[0], newPos[1], grid)) {
+  if (pos[0] == newPos[0] && pos[1] == newPos[1]) {
+    return; // OUT OF RANGE
+  }
+  if (checkNewValueInGrid(newPos[0], newPos[1], grid, direction)) {
     let newRow = newPos[0];
     let newColumn = newPos[1];
     let row = pos[0];
@@ -200,6 +250,35 @@ function moveKangoo(direction, grid, element) {
 
 ///////
 
+// FUNCTION USED TO MOVE ROCK
+function isEmpty(pos, grid) {
+  let row = pos[0];
+  let column = pos[1];
+  let value = grid[row][column];
+  if (value == 0) {
+    // TREE
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function moveRock(pos, direction, grid, element) {
+  console.log("move rock");
+  let currPosRock = pos;
+  let newPos = getNewPos(direction, currPosRock);
+  if (isEmpty(newPos, grid)) {
+    let newRow = newPos[0];
+    let newColumn = newPos[1];
+    let row = currPosRock[0];
+    let column = currPosRock[1];
+    grid[newRow][newColumn] = 2;
+    grid[row][column] = 0;
+    loadGrid(grid, element);
+  }
+}
+
+///////
 function initGame() {
   createGrid(100, avant);
   createGrid(100, apres);
