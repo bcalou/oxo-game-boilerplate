@@ -3,13 +3,13 @@
 @import "global/layout";
 
 body {
-  background-image: url(../../src/assets/img/platform.png);
+  background-image: url(../assets/img/platform.png);
   background-position: center;
   background-size: 100%;
 }
 
 .character {
-  background-image: url(../../src/assets/img/charStand.gif);
+  background-image: url(../assets/img/charStand.gif);
   width: 30px;
   height: 80px;
   background-repeat: no-repeat;
