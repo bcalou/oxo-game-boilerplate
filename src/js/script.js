@@ -1,8 +1,34 @@
+
+let orientation = 'right';
+let position;
+let stop = false;
+
 oxo.screens.loadScreen("home", function() {
 oxo.inputs.listenKey("enter", function() {
 oxo.screens.loadScreen("game", function() {
   initWalls();
   interaction();
+  var lastdirection = 0;
+  oxo.inputs.listenKeys(['up', 'down', 'right', 'left'], function(key) {
+    direction(key);
+    orientation = key;
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.keyCode === 32) {
+      stop = true;
+      let div = document.querySelector("div");
+      div.className = "character";
+    }
+  })
+  document.addEventListener('keyup', function(e) {
+    if (e.keyCode === 32) {
+      stop = false;
+      let div = document.querySelector("div");
+      div.className = "character" + orientation;
+    } 
+  })
+  setInterval(automove, 12);
+  position = oxo.animation.getPosition(character);
 });
 });
 });
@@ -56,28 +82,29 @@ function initWalls() {
   });
 }
 
-//direction character
-window.addEventListener("keydown", function() {
-  oxo.inputs.listenKey("up", function() {
-    var div = document.querySelector("div.antoine");
-    div.className = "antoine characterup";
-  });
+function direction(key) {
+  let div = document.querySelector("div");
+  div.className = "antoinecharacter" + key;
+}
 
-  oxo.inputs.listenKey("down", function() {
-    var div = document.querySelector("div.antoine");
-    div.className = "antoine characterdown";
-  });
+function automove() {
+  if (stop) {
+    return;
+  }
+  let character = document.getElementById('character');
 
-  oxo.inputs.listenKey("right", function() {
-    var div = document.querySelector("div.antoine");
-    div.className = "antoine characterright";
-  });
-
-  oxo.inputs.listenKey("left", function() {
-    var div = document.querySelector("div.antoine");
-    div.className = "antoine characterleft";
-  });
-});
+  if (orientation === 'up') {
+    oxo.animation.setPosition(character, {x: position.x, y: position.y--}); 
+  }
+  if (orientation === 'down') {
+    oxo.animation.setPosition(character, {x: position.x, y: position.y++});
+  }
+  if (orientation === 'right') {
+    oxo.animation.setPosition(character, {x: position.x++, y: position.y});
+  }
+  if (orientation === 'left') {
+    oxo.animation.setPosition(character, {x: position.x--, y: position.y});
+  }
 
 function interaction() {
   var character = document.getElementById("character");
