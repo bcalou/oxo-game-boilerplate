@@ -1,5 +1,3 @@
-var beer = document.querySelector(".beer");
-
 function move() {
   let mousedownTime;
   var beer = document.querySelector(".beer");
@@ -18,6 +16,11 @@ function move() {
   collision();
 }
 
+function resetBeerPosition() {
+  var beer = document.querySelector(".beer");
+  oxo.animation.setPosition(beer, { x: 0, y: 0 });
+}
+
 // detect when beer touch table
 function collision() {
   var beer = document.querySelector(".beer");
@@ -27,14 +30,52 @@ function collision() {
   oxo.elements.onCollisionWithElement(beer, table, function() {
     touch = true;
     console.log("win");
-    oxo.animation.setPosition(beer, { x: 0, y: 0 });
+    resetBeerPosition();
     addScorePoint();
   });
-  // if (!touch && beer.offsetTop < 100) {
-  //   console.log("lose");
+  if (!touch) {
+    console.log("lose");
+    resetBeerPosition();
+  }
+}
+function createtable(x, y) {
+  var element = oxo.elements.createElement({
+    type: "div", // optional
+    class: "table", // optional,
+    obstacle: true, // optional,
+    styles: {
+      // optional
+      position: "absolute",
+      // top: "300px",
+      // left: "780px"
+      top: x + "px",
+      left: y + "px"
+    },
+    appendTo: ".frame" // optional
+  });
+}
 
-  //   oxo.animation.setPosition(beer, { x: 60, y: 0 });
-  // }
+function rotateBeer() {
+  var beer = document.querySelector(".beer");
+  let angle = 0;
+  let direction = "right";
+  setInterval(function() {
+    console.log(direction, angle);
+    if (direction === "right") {
+      angle++;
+
+      if (angle > 120) {
+        direction = "left";
+      }
+    } else {
+      angle--;
+
+      if (angle < -120) {
+        direction = "right";
+      }
+    }
+    beer.style.transform = "rotate(" + angle + "deg)";
+  }, 1);
 }
 
 // add 5 point score when beer touch table
@@ -42,20 +83,17 @@ function addScorePoint() {
   oxo.player.addToScore(5);
 }
 
-function arrowPosition() {
-  var arrow = document.querySelector(".arrow");
-  var position = oxo.animation.getPosition(arrow);
-  console.log(position.x); // 10
-  console.log(position.y); // 0
-}
-
 function game() {
+  rotateBeer();
   move();
-  arrowPosition();
+  createtable(300, 780);
+  createtable(150, 650);
+  createtable(150, 200);
+  createtable(300, 70);
 }
 
-oxo.inputs.listenKeyOnce("enter", function() {
-  oxo.screens.loadScreen("game", function() {
-    game();
-  });
+// oxo.inputs.listenKeyOnce("enter", function() {
+oxo.screens.loadScreen("game", function() {
+  game();
 });
+// });

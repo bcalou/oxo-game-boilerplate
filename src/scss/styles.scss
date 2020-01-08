@@ -12,52 +12,57 @@ div.frame {
   margin-top: 50px;
   overflow: hidden;
   position: relative;
-}
+  background-image: url("/images/Floor2.png");
+  background-size: 190%;
+  background-position: center;
+  .beer {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    bottom: 20px;
+    left: 450px;
+    background-image: url("/images/biere.png");
+    transition: 0.3s ease-in;
+    z-index: 9999;
+  }
 
-.beer {
-  height: 40px;
-  width: 40px;
-  position: absolute;
-  bottom: 20px;
-  left: 450px;
-  background: yellow;
-  transition: 0.3s ease-in;
-}
+  .table {
+    width: 100px;
+    height: 72px;
+    position: absolute;
+    top: 80px;
+    left: 425px;
+    background-image: url("/images/BrownTable-ConvertImage.png");
+  }
 
-.table {
-  height: 50px;
-  width: 50px;
-  background: red;
-  position: absolute;
-  top: 50px;
-  left: 450px;
-}
-
-.arrow {
-  height: 50px;
-  width: 4px;
-  background: black;
-  position: absolute;
-  bottom: 70px;
-  left: 470px;
+  .arrow {
+    height: 50px;
+    width: 4px;
+    background: black;
+    position: absolute;
+    bottom: 70px;
+    left: 470px;
+  }
 }
 
 .anim {
-  animation: glisse 2.5s infinite alternate linear;
+  // animation: glisse 2.5s infinite alternate linear;
 }
 
-@keyframes glisse {
-  0% {
-    transform: rotate(-60deg) translateX(-90px);
-  }
-  100% {
-    transform: rotate(60deg) translateX(90px);
-  }
-}
+// @keyframes glisse {
+//   0% {
+//     transform: rotate(-60deg) translateX(-90px);
+//   }
+//   100% {
+//     transform: rotate(60deg) translateX(90px);
+//   }
+// }
 
 .score {
-  margin: 30px;
-  font-size: 26px;
+  font-size: 22px;
+  position: absolute;
+  top: 0px;
+  left: 10px;
 }
 
 // HOME.html
