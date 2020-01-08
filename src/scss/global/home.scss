@@ -1,4 +1,41 @@
 .backgroundHome {
+  position: absolute;
   width: 100vw;
   height: 100vh;
+}
+
+.characterPuke {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  bottom: 0;
+  left: 700px;
+}
+
+.blocktext {
+  margin-top: -50px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 70vh;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+
+  .blocktext__title {
+    width: 70%;
+    height: 30%;
+  }
+  .blocktext__buttonstart {
+    cursor: pointer;
+    margin-top: 3%;
+    width: 150px;
+    height: 40px;
+  }
+  .blocktext__buttonsettings {
+    cursor: pointer;
+    margin-top: 3%;
+    width: 200px;
+    height: 40px;
+  }
 }
