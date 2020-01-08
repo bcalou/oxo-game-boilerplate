@@ -102,3 +102,19 @@ function interaction() {
       });
     });
 }
+
+
+//return to menu flash button wip
+var flash = function () {
+  var returnmenu = document.getElementById('returnmenu');
+  returnmenu.style.opacity = "0.5"
+  };
+var flash1 = function () {
+  var returnmenu = document.getElementById('returnmenu');
+  returnmenu.style.opacity = "1"
+  };
+  setInterval(flash, 500);
+  setInterval(flash1, 1000);
+  //wip
+
+
