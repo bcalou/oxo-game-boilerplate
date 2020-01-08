@@ -8,4 +8,3 @@
 
 # Hugo borini
 
-## https://groupe-08-halo.netlify.com/
