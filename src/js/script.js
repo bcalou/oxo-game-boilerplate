@@ -158,7 +158,7 @@ function checkSwapeIsPossible() {
     let column = posKangoo[1];
 
     if (newGrid[row][column] === 5) {
-      setTimeout(gameOver, 1000);
+      gameOver();
     }
 
     return true;
@@ -186,6 +186,7 @@ function eraseKangooInGrid(row, column, grid) {
 
 function spaceSwitchScreens() {
   oxo.inputs.listenKey("space", function() {
+    if (gameIsOver) return;
     if (!checkSwapeIsPossible()) return;
     avant.classList.toggle("hidden-display");
     apres.classList.toggle("hidden-display");
@@ -344,7 +345,7 @@ function initGame() {
 
 function initControls(grid, element) {
   oxo.inputs.listenKeys(["up", "down", "left", "right"], function(key) {
-    moveKangoo(key, grid, element);
+    if (!gameIsOver) moveKangoo(key, grid, element);
   });
 }
 
@@ -357,7 +358,10 @@ oxo.screens.loadScreen("game", function() {
 });
 
 function gameOver() {
-  oxo.screens.loadScreen("gameover", function() {
-    console.log("Perdu");
-  });
+  gameIsOver = true;
+  setTimeout(() => {
+    oxo.screens.loadScreen("gameover", function() {
+      console.log("Perdu");
+    });
+  }, 1000);
 }

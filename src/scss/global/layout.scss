@@ -36,10 +36,9 @@ section {
 }
 
 .kangoo {
-  background-color: orangered;
-
-  width: 70px;
-  height: 70px;
+  background-image: url("../assets/img/kangooback.png");
+  background-size: 200%;
+  background-position: center;
 }
 
 .tree {
@@ -48,9 +47,8 @@ section {
 }
 
 .rock {
-  // background-image: url("../assets/img/rock.png");
-  // background-size: cover;
-  background-color: grey;
+  background-image: url("../assets/img/rock.png");
+  background-size: cover;
 }
 
 .tree-on-fire {
