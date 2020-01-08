@@ -37,29 +37,55 @@ let gridLvl1Ap = [
 ];
 
 let gridLvl2Av = [
-  [7, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-  [0, 0, 1, 1, 0, 1, 0, 1, 0, 0],
-  [0, 1, 1, 1, 1, 1, 2, 2, 0, 0],
-  [0, 1, 0, 0, 1, 0, 0, 0, 1, 0],
-  [0, 1, 0, 1, 0, 1, 1, 0, 1, 1],
-  [1, 1, 0, 1, 1, 1, 0, 0, 0, 0],
-  [1, 0, 0, 0, 0, 0, 1, 1, 1, 1],
-  [1, 1, 1, 0, 1, 0, 1, 8, 1, 0],
-  [1, 0, 0, 2, 2, 0, 1, 1, 1, 0],
-  [6, 0, 1, 1, 1, 2, 0, 0, 1, 0]
+  [0, 7, 1, 0, 0, 0, 0, 2, 0, 0],
+  [0, 0, 1, 1, 8, 1, 1, 0, 0, 0],
+  [2, 1, 1, 0, 2, 0, 0, 1, 2, 1],
+  [0, 1, 0, 2, 8, 0, 0, 1, 0, 0],
+  [0, 0, 1, 0, 1, 1, 0, 1, 0, 0],
+  [0, 1, 1, 1, 1, 0, 1, 0, 1, 0],
+  [1, 0, 0, 0, 2, 0, 2, 0, 0, 0],
+  [1, 0, 1, 0, 1, 0, 1, 1, 1, 1],
+  [0, 2, 0, 2, 0, 0, 1, 0, 0, 0],
+  [1, 8, 1, 1, 1, 6, 1, 0, 8, 0]
 ];
 
 let gridLvl2Ap = [
-  [7, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 3, 3, 0, 3, 0, 3, 0, 0],
-  [0, 3, 3, 3, 3, 3, 5, 5, 0, 0],
-  [0, 3, 0, 0, 0, 0, 0, 0, 3, 0],
-  [0, 3, 0, 3, 0, 3, 3, 0, 3, 3],
-  [3, 3, 0, 3, 3, 3, 0, 0, 0, 0],
-  [3, 0, 0, 0, 0, 0, 3, 0, 3, 3],
-  [3, 3, 3, 0, 3, 0, 3, 8, 3, 0],
-  [3, 0, 0, 5, 5, 0, 3, 3, 3, 0],
-  [6, 0, 3, 3, 3, 5, 0, 0, 3, 0]
+  [0, 7, 3, 0, 0, 0, 0, 5, 0, 0],
+  [0, 0, 3, 3, 8, 3, 3, 0, 0, 0],
+  [5, 3, 3, 0, 5, 0, 0, 3, 5, 3],
+  [0, 0, 0, 5, 8, 0, 0, 0, 0, 0],
+  [0, 0, 3, 0, 3, 3, 0, 3, 0, 0],
+  [0, 3, 3, 3, 3, 0, 3, 0, 3, 0],
+  [3, 0, 0, 0, 5, 0, 5, 0, 0, 0],
+  [3, 0, 0, 0, 3, 0, 3, 0, 3, 0],
+  [0, 5, 0, 5, 0, 0, 3, 0, 0, 0],
+  [3, 8, 3, 3, 3, 6, 3, 0, 8, 0]
+];
+
+let gridLvl3Av = [
+  [0, 7, 0, 0, 0, 1, 0, 1, 8, 0],
+  [0, 1, 1, 0, 8, 0, 1, 0, 1, 0],
+  [0, 8, 0, 1, 0, 1, 1, 0, 0, 0],
+  [2, 0, 1, 1, 0, 0, 0, 1, 0, 0],
+  [8, 2, 0, 1, 2, 0, 0, 1, 2, 1],
+  [1, 0, 1, 1, 0, 1, 2, 1, 0, 1],
+  [0, 2, 0, 0, 1, 0, 0, 1, 0, 0],
+  [1, 0, 1, 8, 0, 1, 1, 1, 1, 1],
+  [0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
+  [6, 0, 2, 0, 0, 0, 0, 1, 8, 0]
+];
+
+let gridLvl3Ap = [
+  [0, 7, 0, 0, 0, 3, 0, 3, 8, 0],
+  [0, 3, 3, 0, 8, 0, 3, 0, 3, 0],
+  [0, 8, 0, 3, 0, 3, 3, 0, 0, 0],
+  [5, 0, 3, 3, 0, 0, 0, 3, 0, 0],
+  [8, 5, 0, 3, 5, 0, 0, 1, 5, 1],
+  [3, 0, 1, 1, 0, 3, 5, 3, 0, 1],
+  [0, 5, 0, 0, 1, 0, 0, 3, 0, 0],
+  [3, 0, 3, 8, 0, 3, 3, 3, 3, 3],
+  [0, 0, 0, 3, 3, 0, 0, 0, 0, 0],
+  [6, 0, 5, 0, 0, 0, 0, 3, 8, 0]
 ];
 
 /////////////////////////////////////
@@ -72,13 +98,7 @@ function loadGrid(grid, element) {
     for (let column = 0; column < columns; column++) {
       element = cells[row * 10 + column];
       let classEl = getClass(grid[row][column]);
-      if (element.classList.contains("kangoo")) {
-        element.classList.remove("kangoo");
-      } else if (element.classList.contains("rock")) {
-        element.classList.remove("rock");
-      } else if (element.classList.contains("baby")) {
-        element.classList.remove("baby");
-      }
+      element.className = "";
       if (classEl) element.classList.add(classEl);
       element.classList.add("cell");
     }
@@ -213,6 +233,9 @@ function switchScreen() {
 function resetScreen() {
   if (getCurrentScreen() == "apres") {
     switchScreen();
+  } else {
+    switchScreen();
+    switchScreen();
   }
 }
 function getCurrentScreen() {
@@ -273,11 +296,12 @@ function checkNewValueInGrid(row, column, grid, direction) {
     return false;
   } else if (value == 7) {
     // END
-    if (playerHasAllBabies) levelCompleted();
+    if (playerHasAllBabies()) levelCompleted();
   } else if (value == 8) {
     // BABY
     deleteBaby(row, column);
     wonBaby();
+    console.log("KANGOO HAS SAVED A BABY");
     return true;
   } else if (value == 3) {
     // TREEONFIRE
@@ -300,7 +324,6 @@ function checkNewValueInGrid(row, column, grid, direction) {
 function moveKangoo(direction, grid, element) {
   let pos = fetchInGrid(grid, 6);
   let newPos = getNewPos(direction, pos);
-  console.log(newPos);
   if (pos[0] == newPos[0] && pos[1] == newPos[1]) {
     return; // OUT OF RANGE
   }
@@ -312,6 +335,12 @@ function moveKangoo(direction, grid, element) {
     grid[newRow][newColumn] = 6;
     grid[row][column] = 0;
     loadGrid(grid, element);
+    if (direction == "down") {
+      let screen = getCurrentScreen();
+      let element = screen == "avant" ? avant : apres;
+      let kangoo = element.querySelector(".kangoo");
+      kangoo.className = "kangoo--front";
+    }
   }
 }
 
@@ -331,7 +360,7 @@ function isEmpty(pos, grid) {
 }
 
 function moveRock(pos, direction, grid, element) {
-  console.log("Moving rock");
+  console.log("KANGOO MOVED A ROCK");
   let currPosRock = pos;
   let newPos = getNewPos(direction, currPosRock);
   if (isEmpty(newPos, grid)) {
@@ -356,26 +385,6 @@ function initControls(grid, element) {
   oxo.inputs.listenKeys(["up", "down", "left", "right"], function(key) {
     if (!gameIsOver) moveKangoo(key, grid, element);
   });
-}
-
-oxo.screens.loadScreen("game", function() {
-  let avant = document.getElementById("avant");
-  let apres = document.getElementById("apres");
-  loadLvl1();
-  initGame();
-  loadGameBg();
-
-  initControls(gridAv, avant);
-  spaceSwitchScreens();
-});
-
-function gameOver() {
-  gameIsOver = true;
-  setTimeout(() => {
-    oxo.screens.loadScreen("gameover", function() {
-      console.log("Perdu");
-    });
-  }, 1000);
 }
 
 // HUD
@@ -403,10 +412,13 @@ function loadLvl2() {
   displayLvlText(2);
   gridAv = gridLvl2Av;
   gridAp = gridLvl2Ap;
+  console.log(gridAv);
+  console.log(gridAp);
   let avant = document.getElementById("avant");
   loadGrid(gridAv, avant);
   resetScreen();
   resetBabies();
+  console.log("LEVEL 2 LOADED");
 }
 
 function loadLvl3() {
@@ -417,6 +429,7 @@ function loadLvl3() {
   loadGrid(gridAv, avant);
   resetScreen();
   resetBabies();
+  console.log("LEVEL 3 LOADED");
 }
 
 function levelCompleted() {
@@ -459,7 +472,7 @@ function wonBaby() {
 }
 
 function playerHasAllBabies() {
-  let babyInGrid = fetchInGrid(gridAv, 8) || fetchInGrid(gridAp, 8);
+  let babyInGrid = fetchInGrid(gridAv, 8);
   if (babyInGrid) {
     return false;
   } else {
@@ -477,3 +490,26 @@ function loadGameBg() {
     controls.classList.toggle("hidden-display");
   });
 }
+
+oxo.screens.loadScreen("game", function() {
+  let avant = document.getElementById("avant");
+  let apres = document.getElementById("apres");
+  loadLvl1();
+  console.log("LEVEL 1 LOADED");
+  initGame();
+  loadGameBg();
+
+  initControls(gridAv, avant);
+  spaceSwitchScreens();
+});
+
+function gameOver() {
+  gameIsOver = true;
+  setTimeout(() => {
+    oxo.screens.loadScreen("gameover", function() {
+      console.log("KANGOO FAILED");
+    });
+  }, 1000);
+}
+
+// oxo.screens.loadScreen("gameover", () => {});

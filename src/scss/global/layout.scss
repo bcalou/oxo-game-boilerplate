@@ -42,9 +42,17 @@ section {
 }
 
 .kangoo {
-  background-image: url("../assets/img/kangooback.png");
-  background-size: 150%;
+  background-image: url("../assets/img/kangooback.gif");
+  background-size: 50%;
   background-position: center;
+  background-repeat: no-repeat;
+}
+
+.kangoo--front {
+  background-image: url("../assets/img/kangoofront.gif");
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .tree {
@@ -181,4 +189,8 @@ section {
   bottom: 20px;
   left: 110px;
   z-index: 120;
+}
+
+.gameover--section {
+  background-image: url("../assets/img/gameover.gif");
 }
