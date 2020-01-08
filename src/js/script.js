@@ -130,6 +130,8 @@ var flash1 = function () {
   setInterval(flash1, 1000);
   //wip
 
+  oxo.inputs.listenKey('r', function() {
+    oxo.screens.loadScreen('end', function() {
+    });
+  });
   
-
-    
