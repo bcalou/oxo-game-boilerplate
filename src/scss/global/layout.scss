@@ -79,3 +79,32 @@ section {
 .baby {
   background-color: pink;
 }
+
+// Levels
+
+.level {
+  background-color: rgba(255, 255, 255, 0.829);
+  height: 50px;
+  display: inline-block;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: pixelEd;
+  font-size: 30px;
+  color: #695f4a;
+  position: absolute;
+  bottom: -100px;
+  left: 40%;
+  animation-name: goUp;
+  animation-timing-function: ease-in-out 5;
+  animation-iteration-count: inherit;
+  animation-delay: 0.3s;
+  animation-duration: 3s;
+}
+@keyframes goUp {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-500px);
+  }
+}

@@ -355,6 +355,10 @@ oxo.screens.loadScreen("game", function() {
   initGame();
   initControls(gridLvl1Av, avant);
   spaceSwitchScreens();
+  displayLvlText(1);
+  setTimeout(() => {
+    displayLvlText(2);
+  }, 5000);
 });
 
 function gameOver() {
@@ -364,4 +368,12 @@ function gameOver() {
       console.log("Perdu");
     });
   }, 1000);
+}
+
+// HUD
+function displayLvlText(string) {
+  const p = document.createElement("p");
+  document.body.appendChild(p);
+  p.classList.add("level");
+  p.innerHTML = "LEVEL " + string;
 }
