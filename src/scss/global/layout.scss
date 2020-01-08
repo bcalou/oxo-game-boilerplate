@@ -85,7 +85,17 @@ section {
 }
 
 .baby {
-  background-color: pink;
+  background-image: url("../assets/img/baby.png");
+  background-position: center;
+  background-size: 50%;
+  background-repeat: no-repeat;
+}
+
+.babyhead {
+  background-image: url("../assets/img/babyhead.png");
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 // Levels
@@ -107,6 +117,7 @@ section {
   animation-iteration-count: inherit;
   animation-delay: 0.3s;
   animation-duration: 3s;
+  z-index: 8000;
 }
 @keyframes goUp {
   0% {
@@ -119,7 +130,6 @@ section {
 
 .score {
   position: absolute;
-  background-color: black;
   left: 1090px;
   bottom: 100px;
   width: 5 * 50px;

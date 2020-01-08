@@ -13,3 +13,8 @@ function wonBaby() {
   baby.classList.add("baby");
   div.appendChild(baby);
 }
+
+function playerHasAllBabies() {
+  let babyInGrid = fetchInGrid("gridAv") || fetchInGrid("gridAp");
+  console.log(babyInGrid);
+}
