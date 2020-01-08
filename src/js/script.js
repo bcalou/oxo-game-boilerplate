@@ -169,6 +169,8 @@ function spaceSwitchScreens() {
   oxo.inputs.listenKey("space", function() {
     if (gameIsOver) return;
     if (!checkSwapeIsPossible()) return;
+    const gameBg = document.querySelector(".bg");
+    gameBg.classList.toggle("bg--ap");
     avant.classList.toggle("hidden-display");
     apres.classList.toggle("hidden-display");
     let currentGrid, element, oldGrid;
@@ -342,6 +344,7 @@ oxo.screens.loadScreen("game", function() {
   let apres = document.getElementById("apres");
   loadLvl1();
   initGame();
+  loadGameBg();
 
   initControls(gridAv, avant);
   spaceSwitchScreens();
@@ -386,4 +389,15 @@ function wonBaby() {
   baby.style.width = "50px";
   baby.style.height = "50px";
   div.appendChild(baby);
+}
+
+/* DECOR */
+function loadGameBg() {
+  const question = document.getElementById("question");
+  const story = document.getElementById("story");
+  const controls = document.getElementById("controls");
+
+  question.addEventListener("click", () => {
+    controls.classList.toggle("hidden-display");
+  });
 }

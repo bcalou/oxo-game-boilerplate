@@ -12,8 +12,9 @@ body {
 section {
   width: 700px;
   height: 700px;
-  margin: auto;
-  position: relative;
+  margin-left: 25%;
+  position: absolute;
+  z-index: 1000;
 }
 
 .avant {
@@ -123,5 +124,51 @@ section {
   bottom: 100px;
   width: 5 * 50px;
   height: 50px;
+  z-index: 200;
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  position: relative;
+  z-index: 10;
+}
+
+.bg--av {
+  background-image: url("../assets/img/forestbg.png");
+}
+
+.bg--ap {
+  background-image: url("../assets/img/forestfirebg.png");
+}
+
+.story,
+.controls {
+  width: 231px;
+  height: 510px;
   position: absolute;
+  z-index: 100;
+  left: 50px;
+  top: 5%;
+}
+
+.controls {
+  background-image: url("../assets/img/controls.png");
+}
+.story {
+  background-image: url("../assets/img/story.png");
+}
+
+.question {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background-image: url("../assets/img/question.png");
+  background-position: center;
+  background-size: cover;
+  bottom: 20px;
+  left: 110px;
+  z-index: 120;
 }
