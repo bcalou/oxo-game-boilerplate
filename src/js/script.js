@@ -53,6 +53,25 @@ function createtable(x, y) {
   });
 }
 
+function moveTable() {
+  setInterval(() => {
+    var tables = document.querySelectorAll(".table");
+    for (i = 0; i < tables.length; i++) {
+      console.log(i);
+      oxo.animation.move(tables[i], "left", 10, true);
+    }
+  }, 60);
+}
+
+// function move_obstacle() {
+//   setInterval(() => {
+//     var ennemy = document.querySelectorAll(".ennemy");
+//     for (let i = 0; i < ennemy.length; i++) {
+//       oxo.animation.move(ennemy[i], "left", move, true);
+//     }
+//   }, 10);
+// }
+
 // add 5 point score when beer touch table
 function addScorePoint() {
   oxo.player.addToScore(5);
@@ -60,15 +79,14 @@ function addScorePoint() {
 
 function game() {
   move();
-  createtable(100, 70);
-  createtable(100, 300);
-  createtable(100, 760);
-
-  arrowDegrees();
+  createtable(100, 500);
+  createtable(100, 1500);
+  createtable(100, 2000);
+  moveTable();
 }
 
-// oxo.inputs.listenKeyOnce("enter", function() {
-oxo.screens.loadScreen("game", function() {
-  game();
+oxo.inputs.listenKeyOnce("enter", function() {
+  oxo.screens.loadScreen("game", function() {
+    game();
+  });
 });
-// });
