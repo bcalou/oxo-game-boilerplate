@@ -1,36 +1,35 @@
-
 let orientation = 'right';
 let position;
 let stop = false;
 
 oxo.screens.loadScreen("home", function() {
-oxo.inputs.listenKey("enter", function() {
-oxo.screens.loadScreen("game", function() {
-  initWalls();
-  interaction();
-  var lastdirection = 0;
-  oxo.inputs.listenKeys(['up', 'down', 'right', 'left'], function(key) {
-    direction(key);
-    orientation = key;
+  oxo.inputs.listenKey("enter", function() {
+    oxo.screens.loadScreen("game", function() {
+      initWalls();
+      interaction();
+      var lastdirection = 0;
+      oxo.inputs.listenKeys(['up', 'down', 'right', 'left'], function(key) {
+        direction(key);
+        orientation = key;
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.keyCode === 32) {
+          stop = true;
+          let div = document.getElementById("character");
+          div.className = "antoine";
+        }
+      })
+      document.addEventListener('keyup', function(e) {
+        if (e.keyCode === 32) {
+          stop = false;
+          let div = document.getElementById("character");
+          div.className = "character" + orientation;
+        } 
+      })
+      setInterval(automove, 12);
+      position = oxo.animation.getPosition(character);
+    });
   });
-  document.addEventListener('keydown', function(e) {
-    if (e.keyCode === 32) {
-      stop = true;
-      let div = document.querySelector("div");
-      div.className = "character";
-    }
-  })
-  document.addEventListener('keyup', function(e) {
-    if (e.keyCode === 32) {
-      stop = false;
-      let div = document.querySelector("div");
-      div.className = "character" + orientation;
-    } 
-  })
-  setInterval(automove, 12);
-  position = oxo.animation.getPosition(character);
-});
-});
 });
 
 function initWalls() {
@@ -83,28 +82,16 @@ function initWalls() {
 }
 
 function direction(key) {
-  let div = document.querySelector("div");
-  div.className = "antoinecharacter" + key;
+  let div = document.getElementById("character");
+  div.className = "character" + key;
 }
 
 function automove() {
   if (stop) {
     return;
   }
-  let character = document.getElementById('character');
-
-  if (orientation === 'up') {
-    oxo.animation.setPosition(character, {x: position.x, y: position.y--}); 
-  }
-  if (orientation === 'down') {
-    oxo.animation.setPosition(character, {x: position.x, y: position.y++});
-  }
-  if (orientation === 'right') {
-    oxo.animation.setPosition(character, {x: position.x++, y: position.y});
-  }
-  if (orientation === 'left') {
-    oxo.animation.setPosition(character, {x: position.x--, y: position.y});
-  }
+  oxo.animation.move(character, orientation, 1);
+};
 
 function interaction() {
   var character = document.getElementById("character");
@@ -119,13 +106,13 @@ function interaction() {
   });
 
   oxo.elements.onCollisionWithElement(
-    character,
-    displaygrab,
-    function detect() {
-      if (character) console.log("cangrab");
-      oxo.inputs.listenKey("e", function test() {
-        oxo.inputs.cancelKeyListener("e");
-        console.log("test"); // WIP need to interact only in the collision div
-      });
+  character,
+  displaygrab,
+  function detect() {
+    console.log("cangrab");
+    oxo.inputs.listenKey("e", function test() {
+      oxo.inputs.cancelKeyListener("e");
+      console.log("test");
     });
-}
+  });
+};
