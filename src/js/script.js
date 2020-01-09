@@ -1,25 +1,39 @@
-let orientation = 'right';
+let orientation = "right";
 let position;
 let stop = false;
 
 oxo.screens.loadScreen("home", function() {
+  let settings = document.getElementById("btnSettings");
+  let popSettingInterface = document.getElementById("popUpsettings");
+
+  settings.addEventListener("click", function() {
+    popSettingInterface.classList.add("appear");
+  });
+
+  let enable = document.getElementById("pop__btnSound");
+
+  enable.addEventListener("click", function() {
+    console.log(enable);
+    enable.classList.toggle("remove");
+  });
   oxo.inputs.listenKey("enter", function() {
     oxo.screens.loadScreen("game", function() {
       playAudioback();
       initWalls();
       interaction();
       var lastdirection = 0;
-      oxo.inputs.listenKeys(['up', 'down', 'right', 'left'], function(key) {
+      oxo.inputs.listenKeys(["up", "down", "right", "left"], function(key) {
         direction(key);
         orientation = key;
       });
-      document.addEventListener('keydown', function(e) {
+      document.addEventListener("keydown", function(e) {
         if (e.keyCode === 32) {
           stop = true;
           let div = document.getElementById("character");
           div.className = "puke";
         }
       });
+
       document.addEventListener('keyup', function(e) {
         if (e.keyCode === 32) {
           stop = false;
@@ -94,7 +108,7 @@ function automove() {
   }
   playAudio();
   oxo.animation.move(character, orientation, 1);
-};
+}
 
 function interaction() {
   var character = document.getElementById("character");
@@ -109,16 +123,17 @@ function interaction() {
   });
 
   oxo.elements.onCollisionWithElement(
-  character,
-  displaygrab,
-  function detect() {
-    console.log("cangrab");
-    oxo.inputs.listenKey("e", function test() {
-      oxo.inputs.cancelKeyListener("e");
-      console.log("test");
-    });
- });
-};
+    character,
+    displaygrab,
+    function detect() {
+      console.log("cangrab");
+      oxo.inputs.listenKey("e", function test() {
+        oxo.inputs.cancelKeyListener("e");
+        console.log("test");
+      });
+    }
+  );
+}
 
 oxo.inputs.listenKey('r', function() {
   oxo.screens.loadScreen('end', function() {
@@ -152,3 +167,4 @@ function playAudioend() {
   backmusic.play();
   backmusic.volume = 0.1;
 };
+
