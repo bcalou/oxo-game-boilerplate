@@ -2,10 +2,10 @@ let orientation = "right";
 let position;
 let stop = true;
 let mission = false;
-let peeBar = 80;
+let peeBar = 100;
 let lives = 3;
 let audio = true;
-let alcool = 70;
+let alcool = 60;
 
 oxo.screens.loadScreen("home", function() {
   playAudiohome();
@@ -42,7 +42,7 @@ oxo.screens.loadScreen("home", function() {
       initWalls();
       interaction();
       var lastdirection = 0;
-      oxo.inputs.listenKeys(['up', 'down', 'right', 'left'], function(key) {
+      oxo.inputs.listenKeys(["up", "down", "right", "left"], function(key) {
         stop = false;
         direction(key);
         orientation = key;
@@ -202,8 +202,10 @@ function interaction() {
         if (peeBar < 100) {
           peeBar += 10;
           alcool -= 10;
-        } else document.querySelector(".life" + lives).classList.add("hiddenLife");
-        lives--;
+        } else {
+          document.querySelector(".life" + lives).classList.add("hiddenLife");
+          lives--;
+        }
         if (lives == 0) {
           alert("you dead bruh");
         }
@@ -262,7 +264,6 @@ function playAudioend() {
   var backmusic = document.getElementById("endmusic");
   backmusic.play();
   backmusic.volume = 0.1;
-
 }
 function pauseAudioend() {
   var backmusic = document.getElementById("endmusic");
