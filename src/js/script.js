@@ -3,8 +3,10 @@ let position;
 let stop = false;
 
 oxo.screens.loadScreen("home", function() {
+  playAudiohome();
   oxo.inputs.listenKey("enter", function() {
     oxo.screens.loadScreen("game", function() {
+      playAudioback();
       initWalls();
       interaction();
       var lastdirection = 0;
@@ -88,8 +90,10 @@ function direction(key) {
 
 function automove() {
   if (stop) {
+    pauseAudio();
     return;
   }
+  playAudio();
   oxo.animation.move(character, orientation, 1);
 };
 
@@ -117,8 +121,35 @@ function interaction() {
  });
 };
 
-  oxo.inputs.listenKey('r', function() {
-    oxo.screens.loadScreen('end', function() {
-    });
+oxo.inputs.listenKey('r', function() {
+  oxo.screens.loadScreen('end', function() {
+    playAudioend();
   });
-  
+});
+
+function playAudio() { 
+  var walking = document.getElementById("myAudio");
+  walking.play();
+};
+function pauseAudio() { 
+  var walking = document.getElementById("myAudio");
+  walking.pause();
+};
+
+function playAudioback() {
+  var backmusic = document.getElementById("backmusic");
+  backmusic.play();
+  backmusic.volume = 0.1;
+};
+
+function playAudiohome() {
+  var backmusic = document.getElementById("homemusic");
+  backmusic.play();
+  backmusic.volume = 0.1;
+};
+
+function playAudioend() {
+  var backmusic = document.getElementById("endmusic");
+  backmusic.play();
+  backmusic.volume = 0.1;
+};
