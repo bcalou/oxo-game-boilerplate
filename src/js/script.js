@@ -21,7 +21,6 @@ oxo.screens.loadScreen("home", function() {
     }
   });
 
-
   let enable = document.getElementById("pop__btnSound");
 
   enable.addEventListener("click", function() {
@@ -29,8 +28,7 @@ oxo.screens.loadScreen("home", function() {
     if (audio) {
       pauseAudiohome();
       audio = false;
-    }
-    else {
+    } else {
       playAudiohome();
       audio = true;
     }
@@ -38,13 +36,25 @@ oxo.screens.loadScreen("home", function() {
 
   let btn = document.getElementById("btnstart");
   btn.addEventListener("click", function() {
-
     oxo.screens.loadScreen("game", function() {
       playAudioback();
       initWalls();
       interaction();
+
+      let interfacePopToGear = document.getElementById("settingsMenu");
+      let gearclick = document.getElementById("btnsettings");
+      gearclick.addEventListener("click", function() {
+        interfacePopToGear.classList.add("call");
+      });
+
+      document.body.addEventListener("click", function(e) {
+        if (!e.target.classList.contains("btnsettings")) {
+          interfacePopToGear.classList.remove("call");
+        }
+      });
+
       var lastdirection = 0;
-      oxo.inputs.listenKeys(['up', 'down', 'right', 'left'], function(key) {
+      oxo.inputs.listenKeys(["up", "down", "right", "left"], function(key) {
         stop = false;
         direction(key);
         orientation = key;
@@ -258,7 +268,6 @@ function playAudioend() {
   var backmusic = document.getElementById("endmusic");
   backmusic.play();
   backmusic.volume = 0.1;
-
 }
 function pauseAudioend() {
   var backmusic = document.getElementById("endmusic");
