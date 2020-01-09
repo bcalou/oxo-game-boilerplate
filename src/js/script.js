@@ -2,9 +2,10 @@ let orientation = "right";
 let position;
 let stop = false;
 let mission = false;
-let peeBar = 100;
+let peeBar = 80;
 let lives = 3;
 let audio = true;
+let alcool = 70;
 
 oxo.screens.loadScreen("home", function() {
   playAudiohome();
@@ -21,7 +22,6 @@ oxo.screens.loadScreen("home", function() {
     }
   });
 
-
   let enable = document.getElementById("pop__btnSound");
 
   enable.addEventListener("click", function() {
@@ -29,8 +29,7 @@ oxo.screens.loadScreen("home", function() {
     if (audio) {
       pauseAudiohome();
       audio = false;
-    }
-    else {
+    } else {
       playAudiohome();
       audio = true;
     }
@@ -38,7 +37,6 @@ oxo.screens.loadScreen("home", function() {
 
   let btn = document.getElementById("btnstart");
   btn.addEventListener("click", function() {
-
     oxo.screens.loadScreen("game", function() {
       playAudioback();
       initWalls();
@@ -130,7 +128,7 @@ function automove() {
     return;
   }
   playAudio();
-  oxo.animation.move(character, orientation, 1);
+  oxo.animation.move(character, orientation, 2);
 }
 
 function interaction() {
@@ -186,7 +184,8 @@ function interaction() {
   oxo.elements.onCollisionWithElement(character, toiletAction, function() {
     oxo.inputs.listenKey("e", function test() {
       if (peeBar >= 90) {
-        peeBar = 30;
+        peeBar = 50;
+        alcool -= 10;
       }
       oxo.inputs.cancelKeyListener("e");
     });
@@ -198,6 +197,11 @@ function interaction() {
       oxo.inputs.listenKey("e", function test() {
         if (peeBar < 100) {
           peeBar += 10;
+          alcool -= 10;
+        } else document.querySelector(".life" + lives).classList.add("hiddenLife");
+        lives--;
+        if (lives == 0) {
+          alert("you dead bruh");
         }
         oxo.inputs.cancelKeyListener("e");
       });
@@ -208,7 +212,7 @@ function interaction() {
     bedAction,
     function testMission() {
       oxo.inputs.listenKey("e", function() {
-        if (peeBar <= 50) alert("You won!");
+        if (peeBar <= 50 || alcool <= 50) alert("You won!");
         oxo.inputs.cancelKeyListener("e");
       });
     }
@@ -259,3 +263,11 @@ function pauseAudioend() {
   var backmusic = document.getElementById("endmusic");
   backmusic.pause();
 }
+
+/*function looseLife() {
+  document.querySelector(".life" + lives).classList.add("hiddenLife");
+  lives--;
+  if (lives == 0) {
+    alert("you dead bruh");
+  }
+}*/
