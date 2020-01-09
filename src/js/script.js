@@ -1,3 +1,4 @@
+const speed = 1;
 let orientation = "right";
 let position;
 let stop = true;
@@ -65,16 +66,16 @@ oxo.screens.loadScreen("home", function() {
           stop = true;
           let div = document.getElementById("character");
           div.className = "puke";
-          while (stop) {
-            tenabilitybar();
-          }
+          let bar = document.getElementById("stab_bar");
+          bar.className = "stab_bar_little";
         }
       });
       document.addEventListener("keyup", function(e) {
         if (e.keyCode === 32) {
           stop = false;
-          let div = document.getElementById("character");
-          div.className = "character" + orientation;
+          direction(orientation);
+          let bar = document.getElementById("stab_bar");
+          bar.className = "stab_bar_big";
         }
       });
       setInterval(automove, 12);
@@ -145,7 +146,7 @@ function automove() {
     return;
   }
   playAudio();
-  oxo.animation.move(character, orientation, 2);
+  oxo.animation.move(character, orientation, speed);
 }
 
 function interaction() {
