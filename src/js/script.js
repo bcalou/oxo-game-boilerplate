@@ -227,6 +227,8 @@ function switchScreen() {
     initControls(currentGrid, element);
   }
   loadGrid(currentGrid, element);
+  const lifebar = document.getElementById("life");
+  decreaseLife(lifebar);
 }
 
 function resetScreen() {
@@ -335,7 +337,7 @@ function moveKangoo(direction, grid, element) {
     grid[row][column] = 0;
     loadGrid(grid, element);
     updateSpriteDirection(direction);
-    playAudio("jump");
+    // playAudio("jump");
   }
 }
 
@@ -383,12 +385,27 @@ function initControls(grid, element) {
   });
 }
 
-// HUD / INFOS LEVELS
+// HUD / INFOS LEVELS / LIFEBAR
 function displayLvlText(string) {
   const p = document.createElement("p");
   document.body.appendChild(p);
   p.classList.add("level");
   p.innerHTML = "LEVEL " + string;
+}
+
+function decreaseLife(lifebar) {
+  limit += 20;
+  if (limit == 220) {
+    lifebar.style.animation = "blink 0.1s infinite";
+  }
+  if (limit == 320) {
+    gameOver();
+  }
+  lifebar.style.transform = `translateY(${limit}px)`;
+  lifebar.classList.add("blink");
+  setTimeout(() => {
+    lifebar.classList.remove("blink");
+  }, 100);
 }
 
 // SPRITE KANGOO
@@ -433,6 +450,7 @@ let gameIsOver = false;
 let lvl1Comp = false;
 let lvl2Comp = false;
 let lvl3Comp = false;
+let limit = 0;
 
 function loadLvl1() {
   displayLvlText(1);
