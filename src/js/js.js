@@ -1,29 +1,85 @@
-function deleteBaby(row, column) {
-  gridAv[(row, column)] = 0;
-  gridAp[(row, column)] = 0;
-}
+// AUDIO
 
-function wonBaby() {
-  console.log("YOU WON A BABY KANGOO CONGRATS");
-}
+// let fireSound = new Audio("../assets/audio/fire.mp3");
+// let hitSound = new Audio("../assets/audio/hit.mp3");
+// let jump1Sound = new Audio("../assets/audio/jump1.mp3");
+// let jump2Sound = new Audio("../assets/audio/jump2.mp3");
+// let loseSound = new Audio("../assets/audio/lose.mp3");
+// let pickupSound = new Audio("../assets/audio/pickup.mp3");
+// let winSound = new Audio("../assets/audio/win.mp3");
 
-function wonBaby() {
-  let div = document.getElementById("score");
-  let baby = document.createElement("div");
-  baby.classList.add("baby");
-  div.appendChild(baby);
-}
+// function playAudio(str) {
+//   console.log("pute");
+//   switch (str) {
+//     case "fire":
+//       fireSound.play();
+//       break;
+//     case "hit":
+//       hitSound.play();
+//       break;
+//     case "jump":
+//       let random = oxo.utils.getRandomNumber(1, 2);
+//       if (random === 1) {
+//         jump1Sound.play();
+//       } else {
+//         jump2Sound.play();
+//       }
 
-function playerHasAllBabies() {
-  let babyInGrid = fetchInGrid("gridAv") || fetchInGrid("gridAp");
-  console.log(babyInGrid);
-}
+//       break;
+//     case "lose":
+//       loseSound.play();
+//       break;
+//     case "pickup":
+//       pickupSound.play();
+//       break;
+//     case "win":
+//       winSound.play();
+//       break;
 
-function updateSpriteDirection(element, direction) {
-  let kangoo =
-    element.querySelector(".kangoo") ||
-    element.querySelector(".kangoo--down") ||
-    element.querySelector(".kangoo--left") ||
-    element.querySelector(".kangoo--right");
-  console.log(kangoo);
+//     default:
+//       break;
+//   }
+// }
+
+// function playAudio(str) {
+//   switch (str) {
+//     case "fire":
+//       playSound("../assets/audio/fire.mp3");
+//       break;
+//     case "hit":
+//       hitSound.play();
+//       break;
+//     case "jump":
+//       let random = oxo.utils.getRandomNumber(1, 2);
+//       if (random === 1) {
+//         playSound("../assets/audio/jump-01.mp3");
+//       } else {
+//         playSound("../assets/audio/jump-02.mp3");
+//       }
+
+//       break;
+//     case "lose":
+//       loseSound.play();
+//       break;
+//     case "pickup":
+//       pickupSound.play();
+//       break;
+//     case "win":
+//       winSound.play();
+//       break;
+
+//     default:
+//       break;
+//   }
+// }
+
+function playSound(url) {
+  let audio = document.createElement("audio");
+  audio.style.display = "none";
+  audio.src = url;
+  audio.autoplay = true;
+  audio.onended = function() {
+    audio.remove(); //Remove when played.
+  };
+  document.body.appendChild(audio);
 }

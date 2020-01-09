@@ -22,6 +22,7 @@ let gridLvl1Av = [
   [1, 0, 0, 2, 2, 0, 1, 1, 1, 0],
   [6, 0, 0, 0, 0, 2, 0, 0, 1, 0]
 ];
+console.log("OUTPUT: gridLvl1Av", gridLvl1Av);
 
 let gridLvl1Ap = [
   [7, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -185,7 +186,6 @@ function checkSwapeIsPossible() {
 
     if (newGrid[row][column] === 2 || newGrid[row][column] === 1) {
       console.log("ROCK OR TREE ON THE SAME CELL CAN'T SWAP");
-      let value = newGrid[row][column];
       return false;
     }
     return true;
@@ -380,6 +380,7 @@ function initGame() {
 }
 
 function initControls(grid, element) {
+  console.log("run");
   oxo.inputs.listenKeys(["up", "down", "left", "right"], function(key) {
     if (!gameIsOver) moveKangoo(key, grid, element);
   });
@@ -462,8 +463,11 @@ function resetLifebar() {
 function loadLvl1() {
   displayLvlText(1);
   gridAv = gridLvl1Av;
+  console.log("OUTPUT: gridLvl1Av", gridLvl1Av);
   gridAp = gridLvl1Ap;
+  console.log(gridAv);
   resetLifebar();
+  console.log("LEVEL 1 LOADED");
 }
 
 function loadLvl2() {
@@ -495,7 +499,7 @@ function loadLvl3() {
 function levelCompleted() {
   if (lvl1Comp && lvl2Comp) {
     lvl3Comp = true;
-    // WIN SCREEN
+    oxo.screens.loadScreen("endgame", function() {});
   } else if (lvl1Comp) {
     lvl2Comp = true;
     loadLvl3();
@@ -551,110 +555,29 @@ function loadGameBg() {
   });
 }
 
-// AUDIO
-
-// let fireSound = new Audio("../assets/audio/fire.mp3");
-// let hitSound = new Audio("../assets/audio/hit.mp3");
-// let jump1Sound = new Audio("../assets/audio/jump1.mp3");
-// let jump2Sound = new Audio("../assets/audio/jump2.mp3");
-// let loseSound = new Audio("../assets/audio/lose.mp3");
-// let pickupSound = new Audio("../assets/audio/pickup.mp3");
-// let winSound = new Audio("../assets/audio/win.mp3");
-
-// function playAudio(str) {
-//   console.log("pute");
-//   switch (str) {
-//     case "fire":
-//       fireSound.play();
-//       break;
-//     case "hit":
-//       hitSound.play();
-//       break;
-//     case "jump":
-//       let random = oxo.utils.getRandomNumber(1, 2);
-//       if (random === 1) {
-//         jump1Sound.play();
-//       } else {
-//         jump2Sound.play();
-//       }
-
-//       break;
-//     case "lose":
-//       loseSound.play();
-//       break;
-//     case "pickup":
-//       pickupSound.play();
-//       break;
-//     case "win":
-//       winSound.play();
-//       break;
-
-//     default:
-//       break;
-//   }
-// }
-
-// function playAudio(str) {
-//   switch (str) {
-//     case "fire":
-//       playSound("../assets/audio/fire.mp3");
-//       break;
-//     case "hit":
-//       hitSound.play();
-//       break;
-//     case "jump":
-//       let random = oxo.utils.getRandomNumber(1, 2);
-//       if (random === 1) {
-//         playSound("../assets/audio/jump-01.mp3");
-//       } else {
-//         playSound("../assets/audio/jump-02.mp3");
-//       }
-
-//       break;
-//     case "lose":
-//       loseSound.play();
-//       break;
-//     case "pickup":
-//       pickupSound.play();
-//       break;
-//     case "win":
-//       winSound.play();
-//       break;
-
-//     default:
-//       break;
-//   }
-// }
-
-function playSound(url) {
-  let audio = document.createElement("audio");
-  audio.style.display = "none";
-  audio.src = url;
-  audio.autoplay = true;
-  audio.onended = function() {
-    audio.remove(); //Remove when played.
-  };
-  document.body.appendChild(audio);
-}
-
-oxo.screens.loadScreen("game", function() {
-  let avant = document.getElementById("avant");
-  let apres = document.getElementById("apres");
-  loadLvl1();
-  console.log("LEVEL 1 LOADED");
-  initGame();
-  loadGameBg();
-  initControls(gridAv, avant);
-  spaceSwitchScreens();
-});
-
 function gameOver() {
   gameIsOver = true;
   setTimeout(() => {
     oxo.screens.loadScreen("gameover", function() {
-      console.log("KANGOO FAILED");
+      oxo.inputs.listenKey("space", function(key) {
+        window.location.reload();
+      });
     });
   }, 1000);
 }
 
-// oxo.screens.loadScreen("gameover", () => {});
+// SCRIPT
+
+oxo.screens.loadScreen("home", function() {
+  oxo.inputs.listenKeyOnce("enter", function() {
+    oxo.screens.loadScreen("game", function() {
+      let avant = document.getElementById("avant");
+      let apres = document.getElementById("apres");
+      loadLvl1();
+      initGame();
+      loadGameBg();
+      initControls(gridAv, avant);
+      spaceSwitchScreens();
+    });
+  });
+});
