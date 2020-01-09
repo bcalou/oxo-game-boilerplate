@@ -13,14 +13,20 @@ oxo.screens.loadScreen("home", function() {
     popSettingInterface.classList.add("appear");
   });
 
+  document.body.addEventListener("click", function(e) {
+    if (!e.target.classList.contains("blocktext__buttonsettings")) {
+      popSettingInterface.classList.remove("appear");
+    }
+  });
+
   let enable = document.getElementById("pop__btnSound");
 
   enable.addEventListener("click", function() {
     console.log(enable);
     enable.classList.toggle("remove");
   });
-
-  oxo.inputs.listenKey("enter", function() {
+  let btn = document.getElementById("btnstart");
+  btn.addEventListener("click", function() {
     oxo.screens.loadScreen("game", function() {
       playAudioback();
       initWalls();
@@ -223,7 +229,6 @@ function playAudiohome() {
   backmusic.play();
   backmusic.volume = 0.1;
 }
-
 
 function playAudioend() {
   var backmusic = document.getElementById("endmusic");
