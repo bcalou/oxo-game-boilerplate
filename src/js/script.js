@@ -462,6 +462,7 @@ function resetLifebar() {
   console.log(limit);
   const lifebar = document.getElementById("life");
   lifebar.style.transform = `translateY(${limit}px)`;
+  if (lifebar.classList.contains("blink")) lifebar.style.animation = "";
 }
 
 function loadLvl1() {
