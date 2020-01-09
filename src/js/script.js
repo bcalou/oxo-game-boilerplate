@@ -1,6 +1,6 @@
 let orientation = 'right';
 let position;
-let stop = false;
+let stop = true;
 
 oxo.screens.loadScreen("home", function() {
   oxo.inputs.listenKey("enter", function() {
@@ -10,6 +10,7 @@ oxo.screens.loadScreen("home", function() {
       interaction();
       var lastdirection = 0;
       oxo.inputs.listenKeys(['up', 'down', 'right', 'left'], function(key) {
+        stop = false;
         direction(key);
         orientation = key;
       });
@@ -18,6 +19,9 @@ oxo.screens.loadScreen("home", function() {
           stop = true;
           let div = document.getElementById("character");
           div.className = "puke";
+          while (stop) {
+            tenabilitybar();
+          }
         }
       });
       document.addEventListener('keyup', function(e) {
@@ -151,4 +155,10 @@ function playAudioend() {
   var backmusic = document.getElementById("endmusic");
   backmusic.play();
   backmusic.volume = 0.1;
+};
+
+function tenabilitybar() {
+  setInterval(function () {
+    console.log('plop');
+  }, 50);
 };
