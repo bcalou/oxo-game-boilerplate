@@ -78,7 +78,7 @@ oxo.screens.loadScreen("home", function() {
           bar.className = "stab_bar_big";
         }
       });
-      setInterval(automove, 12);
+      setInterval(automove, 6);
       position = oxo.animation.getPosition(character);
     });
   });
