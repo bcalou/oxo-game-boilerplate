@@ -10,6 +10,21 @@
   position: absolute;
 }
 
+.lifeContainer {
+  display: flex;
+  flex-direction: row;
+  top: 20px;
+  position: absolute;
+  height: auto;
+  img {
+    width: 50px;
+  }
+}
+
+.hiddenLife {
+  visibility: hidden;
+}
+
 .antoine {
   background-image: url(../../src/assets/img/charStand.gif);
   width: 30px;
