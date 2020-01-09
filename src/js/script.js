@@ -5,13 +5,26 @@ let mission = false;
 let peeBar = 100;
 
 oxo.screens.loadScreen("home", function() {
+  let settings = document.getElementById("btnSettings");
+  let popSettingInterface = document.getElementById("popUpsettings");
+
+  settings.addEventListener("click", function() {
+    popSettingInterface.classList.add("appear");
+  });
+
+  let enable = document.getElementById("pop__btnSound");
+
+  enable.addEventListener("click", function() {
+    console.log(enable);
+    enable.classList.toggle("remove");
+  });
   oxo.inputs.listenKey("enter", function() {
     oxo.screens.loadScreen("game", function() {
+      playAudioback();
       initWalls();
       interaction();
       var lastdirection = 0;
       oxo.inputs.listenKeys(["up", "down", "right", "left"], function(key) {
-        stop = false;
         direction(key);
         orientation = key;
       });
@@ -19,10 +32,10 @@ oxo.screens.loadScreen("home", function() {
         if (e.keyCode === 32) {
           stop = true;
           let div = document.getElementById("character");
-          div.className = "antoine";
+          div.className = "puke";
         }
       });
-      document.addEventListener("keyup", function(e) {
+      document.addEventListener('keyup', function(e) {
         if (e.keyCode === 32) {
           stop = false;
           let div = document.getElementById("character");
@@ -93,8 +106,10 @@ function direction(key) {
 
 function automove() {
   if (stop) {
+    pauseAudio();
     return;
   }
+  playAudio();
   oxo.animation.move(character, orientation, 1);
 }
 
@@ -179,3 +194,36 @@ function interaction() {
     }
   );
 }
+
+oxo.inputs.listenKey('r', function() {
+  oxo.screens.loadScreen('end', function() {
+    playAudioend();
+  });
+});
+
+function playAudio() { 
+  var walking = document.getElementById("myAudio");
+  walking.play();
+};
+function pauseAudio() { 
+  var walking = document.getElementById("myAudio");
+  walking.pause();
+};
+
+function playAudioback() {
+  var backmusic = document.getElementById("backmusic");
+  backmusic.play();
+  backmusic.volume = 0.1;
+};
+
+function playAudiohome() {
+  var backmusic = document.getElementById("homemusic");
+  backmusic.play();
+  backmusic.volume = 0.1;
+};
+
+function playAudioend() {
+  var backmusic = document.getElementById("endmusic");
+  backmusic.play();
+  backmusic.volume = 0.1;
+};
