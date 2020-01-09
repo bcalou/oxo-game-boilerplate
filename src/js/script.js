@@ -3,7 +3,6 @@ let position;
 let stop = false;
 
 oxo.screens.loadScreen("home", function() {
-  playAudiohome();
   oxo.inputs.listenKey("enter", function() {
     oxo.screens.loadScreen("game", function() {
       playAudioback();
