@@ -5,6 +5,7 @@ let mission = false;
 let peeBar = 100;
 
 oxo.screens.loadScreen("home", function() {
+  playAudiohome();
   let settings = document.getElementById("btnSettings");
   let popSettingInterface = document.getElementById("popUpsettings");
 
@@ -18,6 +19,7 @@ oxo.screens.loadScreen("home", function() {
     console.log(enable);
     enable.classList.toggle("remove");
   });
+
   oxo.inputs.listenKey("enter", function() {
     oxo.screens.loadScreen("game", function() {
       playAudioback();
@@ -221,6 +223,7 @@ function playAudiohome() {
   backmusic.play();
   backmusic.volume = 0.1;
 }
+
 
 function playAudioend() {
   var backmusic = document.getElementById("endmusic");
