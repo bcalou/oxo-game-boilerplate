@@ -194,16 +194,19 @@ function interaction() {
       document.querySelector(".life" + lives).classList.add("hiddenLife");
       lives--;
       if (lives == 0) {
-        alert("you dead bruh");
+        alert("You woke up your parents, try again !");
       }
     });
   }
 
   oxo.elements.onCollisionWithElement(character, toiletAction, function() {
     oxo.inputs.listenKey("e", function test() {
-      if (peeBar >= 90) {
+      if (peeBar > 50) {
         peeBar = 50;
         alcool -= 10;
+        alert("You feel much better !");
+      } else {
+        alert("You don't feel the need to pee");
       }
       oxo.inputs.cancelKeyListener("e");
     });
@@ -216,12 +219,14 @@ function interaction() {
         if (peeBar < 100) {
           peeBar += 10;
           alcool -= 10;
+          alert("You drank some water");
         } else {
           document.querySelector(".life" + lives).classList.add("hiddenLife");
           lives--;
+          alert("You drank too much water and pissed yourself");
         }
         if (lives == 0) {
-          alert("you dead bruh");
+          alert("You woke up your parents, try again !");
         }
         oxo.inputs.cancelKeyListener("e");
       });
@@ -232,7 +237,8 @@ function interaction() {
     bedAction,
     function testMission() {
       oxo.inputs.listenKey("e", function() {
-        if (peeBar <= 50 || alcool <= 50) alert("You won!");
+        if (peeBar <= 50 || alcool <= 50) alert("You made it safely to bed !");
+        else alert("You're too drunk to sleep safely...");
         oxo.inputs.cancelKeyListener("e");
       });
     }
@@ -283,4 +289,3 @@ function pauseAudioend() {
   var backmusic = document.getElementById("endmusic");
   backmusic.pause();
 }
-
