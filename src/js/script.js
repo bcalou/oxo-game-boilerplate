@@ -1,6 +1,6 @@
 let orientation = "right";
 let position;
-let stop = true;
+let stop = false;
 let mission = false;
 let peeBar = 100;
 
@@ -35,7 +35,7 @@ oxo.screens.loadScreen("home", function() {
           div.className = "puke";
         }
       });
-      document.addEventListener('keyup', function(e) {
+      document.addEventListener("keyup", function(e) {
         if (e.keyCode === 32) {
           stop = false;
           let div = document.getElementById("character");
@@ -50,7 +50,7 @@ oxo.screens.loadScreen("home", function() {
 
 function setCharacterSpawn() {
   var character = document.getElementById("character");
-  oxo.animation.setPosition(character, { x: 175, y: 330 });
+  oxo.animation.setPosition(character, { x: 200, y: 330 });
 }
 
 function initWalls() {
@@ -195,35 +195,35 @@ function interaction() {
   );
 }
 
-oxo.inputs.listenKey('r', function() {
-  oxo.screens.loadScreen('end', function() {
+oxo.inputs.listenKey("r", function() {
+  oxo.screens.loadScreen("end", function() {
     playAudioend();
   });
 });
 
-function playAudio() { 
+function playAudio() {
   var walking = document.getElementById("myAudio");
   walking.play();
-};
-function pauseAudio() { 
+}
+function pauseAudio() {
   var walking = document.getElementById("myAudio");
   walking.pause();
-};
+}
 
 function playAudioback() {
   var backmusic = document.getElementById("backmusic");
   backmusic.play();
   backmusic.volume = 0.1;
-};
+}
 
 function playAudiohome() {
   var backmusic = document.getElementById("homemusic");
   backmusic.play();
   backmusic.volume = 0.1;
-};
+}
 
 function playAudioend() {
   var backmusic = document.getElementById("endmusic");
   backmusic.play();
   backmusic.volume = 0.1;
-};
+}
