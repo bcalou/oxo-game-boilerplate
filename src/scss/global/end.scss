@@ -14,10 +14,27 @@
   align-items: center;
 
   .block__credits {
-    height: 80vh;
+    height: 65vh;
+    width: 75vh;
+    margin-top: 100px;
   }
   .block__buttonreturn {
     cursor: pointer;
-    height: 10vh;
+    margin: 100px;
+    height: 7vh;
+    color:#f2f;
+    -webkit-animation: flash linear 1s infinite;
+    animation: flash linear 1s infinite;
   }
+}
+
+@-webkit-keyframes flash {
+  0% { opacity: 1; } 
+  50% { opacity: .1; } 
+  100% { opacity: 1; }
+}
+@keyframes flash {
+  0% { opacity: 1; } 
+  50% { opacity: .1; } 
+  100% { opacity: 1; }
 }
