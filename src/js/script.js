@@ -1,32 +1,48 @@
-let orientation = 'right';
+let orientation = "right";
 let position;
 let stop = false;
+let mission = false;
+let peeBar = 100;
 
 oxo.screens.loadScreen("home", function() {
   playAudiohome();
+  let settings = document.getElementById("btnSettings");
+  let popSettingInterface = document.getElementById("popUpsettings");
+
+  settings.addEventListener("click", function() {
+    popSettingInterface.classList.add("appear");
+  });
+
+  let enable = document.getElementById("pop__btnSound");
+
+  enable.addEventListener("click", function() {
+    console.log(enable);
+    enable.classList.toggle("remove");
+  });
+
   oxo.inputs.listenKey("enter", function() {
     oxo.screens.loadScreen("game", function() {
       playAudioback();
       initWalls();
       interaction();
       var lastdirection = 0;
-      oxo.inputs.listenKeys(['up', 'down', 'right', 'left'], function(key) {
+      oxo.inputs.listenKeys(["up", "down", "right", "left"], function(key) {
         direction(key);
         orientation = key;
       });
-      document.addEventListener('keydown', function(e) {
+      document.addEventListener("keydown", function(e) {
         if (e.keyCode === 32) {
           stop = true;
           let div = document.getElementById("character");
           div.className = "puke";
         }
       });
-      document.addEventListener('keyup', function(e) {
+      document.addEventListener("keyup", function(e) {
         if (e.keyCode === 32) {
           stop = false;
           let div = document.getElementById("character");
           div.className = "character" + orientation;
-        } 
+        }
       });
       setInterval(automove, 12);
       position = oxo.animation.getPosition(character);
@@ -34,10 +50,13 @@ oxo.screens.loadScreen("home", function() {
   });
 });
 
-function initWalls() {
+function setCharacterSpawn() {
   var character = document.getElementById("character");
-  oxo.animation.setPosition(character, { x: 175, y: 330 });
+  oxo.animation.setPosition(character, { x: 200, y: 330 });
+}
 
+function initWalls() {
+  setCharacterSpawn();
   let obstacles = [
     { x: 153, y: 0, width: 20, height: 700 },
     { x: 150, y: 735, width: 1200, height: 22 },
@@ -63,21 +82,20 @@ function initWalls() {
     { x: 170, y: 685, width: 51, height: 50 },
     { x: 830, y: 0, width: 510, height: 50 },
     { x: 180, y: 540, width: 51, height: 50 },
-    { x: 640, y: 580, width: 20, height: 50 },
-    { x: 610, y: 540, width: 20, height: 50 }
+    { x: 1320, y: 550, width: 100, height: 60 },
+    { x: 610, y: 540, width: 60, height: 80 }
   ];
 
   obstacles.forEach(function(obstacle) {
     oxo.elements.createElement({
       type: "div",
-      class: "hitbox boucled",
+      class: "hitbox",
       obstacle: true,
       styles: {
         position: "absolute",
         transform: "translate(" + obstacle.x + "px, " + obstacle.y + "px)",
         width: obstacle.width + "px",
-        height: obstacle.height + "px",
-        color: "red"
+        height: obstacle.height + "px"
       }
     });
   });
@@ -95,7 +113,7 @@ function automove() {
   }
   playAudio();
   oxo.animation.move(character, orientation, 1);
-};
+}
 
 function interaction() {
   var character = document.getElementById("character");
@@ -108,49 +126,107 @@ function interaction() {
     },
     appendTo: "body" // optional
   });
+  let bedAction = oxo.elements.createElement({
+    type: "div", // optional
+    class: "bedAction", // optional,
+    obstacle: false, // optional,
+    styles: {
+      //optional
+    },
+    appendTo: "body" // optional
+  });
+  let toiletAction = oxo.elements.createElement({
+    type: "div", // optional
+    class: "toiletAction", // optional,
+    obstacle: false, // optional,
+    styles: {
+      //optional
+    },
+    appendTo: "body" // optional
+  });
 
-  oxo.elements.onCollisionWithElement(
-  character,
-  displaygrab,
-  function detect() {
-    console.log("cangrab");
-    oxo.inputs.listenKey("e", function test() {
-      oxo.inputs.cancelKeyListener("e");
-      console.log("test");
+  for (let i = 1; i < 7; i++) {
+    let stool = oxo.elements.createElement({
+      type: "div", // optional
+      class: "stool" + i + "Action", // optional,
+      obstacle: false, // optional,
+      styles: {
+        //optional
+      },
+      appendTo: "body" // optional
     });
- });
-};
 
-oxo.inputs.listenKey('r', function() {
-  oxo.screens.loadScreen('end', function() {
+    oxo.elements.onCollisionWithElement(character, stool, function() {
+      console.log("stool");
+    });
+  }
+
+  oxo.elements.onCollisionWithElement(character, toiletAction, function() {
+    oxo.inputs.listenKey("e", function test() {
+      if (peeBar >= 90) {
+        peeBar = 30;
+      }
+      oxo.inputs.cancelKeyListener("e");
+    });
+  });
+  oxo.elements.onCollisionWithElement(
+    character,
+    displaygrab,
+    function detect() {
+      oxo.inputs.listenKey("e", function test() {
+        if (peeBar < 100) {
+          peeBar += 10;
+        }
+        oxo.inputs.cancelKeyListener("e");
+      });
+    }
+  );
+  oxo.elements.onCollisionWithElement(
+    character,
+    bedAction,
+    function testMission() {
+      oxo.inputs.listenKey("e", function() {
+        if (peeBar <= 50) {
+          alert("You won!");
+        } else {
+          alert("You're too drunk to sleep safely");
+        }
+        oxo.inputs.cancelKeyListener("e");
+      });
+    }
+  );
+}
+
+oxo.inputs.listenKey("r", function() {
+  oxo.screens.loadScreen("end", function() {
     playAudioend();
   });
 });
 
-function playAudio() { 
+function playAudio() {
   var walking = document.getElementById("myAudio");
   walking.play();
-};
-function pauseAudio() { 
+}
+function pauseAudio() {
   var walking = document.getElementById("myAudio");
   walking.pause();
-};
+}
 
 function playAudioback() {
   var backmusic = document.getElementById("backmusic");
   backmusic.play();
   backmusic.volume = 0.1;
-};
+}
 
 function playAudiohome() {
   var backmusic = document.getElementById("homemusic");
   backmusic.play();
   backmusic.volume = 0.1;
-};
+}
 
 
 function playAudioend() {
   var backmusic = document.getElementById("endmusic");
   backmusic.play();
   backmusic.volume = 0.1;
-};
+}
