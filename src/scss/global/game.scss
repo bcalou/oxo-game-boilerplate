@@ -1,5 +1,4 @@
-.test {
-  position: relative;
+.gameContainer {
   width: 100vw;
   height: 100vh;
   background-image: url(../../src/assets/img/platform.png);
@@ -10,7 +9,6 @@
   z-index: -2;
   position: absolute;
 }
- 
 
 .antoine {
   background-image: url(../../src/assets/img/charStand.gif);
@@ -55,19 +53,56 @@
 .displaygrab {
   width: 100px;
   height: 120px;
-  background-repeat: no-repeat;
   position: absolute;
   right: 395px;
-  top: 7px;
-
+  top: 20px;
+  background-color: green;
   opacity: 50%;
 }
 
 .fridge {
   position: absolute;
   right: 430px;
-  top: 27px;
+  top: 41px;
   height: 65px;
   width: 35px;
+  z-index: -1;
+}
+
+.toiletAction {
+  position: absolute;
+  top: 600px;
+  left: 1280px;
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  opacity: 50%;
+}
+
+.toilet {
+  position: absolute;
+  top: 630px;
+  left: 1320px;
+  z-index: -1;
+}
+
+.hitbox {
+  background-color: blue;
+}
+
+.bedAction {
+  position: absolute;
+  top: 590px;
+  left: 587px;
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  opacity: 50%;
+}
+
+.bed {
+  position: absolute;
+  top: 590px;
+  left: 612px;
   z-index: -1;
 }
