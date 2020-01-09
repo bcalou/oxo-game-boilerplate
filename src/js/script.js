@@ -452,10 +452,18 @@ let lvl2Comp = false;
 let lvl3Comp = false;
 let limit = 0;
 
+function resetLifebar() {
+  limit = 0;
+  console.log(limit);
+  const lifebar = document.getElementById("life");
+  lifebar.style.transform = `translateY(${limit}px)`;
+}
+
 function loadLvl1() {
   displayLvlText(1);
   gridAv = gridLvl1Av;
   gridAp = gridLvl1Ap;
+  resetLifebar();
 }
 
 function loadLvl2() {
@@ -468,6 +476,7 @@ function loadLvl2() {
   loadGrid(gridAv, avant);
   resetScreen();
   resetBabies();
+  resetLifebar();
   console.log("LEVEL 2 LOADED");
 }
 
@@ -479,6 +488,7 @@ function loadLvl3() {
   loadGrid(gridAv, avant);
   resetScreen();
   resetBabies();
+  resetLifebar();
   console.log("LEVEL 3 LOADED");
 }
 
