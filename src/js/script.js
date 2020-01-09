@@ -16,16 +16,16 @@ oxo.screens.loadScreen("home", function() {
         if (e.keyCode === 32) {
           stop = true;
           let div = document.getElementById("character");
-          div.className = "antoine";
+          div.className = "puke";
         }
-      })
+      });
       document.addEventListener('keyup', function(e) {
         if (e.keyCode === 32) {
           stop = false;
           let div = document.getElementById("character");
           div.className = "character" + orientation;
         } 
-      })
+      });
       setInterval(automove, 12);
       position = oxo.animation.getPosition(character);
     });
