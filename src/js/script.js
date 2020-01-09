@@ -644,7 +644,6 @@ oxo.screens.loadScreen("game", function() {
   console.log("LEVEL 1 LOADED");
   initGame();
   loadGameBg();
-
   initControls(gridAv, avant);
   spaceSwitchScreens();
 });
