@@ -435,8 +435,8 @@ let lvl3Comp = false;
 
 function loadLvl1() {
   displayLvlText(1);
-  gridAv = gridLvl3Av;
-  gridAp = gridLvl3Ap;
+  gridAv = gridLvl1Av;
+  gridAp = gridLvl1Ap;
 }
 
 function loadLvl2() {
