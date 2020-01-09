@@ -30,7 +30,7 @@
   .blocktext__start {
     cursor: pointer;
     margin-top: 3%;
-    width: 100px;
+    width: 120px;
     height: 40px;
   }
 
@@ -54,10 +54,10 @@
   .popUpsettings {
     position: absolute;
     opacity: 0;
-    top: 10%;
-    left: 35%;
-    width: 450px;
-    height: 600px;
+    top: 30%;
+    left: 30%;
+    width: 700px;
+    height: 400px;
     animation: opacity 1s ease;
     z-index: -1;
 
@@ -70,10 +70,11 @@
   .pop__btnSound {
     width: 50px;
     height: 50px;
-    margin-left: 10px;
+    margin-left: 20px;
+    padding-top: 20px;
 
     &.remove {
-      .pop_btnSound--enable {
+      .pop_btnSound--enabled {
         opacity: 0;
       }
       .pop_btnSound--disable {
@@ -81,7 +82,7 @@
       }
     }
 
-    .pop_btnSound--enable {
+    .pop_btnSound--enabled {
       opacity: 1;
       position: absolute;
       cursor: pointer;

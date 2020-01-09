@@ -4,8 +4,10 @@ let stop = false;
 let mission = false;
 let peeBar = 100;
 let lives = 3;
+let audio = true;
 
 oxo.screens.loadScreen("home", function() {
+  playAudiohome();
   let settings = document.getElementById("btnSettings");
   let popSettingInterface = document.getElementById("popUpsettings");
 
@@ -13,13 +15,30 @@ oxo.screens.loadScreen("home", function() {
     popSettingInterface.classList.add("appear");
   });
 
+  document.body.addEventListener("click", function(e) {
+    if (!e.target.classList.contains("blocktext__buttonsettings")) {
+      popSettingInterface.classList.remove("appear");
+    }
+  });
+
+
   let enable = document.getElementById("pop__btnSound");
 
   enable.addEventListener("click", function() {
-    console.log(enable);
     enable.classList.toggle("remove");
+    if (audio) {
+      pauseAudiohome();
+      audio = false;
+    }
+    else {
+      playAudiohome();
+      audio = true;
+    }
   });
-  oxo.inputs.listenKey("enter", function() {
+
+  let btn = document.getElementById("btnstart");
+  btn.addEventListener("click", function() {
+
     oxo.screens.loadScreen("game", function() {
       playAudioback();
       initWalls();
@@ -210,11 +229,14 @@ function pauseAudio() {
   var walking = document.getElementById("myAudio");
   walking.pause();
 }
-
 function playAudioback() {
   var backmusic = document.getElementById("backmusic");
   backmusic.play();
   backmusic.volume = 0.1;
+}
+function pauseAudioback() {
+  var backmusic = document.getElementById("backmusic");
+  backmusic.pause();
 }
 
 function playAudiohome() {
@@ -223,8 +245,17 @@ function playAudiohome() {
   backmusic.volume = 0.1;
 }
 
+function pauseAudiohome() {
+  var backmusic = document.getElementById("homemusic");
+  backmusic.pause();
+}
+
 function playAudioend() {
   var backmusic = document.getElementById("endmusic");
   backmusic.play();
   backmusic.volume = 0.1;
+}
+function pauseAudioend() {
+  var backmusic = document.getElementById("endmusic");
+  backmusic.pause();
 }
