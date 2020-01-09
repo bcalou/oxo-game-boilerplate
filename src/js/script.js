@@ -41,6 +41,19 @@ oxo.screens.loadScreen("home", function() {
       playAudioback();
       initWalls();
       interaction();
+
+      let interfacePopToGear = document.getElementById("settingsMenu");
+      let gearclick = document.getElementById("btnsettings");
+      gearclick.addEventListener("click", function() {
+        interfacePopToGear.classList.add("call");
+      });
+
+      document.body.addEventListener("click", function(e) {
+        if (!e.target.classList.contains("btnsettings")) {
+          interfacePopToGear.classList.remove("call");
+        }
+      });
+
       var lastdirection = 0;
       oxo.inputs.listenKeys(["up", "down", "right", "left"], function(key) {
         stop = false;
@@ -270,10 +283,3 @@ function pauseAudioend() {
   backmusic.pause();
 }
 
-/*function looseLife() {
-  document.querySelector(".life" + lives).classList.add("hiddenLife");
-  lives--;
-  if (lives == 0) {
-    alert("you dead bruh");
-  }
-}*/
