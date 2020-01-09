@@ -74,7 +74,7 @@ function initWalls() {
   obstacles.forEach(function(obstacle) {
     oxo.elements.createElement({
       type: "div",
-      class: "hitbox boucled",
+      class: "hitbox",
       obstacle: true,
       styles: {
         position: "absolute",
@@ -128,10 +128,25 @@ function interaction() {
     appendTo: "body" // optional
   });
 
+  for (let i = 1; i < 7; i++) {
+    let stool = oxo.elements.createElement({
+      type: "div", // optional
+      class: "stool" + i + "Action", // optional,
+      obstacle: false, // optional,
+      styles: {
+        //optional
+      },
+      appendTo: "body" // optional
+    });
+
+    oxo.elements.onCollisionWithElement(character, stool, function() {
+      console.log("stool");
+    });
+  }
+
   oxo.elements.onCollisionWithElement(character, toiletAction, function() {
     oxo.inputs.listenKey("e", function test() {
       if (peeBar >= 90) {
-        alert("bon pipi!:" + peeBar);
         peeBar = 30;
       }
       oxo.inputs.cancelKeyListener("e");
@@ -141,13 +156,10 @@ function interaction() {
     character,
     displaygrab,
     function detect() {
-      //console.log("cangrab");
       oxo.inputs.listenKey("e", function test() {
         if (peeBar < 100) {
           peeBar += 10;
         }
-        alert("slurp" + peeBar);
-        //console.log(mission);
         oxo.inputs.cancelKeyListener("e");
       });
     }
