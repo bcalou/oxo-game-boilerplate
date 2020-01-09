@@ -539,6 +539,7 @@ function wonBaby() {
   baby.style.width = "50px";
   baby.style.height = "50px";
   div.appendChild(baby);
+  playAudio("pickup");
 }
 
 function playerHasAllBabies() {
@@ -605,7 +606,7 @@ function playAudio(str) {
       winSound.play();
       break;
     case "switch":
-      if (random === 1) {
+      if (getCurrentScreen() === "apres") {
         switch1Sound.play();
       } else {
         switch2Sound.play();
