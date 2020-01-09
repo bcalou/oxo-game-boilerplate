@@ -3,6 +3,7 @@ let position;
 let stop = false;
 
 oxo.screens.loadScreen("home", function() {
+  playAudiohome();
   oxo.inputs.listenKey("enter", function() {
     oxo.screens.loadScreen("game", function() {
       playAudioback();
@@ -146,6 +147,7 @@ function playAudiohome() {
   backmusic.play();
   backmusic.volume = 0.1;
 };
+
 
 function playAudioend() {
   var backmusic = document.getElementById("endmusic");
