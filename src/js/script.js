@@ -1,6 +1,6 @@
 let orientation = "right";
 let position;
-let stop = false;
+let stop = true;
 let mission = false;
 let peeBar = 80;
 let lives = 3;
@@ -42,7 +42,8 @@ oxo.screens.loadScreen("home", function() {
       initWalls();
       interaction();
       var lastdirection = 0;
-      oxo.inputs.listenKeys(["up", "down", "right", "left"], function(key) {
+      oxo.inputs.listenKeys(['up', 'down', 'right', 'left'], function(key) {
+        stop = false;
         direction(key);
         orientation = key;
       });
@@ -51,6 +52,9 @@ oxo.screens.loadScreen("home", function() {
           stop = true;
           let div = document.getElementById("character");
           div.className = "puke";
+          while (stop) {
+            tenabilitybar();
+          }
         }
       });
       document.addEventListener("keyup", function(e) {
@@ -258,6 +262,7 @@ function playAudioend() {
   var backmusic = document.getElementById("endmusic");
   backmusic.play();
   backmusic.volume = 0.1;
+
 }
 function pauseAudioend() {
   var backmusic = document.getElementById("endmusic");
