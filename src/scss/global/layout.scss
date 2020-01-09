@@ -42,14 +42,28 @@ section {
 }
 
 .kangoo {
-  background-image: url("../assets/img/kangooback.gif");
+  background-image: url("../assets/img/kangoo-up.gif");
   background-size: 50%;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.kangoo--front {
-  background-image: url("../assets/img/kangoofront.gif");
+.kangoo--down {
+  background-image: url("../assets/img/kangoo-down.gif");
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.kangoo--right {
+  background-image: url("../assets/img/kangoo-right.gif");
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.kangoo--left {
+  background-image: url("../assets/img/kangoo-left.gif");
   background-size: 50%;
   background-position: center;
   background-repeat: no-repeat;
@@ -138,9 +152,10 @@ section {
 
 .score {
   position: absolute;
+  display: flex;
   left: 1090px;
   bottom: 100px;
-  width: 5 * 50px;
+  width: 8 * 50px;
   height: 50px;
   z-index: 200;
 }

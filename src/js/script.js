@@ -37,7 +37,7 @@ let gridLvl1Ap = [
 ];
 
 let gridLvl2Av = [
-  [0, 7, 1, 0, 0, 0, 0, 2, 0, 0],
+  [0, 7, 1, 0, 0, 0, 2, 0, 0, 0],
   [0, 0, 1, 1, 8, 1, 1, 0, 0, 0],
   [2, 1, 1, 0, 2, 0, 0, 1, 2, 1],
   [0, 1, 0, 2, 8, 0, 0, 1, 0, 0],
@@ -50,7 +50,7 @@ let gridLvl2Av = [
 ];
 
 let gridLvl2Ap = [
-  [0, 7, 3, 0, 0, 0, 0, 5, 0, 0],
+  [0, 7, 3, 0, 0, 0, 5, 0, 0, 0],
   [0, 0, 3, 3, 8, 3, 3, 0, 0, 0],
   [5, 3, 3, 0, 5, 0, 0, 3, 5, 3],
   [0, 0, 0, 5, 8, 0, 0, 0, 0, 0],
@@ -63,29 +63,29 @@ let gridLvl2Ap = [
 ];
 
 let gridLvl3Av = [
-  [0, 7, 0, 0, 0, 1, 0, 1, 8, 0],
-  [0, 1, 1, 0, 8, 0, 1, 0, 1, 0],
-  [0, 8, 0, 1, 0, 1, 1, 0, 0, 0],
-  [2, 0, 1, 1, 0, 0, 0, 1, 0, 0],
-  [8, 2, 0, 1, 2, 0, 0, 1, 2, 1],
-  [1, 0, 1, 1, 0, 1, 2, 1, 0, 1],
-  [0, 2, 0, 0, 1, 0, 0, 1, 0, 0],
-  [1, 0, 1, 8, 0, 1, 1, 1, 1, 1],
-  [0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
-  [6, 0, 2, 0, 0, 0, 0, 1, 8, 0]
+  [0, 1, 7, 0, 0, 1, 1, 1, 8, 0],
+  [0, 8, 1, 0, 8, 0, 1, 0, 1, 0],
+  [0, 1, 1, 1, 0, 1, 0, 1, 0, 0],
+  [2, 0, 1, 8, 2, 8, 2, 1, 0, 0],
+  [0, 2, 0, 1, 0, 1, 8, 1, 2, 1],
+  [1, 0, 1, 1, 0, 1, 0, 1, 0, 1],
+  [0, 2, 0, 0, 1, 0, 2, 8, 1, 0],
+  [1, 0, 1, 8, 2, 0, 2, 1, 1, 1],
+  [0, 0, 0, 1, 1, 2, 0, 1, 1, 1],
+  [6, 0, 2, 0, 0, 0, 0, 0, 1, 1]
 ];
 
 let gridLvl3Ap = [
-  [0, 7, 0, 0, 0, 3, 0, 3, 8, 0],
-  [0, 3, 3, 0, 8, 0, 3, 0, 3, 0],
-  [0, 8, 0, 3, 0, 3, 3, 0, 0, 0],
-  [5, 0, 3, 3, 0, 0, 0, 3, 0, 0],
-  [8, 5, 0, 3, 5, 0, 0, 1, 5, 1],
-  [3, 0, 1, 1, 0, 3, 5, 3, 0, 1],
-  [0, 5, 0, 0, 1, 0, 0, 3, 0, 0],
-  [3, 0, 3, 8, 0, 3, 3, 3, 3, 3],
-  [0, 0, 0, 3, 3, 0, 0, 0, 0, 0],
-  [6, 0, 5, 0, 0, 0, 0, 3, 8, 0]
+  [0, 3, 7, 0, 0, 3, 3, 3, 8, 0],
+  [0, 8, 3, 0, 8, 0, 3, 0, 3, 0],
+  [0, 3, 3, 3, 0, 3, 0, 0, 0, 0],
+  [5, 0, 3, 8, 5, 8, 5, 3, 0, 0],
+  [0, 5, 0, 0, 0, 3, 8, 3, 5, 0],
+  [3, 0, 3, 3, 0, 3, 0, 3, 0, 3],
+  [0, 5, 0, 0, 0, 0, 5, 8, 0, 0],
+  [3, 0, 3, 8, 5, 0, 5, 3, 3, 0],
+  [0, 0, 0, 3, 3, 5, 0, 0, 0, 0],
+  [6, 0, 5, 0, 0, 0, 0, 0, 3, 3]
 ];
 
 /////////////////////////////////////
@@ -184,8 +184,7 @@ function checkSwapeIsPossible() {
     let column = posKangoo[1];
 
     if (newGrid[row][column] === 2 || newGrid[row][column] === 1) {
-      // ROCK or TREE ==> CANT SWAP
-      console.log("Rock or Tree on the way can't swap");
+      console.log("ROCK OR TREE ON THE SAME CELL CAN'T SWAP");
       let value = newGrid[row][column];
       return false;
     }
@@ -335,12 +334,7 @@ function moveKangoo(direction, grid, element) {
     grid[newRow][newColumn] = 6;
     grid[row][column] = 0;
     loadGrid(grid, element);
-    if (direction == "down") {
-      let screen = getCurrentScreen();
-      let element = screen == "avant" ? avant : apres;
-      let kangoo = element.querySelector(".kangoo");
-      kangoo.className = "kangoo--front";
-    }
+    updateSpriteDirection(direction);
   }
 }
 
@@ -371,6 +365,7 @@ function moveRock(pos, direction, grid, element) {
     grid[newRow][newColumn] = 2;
     grid[row][column] = 0;
     loadGrid(grid, element);
+    updateSpriteDirection(direction);
   }
 }
 
@@ -387,12 +382,48 @@ function initControls(grid, element) {
   });
 }
 
-// HUD
+// HUD / INFOS LEVELS
 function displayLvlText(string) {
   const p = document.createElement("p");
   document.body.appendChild(p);
   p.classList.add("level");
   p.innerHTML = "LEVEL " + string;
+}
+
+// SPRITE KANGOO
+function updateSpriteDirection(direction) {
+  let screen = getCurrentScreen();
+  let element = screen == "avant" ? avant : apres;
+  let kangoo =
+    element.querySelector(".kangoo") ||
+    element.querySelector(".kangoo--down") ||
+    element.querySelector(".kangoo--left") ||
+    element.querySelector(".kangoo--right");
+  let spriteClass;
+  switch (direction) {
+    case "up":
+      spriteClass = "kangoo";
+      break;
+    case "down":
+      spriteClass = "kangoo--down";
+
+      break;
+    case "left":
+      spriteClass = "kangoo--left";
+
+      break;
+    case "right":
+      spriteClass = "kangoo--right";
+
+      break;
+    default:
+      break;
+  }
+  kangoo.classList = spriteClass;
+}
+
+function swipeSpriteKangoo(currElement, currElement) {
+  currPos;
 }
 
 // LEVELS
@@ -404,8 +435,8 @@ let lvl3Comp = false;
 
 function loadLvl1() {
   displayLvlText(1);
-  gridAv = gridLvl1Av;
-  gridAp = gridLvl1Ap;
+  gridAv = gridLvl3Av;
+  gridAp = gridLvl3Ap;
 }
 
 function loadLvl2() {

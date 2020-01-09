@@ -18,3 +18,12 @@ function playerHasAllBabies() {
   let babyInGrid = fetchInGrid("gridAv") || fetchInGrid("gridAp");
   console.log(babyInGrid);
 }
+
+function updateSpriteDirection(element, direction) {
+  let kangoo =
+    element.querySelector(".kangoo") ||
+    element.querySelector(".kangoo--down") ||
+    element.querySelector(".kangoo--left") ||
+    element.querySelector(".kangoo--right");
+  console.log(kangoo);
+}
