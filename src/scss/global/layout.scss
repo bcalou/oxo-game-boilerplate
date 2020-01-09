@@ -99,7 +99,10 @@ section {
 }
 
 .end {
-  background-color: rgb(255, 0, 212);
+  background-image: url("../assets/img/finish.png");
+  background-size: 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
 }
 
 .start {

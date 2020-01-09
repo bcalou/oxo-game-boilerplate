@@ -41,37 +41,37 @@
 //   }
 // }
 
-// function playAudio(str) {
-//   switch (str) {
-//     case "fire":
-//       playSound("../assets/audio/fire.mp3");
-//       break;
-//     case "hit":
-//       hitSound.play();
-//       break;
-//     case "jump":
-//       let random = oxo.utils.getRandomNumber(1, 2);
-//       if (random === 1) {
-//         playSound("../assets/audio/jump-01.mp3");
-//       } else {
-//         playSound("../assets/audio/jump-02.mp3");
-//       }
+function playAudio(str) {
+  switch (str) {
+    case "fire":
+      playSound("../assets/audio/fire.mp3");
+      break;
+    case "hit":
+      hitSound.play();
+      break;
+    case "jump":
+      let random = oxo.utils.getRandomNumber(1, 2);
+      if (random === 1) {
+        playSound("../assets/audio/jump-01.mp3");
+      } else {
+        playSound("../assets/audio/jump-02.mp3");
+      }
 
-//       break;
-//     case "lose":
-//       loseSound.play();
-//       break;
-//     case "pickup":
-//       pickupSound.play();
-//       break;
-//     case "win":
-//       winSound.play();
-//       break;
+      break;
+    case "lose":
+      loseSound.play();
+      break;
+    case "pickup":
+      pickupSound.play();
+      break;
+    case "win":
+      winSound.play();
+      break;
 
-//     default:
-//       break;
-//   }
-// }
+    default:
+      break;
+  }
+}
 
 function playSound(url) {
   let audio = document.createElement("audio");
@@ -82,4 +82,16 @@ function playSound(url) {
     audio.remove(); //Remove when played.
   };
   document.body.appendChild(audio);
+}
+
+function loadGameScreen() {
+  oxo.screens.loadScreen("game", function() {
+    let avant = document.getElementById("avant");
+    let apres = document.getElementById("apres");
+    loadLvl1();
+    initGame();
+    loadGameBg();
+    initControls(gridAv, avant);
+    spaceSwitchScreens();
+  });
 }

@@ -173,6 +173,7 @@ function checkSwapeIsPossible() {
 
     if (newGrid[row][column] === 5) {
       gameOver();
+      playAudio("fire");
     }
 
     return true;
@@ -229,6 +230,7 @@ function switchScreen() {
   loadGrid(currentGrid, element);
   const lifebar = document.getElementById("life");
   decreaseLife(lifebar);
+  playAudio("switch");
 }
 
 function resetScreen() {
@@ -329,6 +331,7 @@ function moveKangoo(direction, grid, element) {
     return; // OUT OF RANGE
   }
   if (checkNewValueInGrid(newPos[0], newPos[1], grid, direction)) {
+    playAudio("jump");
     let newRow = newPos[0];
     let newColumn = newPos[1];
     let row = pos[0];
@@ -369,6 +372,7 @@ function moveRock(pos, direction, grid, element) {
     grid[row][column] = 0;
     loadGrid(grid, element);
     updateSpriteDirection(direction);
+    playAudio("hit");
   }
 }
 
@@ -499,7 +503,9 @@ function loadLvl3() {
 function levelCompleted() {
   if (lvl1Comp && lvl2Comp) {
     lvl3Comp = true;
-    oxo.screens.loadScreen("endgame", function() {});
+    oxo.screens.loadScreen("endgame", function() {
+      playAudio("win");
+    });
   } else if (lvl1Comp) {
     lvl2Comp = true;
     loadLvl3();
@@ -544,6 +550,73 @@ function playerHasAllBabies() {
   }
 }
 
+// AUDIO
+
+let fireSound = new Audio();
+fireSound.src = require("../assets/audio/fire.mp3");
+
+let hitSound = new Audio();
+hitSound.src = require("../assets/audio/hit.mp3");
+
+let jump1Sound = new Audio();
+jump1Sound.src = require("../assets/audio/jump-01.mp3");
+
+let jump2Sound = new Audio();
+jump2Sound.src = require("../assets/audio/jump-02.mp3");
+
+let loseSound = new Audio();
+loseSound.src = require("../assets/audio/lose.mp3");
+
+let pickupSound = new Audio();
+pickupSound.src = require("../assets/audio/pickup.mp3");
+
+let winSound = new Audio();
+winSound.src = require("../assets/audio/win.mp3");
+
+let switch1Sound = new Audio();
+switch1Sound.src = require("../assets/audio/switch-01.mp3");
+
+let switch2Sound = new Audio();
+switch2Sound.src = require("../assets/audio/switch-02.mp3");
+
+function playAudio(str) {
+  let random = oxo.utils.getRandomNumber(1, 2);
+  switch (str) {
+    case "fire":
+      fireSound.play();
+      break;
+    case "hit":
+      hitSound.play();
+      break;
+    case "jump":
+      if (random === 1) {
+        jump1Sound.play();
+      } else {
+        jump2Sound.play();
+      }
+      break;
+    case "lose":
+      loseSound.play();
+      break;
+    case "pickup":
+      pickupSound.play();
+      break;
+    case "win":
+      winSound.play();
+      break;
+    case "switch":
+      if (random === 1) {
+        switch1Sound.play();
+      } else {
+        switch2Sound.play();
+      }
+      break;
+
+    default:
+      break;
+  }
+}
+
 // DECOR
 function loadGameBg() {
   const question = document.getElementById("question");
@@ -559,6 +632,7 @@ function gameOver() {
   gameIsOver = true;
   setTimeout(() => {
     oxo.screens.loadScreen("gameover", function() {
+      playAudio("lose");
       oxo.inputs.listenKey("space", function(key) {
         window.location.reload();
       });
