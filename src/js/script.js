@@ -3,6 +3,7 @@ let position;
 let stop = false;
 let mission = false;
 let peeBar = 100;
+let lives = 3;
 let audio = true;
 
 oxo.screens.loadScreen("home", function() {
@@ -174,7 +175,11 @@ function interaction() {
     });
 
     oxo.elements.onCollisionWithElement(character, stool, function() {
-      console.log("stool");
+      document.querySelector(".life" + lives).classList.add("hiddenLife");
+      lives--;
+      if (lives == 0) {
+        alert("you dead bruh");
+      }
     });
   }
 
@@ -203,11 +208,7 @@ function interaction() {
     bedAction,
     function testMission() {
       oxo.inputs.listenKey("e", function() {
-        if (peeBar <= 50) {
-          alert("You won!");
-        } else {
-          alert("You're too drunk to sleep safely");
-        }
+        if (peeBar <= 50) alert("You won!");
         oxo.inputs.cancelKeyListener("e");
       });
     }
