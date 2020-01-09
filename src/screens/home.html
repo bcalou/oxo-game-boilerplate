@@ -8,7 +8,7 @@
   </head>
   <body>
     <audio loop id="homemusic">
-      <source src="../assets/sounds/homemusic.mp3" type="audio/mp3">
+      <source src="../assets/sounds/homemusic.mp3" type="audio/mp3" />
     </audio>
     <div>
       <img
@@ -24,16 +24,44 @@
         alt="After the After"
       />
       <img
-        class="blocktext__buttonstart"
+        class="blocktext__start"
+        id="btnstart"
         src="../assets/img/buttonStart.png"
         alt="start"
       />
       <img
         class="blocktext__buttonsettings"
+        id="btnSettings"
         src="../assets/img/buttonSettings.png"
         alt="Settings"
       />
     </div>
-    <img class="characterPuke" src="../assets/img/characterpukebig.gif" alt="" />
+    <div class="pop">
+      <img
+        class="popUpsettings"
+        id="popUpsettings"
+        src="../assets/img/interfaceCommand.png"
+        alt="Settings"
+      />
+      <div class="pop__btnSound" id="pop__btnSound">
+        <img
+          class="pop_btnSound--enabled"
+          id="enable"
+          src="../assets/img/audiobtnEnable.png"
+          alt=""
+        />
+        <img
+          class="pop_btnSound--disable"
+          id="disable"
+          src="../assets/img/audiobtnDisable.png"
+          alt=""
+        />
+      </div>
+    </div>
+    <img
+      class="characterPuke"
+      src="../assets/img/characterpukebig.gif"
+      alt=""
+    />
   </body>
 </html>

@@ -13,29 +13,90 @@
 }
 
 .blocktext {
-  margin-top: -50px;
+  top: 0;
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 70vh;
-  position: absolute;
+  height: 50%;
   justify-content: center;
   align-items: center;
+  position: absolute;
 
   .blocktext__title {
     width: 70%;
-    height: 30%;
+    height: 20vh;
   }
-  .blocktext__buttonstart {
+
+  .blocktext__start {
     cursor: pointer;
     margin-top: 3%;
-    width: 150px;
+    width: 120px;
     height: 40px;
   }
+
   .blocktext__buttonsettings {
-    cursor: pointer;
     margin-top: 3%;
     width: 200px;
     height: 40px;
+  }
+
+  &:hover {
+    .blocktext__buttonsettings {
+      cursor: pointer;
+    }
+  }
+}
+
+.pop {
+  width: 100%;
+  height: 100%;
+
+  .popUpsettings {
+    position: absolute;
+    opacity: 0;
+    top: 30%;
+    left: 30%;
+    width: 700px;
+    height: 400px;
+    animation: opacity 1s ease;
+    z-index: -1;
+
+    &.appear {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+
+  .pop__btnSound {
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    padding-top: 20px;
+
+    &.remove {
+      .pop_btnSound--enabled {
+        opacity: 0;
+      }
+      .pop_btnSound--disable {
+        opacity: 1;
+      }
+    }
+
+    .pop_btnSound--enabled {
+      opacity: 1;
+      position: absolute;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      animation: opacity 1s ease;
+    }
+
+    .pop_btnSound--disable {
+      opacity: 0;
+      position: absolute;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+    }
   }
 }

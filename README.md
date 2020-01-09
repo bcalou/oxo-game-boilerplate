@@ -5,6 +5,8 @@ LEROY	Jason
 COUSIN	Charles
 RAK-LECLER	Guillaume
 
+IMPORTANT pour bien jouer au jeu : jouer en 1536 x 760
+
 adresse du site : https://after-the-after.netlify.com/
 
 This is a boilerplate repository using `OXO`, a minimalist game library to handle common actions in games. This is not optimized for production and uses purposefully simplified patterns for an educational purpose.
