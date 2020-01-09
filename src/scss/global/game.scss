@@ -242,3 +242,23 @@
     z-index: 1;
   }
 }
+
+.stab_bar_big {
+  position: absolute;
+  top: 100px;
+  background-color: lightcoral;
+  height: 30px;
+  width: 150px;
+  opacity: 75%;
+}
+
+.stab_bar_little {
+  position: absolute;
+  top: 100px;
+  background-color: lightcoral;
+  height: 30px;
+  width: 5px;
+  opacity: 70%;
+  transition-duration: 3s;
+  transition-timing-function: linear;
+}
