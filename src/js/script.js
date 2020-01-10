@@ -202,7 +202,7 @@ function interaction() {
   oxo.elements.onCollisionWithElement(character, toiletAction, function() {
     oxo.inputs.listenKey("e", function test() {
       if (peeBar > 50) {
-        peeBar = 50;
+        peeBar = 40;
         alcool -= 10;
         alert("You feel much better !");
       } else {
